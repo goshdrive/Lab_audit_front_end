@@ -105,7 +105,8 @@ class Main extends Component {
             return(
                 <TestHistoryNEW tests={() => this.props.tests.tests.filter(entry => entry.status != "DELETED")}
                     deletedTests={() => this.props.tests.tests.filter(entry => entry.status == "DELETED")}
-                    myTests={() => (this.props.tests.tests.filter(entry => entry.conductedByUsername == this.props.auth.user.username))} 
+                    myTests={() => (this.props.tests.tests.filter(entry => entry.conductedByUsername == this.props.auth.user.username && entry.status != "DELETED"))} 
+                    myDeletedTests={() => (this.props.tests.tests.filter(entry => entry.conductedByUsername == this.props.auth.user.username && entry.status != "DELETED"))} 
                     testsErrMess={this.props.tests.errMess} 
                     fetchTests={this.props.fetchTests}
                     putTest={this.props.putTest}
