@@ -21,6 +21,7 @@ export const REMOVE_SEC_REAGENT = 'REMOVE_SEC_REAGENTS'
 export const RENDER_TESTS = 'RENDER_TESTS' // X
 export const TESTS_LOADING = 'TESTS_FAILED' // 
 export const TESTS_FAILED = 'TESTS_FAILED' // 
+export const UPDATE_TEST = 'UPDATE_TEST' // X
 export const REMOVE_TEST = 'REMOVE_TESTS' // X
 export const SWITCH_TESTS = 'SWITCH_TESTS' // 
 export const RENDER_TESTTYPES = 'RENDER_TESTTYPES' // 

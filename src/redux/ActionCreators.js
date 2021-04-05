@@ -560,6 +560,47 @@ export const testsFailed = (errmess) => ({
     payload: errmess
 });
 
+// PUT
+export const putTest = (
+    updatedTest
+) => (dispatch) => {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+    
+    return fetch(baseUrl + 'tests/' + updatedTest._id, {
+        method: 'PUT',
+        body: JSON.stringify(updatedTest),
+        headers: { 
+            'Content-Type':'application/json',
+            'Authorization': bearer
+        },
+        credentials: 'same-origin'
+        })
+        .then(response => {
+            if (response.ok) {
+                return response
+            }
+            else {
+                var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                error.response = response;
+                throw error;
+            }
+        }, 
+        error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+        })
+        .then(response => response.json())
+        .then(response => {dispatch(updateTest(response))})
+        .catch(error => { console.log('Post reagents', error.message) 
+            alert('Reagent could not be posted\nError: '+ error.message)})
+}
+
+export const updateTest = (updatedTest) => ({
+    type: ActionTypes.UPDATE_TEST,
+    payload: updatedTest
+});
+
 // DELETE
 export const deleteTest = (
     test_id

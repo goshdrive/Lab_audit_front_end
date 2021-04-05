@@ -1,19 +1,18 @@
 import React, { useMemo, useState } from 'react';
 import { useTable, useSortBy, useGlobalFilter, useRowSelect, useExpanded } from 'react-table';
-import { COLUMNS } from './ColsSecReagents'
+import { COLUMNS } from './ColumnsTH'
 import './table.css';
 import {AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import { GlobalFilter } from './GlobalFilter';
-import { Button, ButtonGroup } from 'react-bootstrap';
 import { Checkbox } from './CheckBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUndo } from '@fortawesome/free-solid-svg-icons'
+import { faFolderPlus, faPencilAlt, faDownload, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-export const SecReagentsBin = (props) => {
+export const MyTestsOverview = (props) => {
     
     const columns = useMemo(() => COLUMNS, [])
     //const data = useMemo(() => MOCK_DATA, [])
-    const [data, setData] = useState(props.deletedSecReagents, []);
+    const [data, setData] = useState(props.myTests, []);
     
     const tableInstance = useTable({
             columns,
@@ -21,10 +20,11 @@ export const SecReagentsBin = (props) => {
             initialState: {
                 sortBy: [
                     {
-                        id: 'updatedAt',
+                        id: 'createdAt',
                         desc: true
                     }
                 ],
+                groupBy: ['lotNr'],
                 hiddenColumns: ['updatedAt']
             },
         },         
@@ -72,18 +72,19 @@ export const SecReagentsBin = (props) => {
                 _id: row.original._id,
                 status: "DELETED"
             }
-            props.putSecReagent(update);
+            props.putTest(update);
         });
     }
 
-    const undoDelete = () => { 
-        selectedFlatRows.forEach(row => {     
-            var update = {
-                _id: row.original._id,
-                status: "OK"
-            }
-            props.putSecReagent(update);
-        });
+    const switchToMyTests = () => {
+        var dataCopy = [...data];
+        const userName = 'Alyda Jarnell';
+        const myTests = dataCopy.filter(({conductedBy}) => conductedBy === userName);
+        //props.switchTests(myTests);
+    }
+
+    const switchToAllTests = () => { 
+        props.fetchTests();
     }
 
     const renderRowSubComponent = React.useCallback(
@@ -172,16 +173,18 @@ export const SecReagentsBin = (props) => {
                         <div className="col text-center">
                             <ul style={{"position": "fixed", "paddingLeft":"20px"}} className="list-unstyled">
                                 <li>
-                                    <a type="button" onClick={undoDelete} className="dot" style={{"line-height":"40px",
-                                    "border": "rgba(67, 47, 135, 0.9)",
+                                    <a type="button" onClick={deleteRows} className="dot"
+                                    style={{"line-height":"40px",
+                                    "border": "0.5px solid white",
                                     "width": "50px",
-                                    "background-color": "rgba(67, 47, 135, 0.9)",
+                                    "background-color": "white",
                                     "border-radius": "50%",
+                                    "paddingRight":"3px",
                                     "display": "inline-block",
-                                    "box-shadow": "0px 0px 10px 0px lightgrey",
+                                    "box-shadow": "0px 0px 5px 0px lightgrey",
                                     "text-align": "center",
                                     "vertical-align": "middle"}}>
-                                    <FontAwesomeIcon icon={faUndo} color="white" size='lg'/></a>
+                                    <FontAwesomeIcon icon={faTimes} color="grey" size='lg'/></a>
                                 </li>
                             </ul>
                         </div>    

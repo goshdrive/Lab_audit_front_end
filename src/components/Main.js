@@ -12,7 +12,7 @@ import InvSecReagentsOverview from './InvSecReagentsOverview';
 import { connect } from 'react-redux';
 import { checkJWTToken, loginUser, logoutUser, putReagent, deleteReagent, postReagent, fetchReagents, fetchDeletedReagents,
     fetchSecReagents, fetchDeletedSecReagents, putSecReagent, deleteSecReagent, 
-    deleteTest, fetchTests, fetchTestTypes,
+    deleteTest, fetchTests, putTest, fetchTestTypes,
     postTestType} from '../redux/ActionCreators.js'
 
 
@@ -51,6 +51,7 @@ const mapDispatchToProps = (dispatch) => ({
     putSecReagent: (secReagent) => {dispatch(putSecReagent(secReagent))},
     deleteSecReagent: (secReagent_id) => {dispatch(deleteSecReagent(secReagent_id))},
     fetchTests: () => {dispatch(fetchTests())},
+    putTest: (updatedTest) => {dispatch(putTest(updatedTest))},
     deleteTest: (test_id) => {dispatch(deleteTest(test_id))},
     fetchTestTypes: () => {dispatch(fetchTestTypes())},
     postTestType: (newTestType) => {dispatch(postTestType(newTestType))}   
@@ -70,6 +71,7 @@ class Main extends Component {
             this.props.fetchTests();
             this.props.fetchTestTypes();
             this.props.checkJWTToken();
+            //alert(JSON.stringify(this.props.auth.user))
         } 
         //alert("Mounted")
         
@@ -101,10 +103,12 @@ class Main extends Component {
 
         const TestHistoryPage = () => {
             return(
-                <TestHistoryNEW tests={this.props.tests.tests} 
+                <TestHistoryNEW tests={() => this.props.tests.tests.filter(entry => entry.status != "DELETED")}
+                    deletedTests={() => this.props.tests.tests.filter(entry => entry.status == "DELETED")}
+                    myTests={() => (this.props.tests.tests.filter(entry => entry.conductedByUsername == this.props.auth.user.username))} 
                     testsErrMess={this.props.tests.errMess} 
-                    //switchTests={this.props.switchTests}
                     fetchTests={this.props.fetchTests}
+                    putTest={this.props.putTest}
                     deleteTest={this.props.deleteTest} 
                     logoutUser={this.props.logoutUser}/>
             );
@@ -153,6 +157,11 @@ class Main extends Component {
                     <PrivateRoute exact path="/inventory/secondary-reagents/recent" component={InventoryPage}/>
                     <PrivateRoute exact path="/inventory/secondary-reagents/bin" component={InventoryPage}/>
                     <PrivateRoute exact path="/testhistory/all-tests/overview" component={TestHistoryPage}/>
+                    <PrivateRoute exact path="/testhistory/all-tests/recent" component={TestHistoryPage}/>
+                    <PrivateRoute exact path="/testhistory/all-tests/bin" component={TestHistoryPage}/>
+                    <PrivateRoute exact path="/testhistory/my-tests/overview" component={TestHistoryPage}/>
+                    <PrivateRoute exact path="/testhistory/my-tests/recent" component={TestHistoryPage}/>
+                    <PrivateRoute exact path="/testhistory/my-tests/bin" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/assays" component={AssayPage}/>
                     <PrivateRoute exact path="/account" component={AccountDetails}/> 
                     <Redirect to="/inventory/primary-reagents/overview" />

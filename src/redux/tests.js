@@ -15,8 +15,14 @@ export const Tests = (state = {
         case ActionTypes.TESTS_FAILED:
             return {...state, isLoading: false, errMess: action.payload, tests: []}
 
-        case ActionTypes.SWITCH_TESTS:
-            return {...state, isLoading: false, errMess: null, tests: action.payload}
+        case ActionTypes.UPDATE_TEST:
+            var test = action.payload;
+
+            if (test.status == "DELETED") {
+                return {...state, tests: state.tests.filter(
+                            item => item._id !== test._id
+                        )};
+            }
 
         case ActionTypes.REMOVE_TEST:
             var test = action.payload._id;

@@ -3,7 +3,10 @@ import Sidebar from './Sidebar';
 import { RiDeleteBin7Fill, RiTimeFill } from 'react-icons/ri'
 import { FaLayerGroup } from 'react-icons/fa'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
-import { AllTestsOverview } from './TestsOverview';
+import { AllTestsOverview } from './AllTestsOverview';
+import { AllTestsRecent } from './AllTestsRecent';
+import { AllTestsBin } from './AllTestsBin';
+import { MyTestsOverview } from './MyTestsOverview';
 
 class TestHistoryNEW extends Component {
     constructor(props) {
@@ -28,6 +31,31 @@ class TestHistoryNEW extends Component {
                     <AllTestsOverview tests={this.props.tests} 
                         testsErrMess={this.props.testsErrMess}
                         fetchTests={this.props.fetchTests}
+                        putTest={this.props.putTest}
+                        deleteTest={this.props.deleteTest} />  
+                );
+            case 'all-tests/bin':
+                return(
+                    <AllTestsBin deletedTests={this.props.deletedTests} 
+                        testsErrMess={this.props.testsErrMess}
+                        fetchTests={this.props.fetchTests}
+                        putTest={this.props.putTest}
+                        deleteTest={this.props.deleteTest} />  
+                );
+            case 'my-tests/overview':
+                return(
+                    <MyTestsOverview myTests={this.props.myTests} 
+                        testsErrMess={this.props.testsErrMess}
+                        fetchTests={this.props.fetchTests}
+                        putTest={this.props.putTest}
+                        deleteTest={this.props.deleteTest} />  
+                );
+            case 'my-tests/bin':
+                return(
+                    <MyTestsOverview myDeletedTests={this.props.myDeletedTests} 
+                        testsErrMess={this.props.testsErrMess}
+                        fetchTests={this.props.fetchTests}
+                        putTest={this.props.putTest}
                         deleteTest={this.props.deleteTest} />  
                 );
         }
@@ -54,7 +82,9 @@ class TestHistoryNEW extends Component {
                                                     "height": "70px",
                                                     "padding-top":"20px"}} 
                                         className="col text-center section-selection">
-                                        <a className="switch" href="/account"><span className="dot" style={{"height": "30px",
+                                        <a className="switch" 
+                                            href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/overview' : '/testhistory/my-tests/overview'}>
+                                                <span className="dot" style={{"height": "30px",
                                                                         "border": "0.5px solid rgba(229, 229, 229, 1)",
                                                                         "width": "30px",
                                                                         "background-color": "#ffffff",
@@ -72,9 +102,12 @@ class TestHistoryNEW extends Component {
                                 <div style={{"margin-top":"30px"}} className="row section-choices">
                                     <div className="col" style={{"padding":"0px"}}>
                                         <ul className="list-unstyled">
-                                            <li><a href="/" type="button" className={this.state.currentPath.split('/')[1]=='overview' ? 'selected' : ''}><span><FaLayerGroup /></span> Overview</a></li>
-                                            <li><a href="/" type="button" className={this.state.currentPath.split('/')[1]=='recent' ? 'selected' : ''}><span><RiTimeFill /></span> Last Used</a></li>
-                                            <li><a href="/" type="button" className={this.state.currentPath.split('/')[1]=='bin' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> Bin</a></li>
+                                            <li><a type="button" 
+                                                    href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/overview' : '/testhistory/my-tests/overview'}
+                                                    className={this.state.currentPath.split('/')[1]=='overview' ? 'selected' : ''}><span><FaLayerGroup /></span> Overview</a></li>
+                                            <li><a type="button" 
+                                                    href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/bin' : '/test-history/my-tests/bin'}
+                                                    className={this.state.currentPath.split('/')[1]=='bin' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> Bin</a></li>
                                         </ul>
                                     </div>
                                 </div>
