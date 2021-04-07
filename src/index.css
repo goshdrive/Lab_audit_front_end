@@ -82,3 +82,138 @@ tbody svg {
 .header svg {
   color: #432F87
 }
+
+#assay-name-input {
+  width: 46%;
+  height: 40px;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 3px solid lightgray;
+  margin-bottom: 0px;
+  background-color: rgba(47, 73, 209, 0.0);
+  color: #432F87;
+  font-size: x-large;
+  font-weight: 500;
+}
+
+#assay-name-input::placeholder {
+  font-size: x-large;
+  color: grey;
+}
+
+#assay-name-input:focus {
+  outline: none !important;
+  border-bottom: 3px solid #432F87;
+}
+
+#assay-name-input:not(:placeholder-shown) {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  outline: none !important;
+  border-bottom: 3px solid #432F87;
+}
+
+.input-header {
+  margin-top: 20px;
+}
+
+.button-form-array {
+  border: none;
+  background-color: rgba(47, 73, 209, 0.0);
+}
+
+h4 {
+  font-size: large;
+}
+
+.input-h4 {
+  font-size: 20px;
+  color:#432F87;
+  font-weight:500;
+  margin-right: 10px
+}
+
+.submit-button {
+  margin-top : 20px;
+  border: none;
+  background-color: #432F87;
+  border: 1px solid #432F87;
+  border-radius: 5px;
+  color: white;
+  padding: 5px;
+  font-weight: 500;
+  box-shadow: 0px 0px 5px 0px lightgray; 
+  width: 60%;
+  height: 40px
+}
+
+.accordion {
+  border-radius: 7px;
+  background-color: white;                                                    
+  box-shadow: 0px 0px 2px 0px lightgrey; 
+}
+.card {
+  border-radius: 7px;
+  background-color: rgba(47, 73, 209, 0.15);                                                    
+  box-shadow: 0px 0px 5px 0px rgba(47, 73, 209, 0.15); 
+}
+
+.accordion > .card > .card-header >.card-header {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  background-color: white;
+  border-bottom: lightgrey;
+  opacity: 0.9;                                                    
+  box-shadow: 0px 0px 5px 0px rgba(47, 73, 209, 0.15); 
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-top: -13px;
+  margin-bottom: -13px;
+  color: #432F87;
+  font-weight: 500;
+  font-size: large;
+}
+
+/*
+.accordion > .card > .card-header >.card-header:active {
+  background-color: #432F87;
+}
+*/
+
+.assay-cards {
+  margin-top: 20px;
+}
+
+.login-input {
+  width: 60%;
+  height: 40px;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border: none;
+  margin-top:10px
+}
+
+.login-page  {
+  height: 100%;
+}
+
+#addReagentForm > .row > .col-12 > input {
+  margin-bottom: 10px;
+  width: 100%;
+} 
+
+#addReagentForm > .row > .col-6 > input {
+  margin-bottom: 10px;
+  width: 100%;
+} 
+
+.reagent-type-input{
+  border: none;
+  border-radius: 3px;
+  background-color: blue;
+  margin-bottom: 10px;
+  height: 30px;
+  background-color: white;
+}

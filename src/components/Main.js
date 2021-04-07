@@ -8,7 +8,7 @@ import { TestHistory } from './TestHistory';
 import TestHistoryNEW from './TestHistoryNEW';
 import { Inventory } from './Inventory';
 import InventoryNEW from './InventoryNEW';
-import InvSecReagentsOverview from './InvSecReagentsOverview';
+import AssayTypes from './AssayTypes';
 import { connect } from 'react-redux';
 import { checkJWTToken, loginUser, logoutUser, putReagent, deleteReagent, postReagent, fetchReagents, fetchDeletedReagents,
     fetchSecReagents, fetchDeletedSecReagents, putSecReagent, deleteSecReagent, 
@@ -124,6 +124,15 @@ class Main extends Component {
             );
         }
 
+        const AssayTypesPage = () => {
+            return(
+                <AssayTypes testTypes={this.props.testTypes.testTypes} 
+                    testTypesErrMess={this.props.testTypes.errMess} 
+                    postTestType={this.props.postTestType}
+                    logoutUser={this.props.logoutUser}/>
+            );
+        }
+
         const PrivateRoute = ({ component: Component, ...rest }) => (
             <Route {...rest} render={(props) => (
               this.props.auth.isAuthenticated
@@ -163,7 +172,7 @@ class Main extends Component {
                     <PrivateRoute exact path="/testhistory/my-tests/overview" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/my-tests/recent" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/my-tests/bin" component={TestHistoryPage}/>
-                    <PrivateRoute exact path="/assays" component={AssayPage}/>
+                    <PrivateRoute exact path="/assays" component={AssayTypesPage}/>
                     <PrivateRoute exact path="/account" component={AccountDetails}/> 
                     <Redirect to="/inventory/primary-reagents/overview" />
                 </Switch>

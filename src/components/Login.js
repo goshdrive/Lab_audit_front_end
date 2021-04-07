@@ -32,61 +32,66 @@ export const Login = (props) => {
 
     if (!props.auth.isAuthenticated) {
         return(
-            <div className="container-fluid">
-                <Form
-                    onSubmit={handleLogin}
-                    render={({ handleSubmit, form, submitting, pristine, values }) => (
-                        <>                                     
-                        <h4>Login</h4>
-                        <div className="row ml-2 mt-2">
-                            <div className="container">
-                                <form id="loginForm" onSubmit={handleSubmit}>
-                                    <div className="row">
-                                        <Field
-                                        name="username"
-                                        component="input"
-                                        type="text"
-                                        validate={required}
-                                        >
-                                        {({ input, meta }) => (
-                                            <div className="col-12">
-                                                <label>Username</label>
-                                                <input {...input} placeholder="Reagent Name"/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
-                                            </div>
-                                        )}
-                                        </Field>
-                                    </div>
-                                    <div className="row">
-                                        <Field
-                                        name="password"
-                                        component="input"
-                                        type="password"
-                                        validate={required}
-                                        >
-                                        {({ input, meta }) => (
-                                            <div className="col-12">
-                                                <label>Password</label>
-                                                <input {...input} placeholder="Password"/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
-                                            </div>
-                                        )}
-                                        </Field>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-12">
-                                            <button type="submit" disabled={submitting || pristine}>
-                                                Login
-                                            </button>
+            <div className="container-fluid login-page">
+                <div className="row">
+                    <div style={{"backgroundColor":"white"}} className="col-5 text-center">
+                        <span style={{"fontSize":"30px", "color":"#432F87", "fontWeight":"400"}}> Welcome Back </span>
+                        <Form
+                        onSubmit={handleLogin}
+                        render={({ handleSubmit, form, submitting, pristine, values }) => (
+                            <>                                     
+                            <div className="row">
+                                <div className="container">
+                                    <form id="loginForm" onSubmit={handleSubmit}>
+                                        <div className="row">
+                                            <Field
+                                            name="username"
+                                            component="input"
+                                            type="text"
+                                            validate={required}
+                                            >
+                                            {({ input, meta }) => (
+                                                <div className="col-12">
+                                                    <input {...input} placeholder="Username" className="login-input"/>
+                                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                </div>
+                                            )}
+                                            </Field>
                                         </div>
-                                    </div>
-                                </form>
-                            </div>  
-                        </div>                                             
-                        </>
-                    )}
-                /> 
-                <div className="row">{props.auth.errMess == "Error 401: Unauthorized" ? ("Login Unsuccessfull") : ""}</div>                   
+                                        <div className="row">
+                                            <Field
+                                            name="password"
+                                            component="input"
+                                            type="password"
+                                            validate={required}
+                                            >
+                                            {({ input, meta }) => (
+                                                <div className="col-12">
+                                                    <input {...input} placeholder="Password" className="login-input"/>
+                                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                </div>
+                                            )}
+                                            </Field>
+                                        </div>
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <button className="submit-button" type="submit" disabled={submitting || pristine}>
+                                                    Login
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>  
+                            </div>                                             
+                            </>
+                        )}
+                    /> 
+                <div className="row">{props.auth.errMess == "Error 401: Unauthorized" ? ("Login Unsuccessfull") : ""}</div> 
+                    </div>
+                    <div className="col-7">
+                        
+                    </div>
+                </div>                  
             </div>
         );
     }

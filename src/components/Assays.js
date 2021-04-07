@@ -174,73 +174,88 @@ class Assays extends Component {
         return(            
             <div id="page-wrap" className="container-fluid">
                 <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} logoutUser={this.props.logoutUser} />                        
-                <div className="container-fluid">
+                {/* <div className="container-fluid">
                     <div className="row text-center">
                         <img id="logo" src="/assets/images/GOSH.png" height="40px" width="200px"/>                    
                         <div className="ml-auto">
                             <Button onClick={this.handleModalShow}>Add Assay</Button>
                         </div>                 
                     </div>                
-                </div>
-                <div className="table-container container-fluid">                    
-                    <div className="row">
-                        <div className="col-12">
-                            <Accordion defaultActiveKey="0">
-                                <Card key="0" style={{"display": this.state.dateSeries[0] ? "block": "none"}}>
-                                    <Card.Header>
-                                        <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
-                                            {this.state.dateSeries[0] ? String(mapping[Number(this.state.dateSeries[0].substring(5, 7))-1]) + ' ' + String(this.state.dateSeries[0].substring(0, 4)) : null}
-                                        </Accordion.Toggle>
-                                        <Accordion.Collapse eventKey="0">
-                                            <Card.Body>
-                                                {this.state.dateSeries[0] ? (this.state.assayTypes.map(assayType => {
-                                                    if (Number(assayType.createdAt.substring(5,7)) == this.state.dateSeries[0].substring(5,7)) {
-                                                        return(
-                                                            <RenderAssay ref={this.childRef} key={assayType._id} assayType={assayType}/>
-                                                        );
-                                                    }
-                                                    else {
-                                                        return(
-                                                            null
-                                                        );
-                                                    }
-                                                })): null}
-                                            </Card.Body>                                                    
-                                        </Accordion.Collapse>
-                                    </Card.Header>
-                                </Card>
-                                {this.state.dateSeries.map(date => {
-                                    if (date != this.state.dateSeries[0]) {
-                                        return(
-                                            <Card key={date.substring(0, 7)}>
-                                                <Card.Header>
-                                                    <Accordion.Toggle as={Card.Header} variant="link" eventKey={date.substring(5, 7)}>
-                                                        {String(mapping[Number(date.substring(5, 7))-1]) + ' ' + String(date.substring(0, 4))}
-                                                    </Accordion.Toggle>
-                                                    <Accordion.Collapse eventKey={date.substring(5, 7)}>
-                                                        <Card.Body>
-                                                            {this.state.assayTypes.map(assayType => {
-                                                                if (Number(assayType.createdAt.substring(5,7)) == date.substring(5,7)) {
-                                                                    return(
-                                                                        <RenderAssay ref={this.childRef} key={assayType._id} assayType={assayType}/>
-                                                                    );
-                                                                }
-                                                                else {
-                                                                    return(
-                                                                        null
-                                                                    );
-                                                                }
-                                                            })}
-                                                        </Card.Body>                                                    
-                                                    </Accordion.Collapse>
-                                                </Card.Header>
-                                            </Card>
-                                        );
-                                    }  
-                                })}                                         
-                            </Accordion>                        
-                        </div>                        
+                </div> */}
+                <div style={{"height":"61px","border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-left": "-20px", "width":"85%",
+                                "display": "flex",
+                                "align-items": "center",
+                                "position":"fixed",
+                                "z-index":"10"}} className="row header">
+                    <div className="col-6">
+                        
                     </div>
+                    <div style={{"padding-right":"30px"}} className="col-2 ml-auto text-right">
+                        <span>
+                            <a style={{"font-size": "medium", "color":"rgba(67, 47, 135, 0.9)"}} type="button">Add Reagent</a>
+                        </span>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="container">
+
+                    </div>
+                    <div className="col-12">
+                        <Accordion defaultActiveKey="0">
+                            <Card key="0" style={{"display": this.state.dateSeries[0] ? "block": "none"}}>
+                                <Card.Header>
+                                    <Accordion.Toggle as={Card.Header} variant="link" eventKey="0">
+                                        {this.state.dateSeries[0] ? String(mapping[Number(this.state.dateSeries[0].substring(5, 7))-1]) + ' ' + String(this.state.dateSeries[0].substring(0, 4)) : null}
+                                    </Accordion.Toggle>
+                                    <Accordion.Collapse eventKey="0">
+                                        <Card.Body>
+                                            {this.state.dateSeries[0] ? (this.state.assayTypes.map(assayType => {
+                                                if (Number(assayType.createdAt.substring(5,7)) == this.state.dateSeries[0].substring(5,7)) {
+                                                    return(
+                                                        <RenderAssay ref={this.childRef} key={assayType._id} assayType={assayType}/>
+                                                    );
+                                                }
+                                                else {
+                                                    return(
+                                                        null
+                                                    );
+                                                }
+                                            })): null}
+                                        </Card.Body>                                                    
+                                    </Accordion.Collapse>
+                                </Card.Header>
+                            </Card>
+                            {this.state.dateSeries.map(date => {
+                                if (date != this.state.dateSeries[0]) {
+                                    return(
+                                        <Card key={date.substring(0, 7)}>
+                                            <Card.Header>
+                                                <Accordion.Toggle as={Card.Header} variant="link" eventKey={date.substring(5, 7)}>
+                                                    {String(mapping[Number(date.substring(5, 7))-1]) + ' ' + String(date.substring(0, 4))}
+                                                </Accordion.Toggle>
+                                                <Accordion.Collapse eventKey={date.substring(5, 7)}>
+                                                    <Card.Body>
+                                                        {this.state.assayTypes.map(assayType => {
+                                                            if (Number(assayType.createdAt.substring(5,7)) == date.substring(5,7)) {
+                                                                return(
+                                                                    <RenderAssay ref={this.childRef} key={assayType._id} assayType={assayType}/>
+                                                                );
+                                                            }
+                                                            else {
+                                                                return(
+                                                                    null
+                                                                );
+                                                            }
+                                                        })}
+                                                    </Card.Body>                                                    
+                                                </Accordion.Collapse>
+                                            </Card.Header>
+                                        </Card>
+                                    );
+                                }  
+                            })}                                         
+                        </Accordion>                        
+                    </div>                        
                 </div>
                 <Modal show={this.state.isModalOpen} onHide={this.handleModalClose} size="lg">
                     <Modal.Header closeButton>Add New Assay Type</Modal.Header>

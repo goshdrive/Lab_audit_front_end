@@ -9,10 +9,9 @@ table {
   }
   
 table td {
-    /*
+    
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
-    */
     padding-bottom: 8px;
     padding-left: 8px;
     padding-right: 8px;
@@ -21,26 +20,27 @@ table td {
 
 }
 
-
+/*
 tr.grouped-row > td {
     border-top: 10px solid #F6F5FA;
-    /*box-shadow: 0 0 3px lightgray;*/
+    box-shadow: 0 0 3px lightgray;
 }
+*/
 
+/*
 tr > td {
     border-top: 1px solid #ddd;
-    /*box-shadow: 0 0 3px lightgray;*/
+    box-shadow: 0 0 3px lightgray;
 }
+*/
 
 table tbody {
-    /*
     border-right: 1px solid lightgray;
     border-left: 1px solid lightgray;
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
-    */
-    /*box-shadow: 0 0 3px lightgray;*/
-    /*background-color: white;*/
+    box-shadow: 0 0 3px lightgray;
+    background-color: white;
     font-weight: 500;
     vertical-align: middle;
     border-radius: 10px;
