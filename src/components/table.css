@@ -9,7 +9,6 @@ table {
   }
   
 table td {
-    
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
     padding-bottom: 8px;
@@ -46,7 +45,7 @@ table tbody {
     border-radius: 10px;
 }
   
-/*table tr:nth-child(even){background-color: #f2f2f2;}*/
+/* table tr:nth-child(even){background-color: #f2f2f2;} */
   
 table tbody tr:hover {background-color: #ddd;}
 
@@ -54,7 +53,7 @@ table tbody tr:hover {background-color: #ddd;}
 table th {
     padding-top: 0px; 
     padding-bottom: 0px;
-    /*padding-bottom: 10px;*/
+    padding-bottom: 10px;
     padding-left: 8px;
     padding-right: 8px;
     text-align: left;

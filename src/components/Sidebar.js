@@ -7,7 +7,7 @@ import { MdCreateNewFolder } from "react-icons/md";
 function Sidebar(props) {
   return (
     <Menu>
-      <a className="menu-item" href="/invenotry">
+      <a className="menu-item" href="/inventory/primary-reagents/overview">
         <span><RiTestTubeLine/>&nbsp;&nbsp;Inventory</span>
       </a>
       <a className="menu-item" href="/testhistory/all-tests/overview">

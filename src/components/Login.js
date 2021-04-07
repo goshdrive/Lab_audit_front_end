@@ -33,9 +33,10 @@ export const Login = (props) => {
     if (!props.auth.isAuthenticated) {
         return(
             <div className="container-fluid login-page">
-                <div className="row">
-                    <div style={{"backgroundColor":"white"}} className="col-5 text-center">
-                        <span style={{"fontSize":"30px", "color":"#432F87", "fontWeight":"400"}}> Welcome Back </span>
+                <div className="row min-vh-100">
+                    <div style={{"backgroundColor":"white", "paddingTop":"15%"}} className="col-4 text-center vertical-align">
+                        <span style={{"fontSize":"40px", "color":"#432F87", "fontWeight":"700", "display":"block"}}>DRIVE</span>
+                        <span style={{"fontSize":"20px", "color":"#432F87", "fontWeight":"500", "display":"inline-block"}}> LabAssist </span>
                         <Form
                         onSubmit={handleLogin}
                         render={({ handleSubmit, form, submitting, pristine, values }) => (
@@ -53,7 +54,7 @@ export const Login = (props) => {
                                             {({ input, meta }) => (
                                                 <div className="col-12">
                                                     <input {...input} placeholder="Username" className="login-input"/>
-                                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                    {meta.error && meta.touched && <span style={{"textAlign": "left", "color":"red"}}><br></br>{meta.error}</span>}
                                                 </div>
                                             )}
                                             </Field>
@@ -68,7 +69,7 @@ export const Login = (props) => {
                                             {({ input, meta }) => (
                                                 <div className="col-12">
                                                     <input {...input} placeholder="Password" className="login-input"/>
-                                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                    {meta.error && meta.touched && <span style={{"textAlign": "left", "color":"red"}}><br></br>{meta.error}</span>}
                                                 </div>
                                             )}
                                             </Field>
@@ -88,8 +89,15 @@ export const Login = (props) => {
                     /> 
                 <div className="row">{props.auth.errMess == "Error 401: Unauthorized" ? ("Login Unsuccessfull") : ""}</div> 
                     </div>
-                    <div className="col-7">
-                        
+                    <div style={{"paddingTop":"10%"}} id="login-right" className="col-8">
+                        <div className="row">
+                            <div className="col-5 ml-auto">
+                                <img src="assets/images/Humaaans_Wireframe.png" height="500px" width="500px" alt="image" />
+                            </div>
+                            <div className="col-7 mr-auto">
+                                <img className="block-center" src="assets/images/Humaaans_Space.png" height="500px" width="680px" alt="image" />
+                            </div>              
+                        </div>
                     </div>
                 </div>                  
             </div>

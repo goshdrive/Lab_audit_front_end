@@ -66,13 +66,13 @@ class TestHistoryNEW extends Component {
             <div id="page-wrap" className="container-fluid">         
                 <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} logoutUser={this.props.logoutUser} />                               
                 <div className="row flex-fill h-100 d-flex">
-                    <div style={{"position":"fixed"}} className="col-2">
+                    <div style={{"position":"fixed"}} className="col-2 d-flex flex-column h-100">
                         <div style={{"border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-top": "0px", "padding": "10px"}} className="row header">
                             <div className="col ml-5">
                                 <span className="menu-header"> Test History </span>
                             </div>
                         </div>
-                        <div style={{"border-right":"1px solid #E2E2E4"}} className="row side-info">
+                        <div style={{"border-right":"1px solid #E2E2E4"}} className="row side-info justify-content-center bg-blue flex-grow-1">
                             <div style={{"margin-top":"15px"}} className="container-fluid side-info-container">
                                 <div className="row">
                                     <div style={{"margin-right":"15px", 
@@ -83,7 +83,7 @@ class TestHistoryNEW extends Component {
                                                     "padding-top":"20px"}} 
                                         className="col text-center section-selection">
                                         <a className="switch" 
-                                            href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/overview' : '/testhistory/my-tests/overview'}>
+                                            href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/my-tests/overview' : '/testhistory/all-tests/overview'}>
                                                 <span className="dot" style={{"height": "30px",
                                                                         "border": "0.5px solid rgba(229, 229, 229, 1)",
                                                                         "width": "30px",
@@ -95,7 +95,7 @@ class TestHistoryNEW extends Component {
                                         </span></a>
                                         <span style={{"font-weight":"700", "font-size":"large", 
                                             "color": "rgba(237, 139, 0, 0.95)", "padding-left": "15px",
-                                            "vertical-align":"middle"}}> All Conducted Tests </span>
+                                            "vertical-align":"middle"}}>{this.state.currentPath.split('/')[0]=='all-tests' ? 'All Tests' : 'My Tests'}</span>
                                         <span style={{"padding-left": "5px"}}> </span>
                                     </div>
                                 </div>

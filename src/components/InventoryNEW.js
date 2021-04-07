@@ -85,14 +85,14 @@ class InventoryNEW extends Component {
         return(
             <div id="page-wrap" className="container-fluid">                
                 <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} logoutUser={this.props.logoutUser} />                        
-                <div className="row flex-fill h-100 d-flex">
-                    <div style={{"position":"fixed"}} className="col-2">
+                <div className="row min-vh-100">
+                    <div style={{"position":"fixed"}} className="col-2 d-flex flex-column h-100">
                         <div style={{"border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-top": "0px", "padding": "10px"}} className="row header">
                             <div className="col ml-5">
                                 <span className="menu-header"> Inventory </span>
                             </div>
                         </div>
-                        <div style={{"border-right":"1px solid #E2E2E4"}} className="row side-info">
+                        <div style={{"border-right":"1px solid #E2E2E4"}} className="row side-info justify-content-center bg-blue flex-grow-1">
                             <div style={{"margin-top":"15px"}} className="container-fluid side-info-container">
                                 <div className="row">
                                     <div style={{"margin-right":"15px", 
