@@ -5,12 +5,15 @@ import Sidebar from './Sidebar.js';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { Login } from './Login';
 import { TestHistory } from './TestHistory';
+import Admin from './Admin';
 import TestHistoryNEW from './TestHistoryNEW';
 import { Inventory } from './Inventory';
 import InventoryNEW from './InventoryNEW';
 import AssayTypes from './AssayTypes';
 import { connect } from 'react-redux';
-import { checkJWTToken, loginUser, logoutUser, putReagent, deleteReagent, postReagent, fetchReagents, fetchDeletedReagents,
+import { checkJWTToken, loginUser, logoutUser, 
+    fetchUsers,
+    fetchReagents, postReagent, putReagent, deleteReagent, fetchDeletedReagents,
     fetchSecReagents, fetchDeletedSecReagents, putSecReagent, deleteSecReagent, 
     deleteTest, fetchTests, putTest, fetchTestTypes,
     postTestType} from '../redux/ActionCreators.js'
@@ -24,6 +27,7 @@ const mapStateToProps = state => {
         deletedSecReagents: state.deletedSecReagents,
         tests: state.tests,
         testTypes: state.testTypes,
+        users: state.users,
         auth: state.auth
     }     
 }
@@ -132,6 +136,15 @@ class Main extends Component {
                     logoutUser={this.props.logoutUser}/>
             );
         }
+
+        const AdminPage = () => {
+            return(
+                <Admin users={this.props.users.users} 
+                    fetchUsers={this.props.testTypes.errMess} 
+                    usersErrMess={this.props.usersErrMess}/>
+            );
+        }
+
 
         const PrivateRoute = ({ component: Component, ...rest }) => (
             <Route {...rest} render={(props) => (

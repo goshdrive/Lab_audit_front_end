@@ -122,6 +122,56 @@ export const receiveLogout = () => {
 ///////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////
+// USERS
+///////////////////
+// GET
+export const fetchUsers = () => (dispatch) => {
+    
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+
+    return fetch(baseUrl + 'users', {
+        method: 'GET',
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': bearer
+          }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response
+            }
+            else {
+                var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                error.response = response;
+                throw error;
+            }
+        }, 
+        error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+        })
+        .then(response => response.json())
+        .then(users => dispatch(renderReagents(users)))
+        .catch(error => dispatch(reagentsFailed(error.message)));
+}
+
+export const usersLoading = () => ({
+    type: ActionTypes.USERS_LOADING
+});
+
+export const renderUsers = (users) => ({
+    type: ActionTypes.RENDER_USERS,
+    payload: users
+});
+
+export const usersFailed = (errmess) => ({
+    type: ActionTypes.USERS_FAILED,
+    payload: errmess
+});
+
+///////////////////////////////////////////////////
+
+///////////////////////////////////////////////////
 // PRIMARY REAGENTS
 ///////////////////
 // GET

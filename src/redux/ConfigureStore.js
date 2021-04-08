@@ -1,5 +1,6 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import { Auth } from './auth';
+import { Users } from "./users";
 import { Reagents } from "./reagents";
 import { SecReagents } from "./secondaryReagents";
 import { Tests } from "./tests";
@@ -15,6 +16,7 @@ export const ConfigureStore = () => {
             tests: Tests,
             testTypes: TestTypes,
             auth: Auth,
+            users: Users
         }),
         // supply as args, once we do it they become available within the app
         applyMiddleware(thunk, logger)
