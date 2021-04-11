@@ -14,5 +14,8 @@ export const Users = (state = {
     
         case ActionTypes.USERS_FAILED:
             return {...state, isLoading: false, errMess: action.payload, users: []}
+        
+        default:
+            return state;
     }
 }

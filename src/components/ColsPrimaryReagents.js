@@ -49,14 +49,14 @@ export const COLUMNS = [
         Header: 'Date Received',
         id: 'dateReceived',
         accessor: 'dateReceived',
-        Cell: ({value}) => {return format(new Date(value), 'dd/MM/yyyy')},
+        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): ''),
         aggregate: topValue,
         canGroupBy: false
     },
     {
         Header: 'Expiry Date',
         accessor: 'expiryDate',
-        Cell: ({value}) => {return format(new Date(value), 'dd/MM/yyyy')},
+        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): ''),
         aggregate: topValue,
         canGroupBy: false
     },
@@ -70,7 +70,7 @@ export const COLUMNS = [
     {
         Header: 'Date of First Use',
         accessor: 'dateOfFirstUse',
-        Cell: ({value}) => {return format(new Date(value), 'dd/MM/yyyy')},
+        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): ''),
         aggregate: topValue,
         canGroupBy: false
     },

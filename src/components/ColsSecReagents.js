@@ -23,12 +23,12 @@ export const COLUMNS = [
     {
         Header: 'Date Created',
         accessor: 'dateCreated',
-        Cell: ({value}) => {return format(new Date(value), 'dd/MM/yyyy')}
+        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): '')
     },    
     {
         Header: 'Expiry Date',
         accessor: 'expiryDate',
-        Cell: ({value}) => {return format(new Date(value), 'dd/MM/yyyy')}
+        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): '')
     },    
     {
         Header: 'Created By',

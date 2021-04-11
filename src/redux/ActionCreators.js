@@ -130,7 +130,6 @@ export const fetchUsers = () => (dispatch) => {
     const bearer = 'Bearer ' + localStorage.getItem('token');
 
     return fetch(baseUrl + 'users', {
-        method: 'GET',
         headers: {
             "Content-Type": "application/json",
             'Authorization': bearer
@@ -151,8 +150,8 @@ export const fetchUsers = () => (dispatch) => {
             throw errmess;
         })
         .then(response => response.json())
-        .then(users => dispatch(renderReagents(users)))
-        .catch(error => dispatch(reagentsFailed(error.message)));
+        .then(users => dispatch(renderUsers(users)))
+        .catch(error => dispatch(usersFailed(error.message)));
 }
 
 export const usersLoading = () => ({

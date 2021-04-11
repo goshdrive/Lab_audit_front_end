@@ -36,6 +36,7 @@ const mapDispatchToProps = (dispatch) => ({
     checkJWTToken: () => dispatch(checkJWTToken()), 
     loginUser: (creds) => dispatch(loginUser(creds)),
     logoutUser: () => dispatch(logoutUser()), 
+    fetchUsers: () => dispatch(fetchUsers()), 
     putReagent: (reagent) => {dispatch(putReagent(reagent))},
     deleteReagent: (reagent_id) => {dispatch(deleteReagent(reagent_id))},
     postReagent: (
@@ -68,6 +69,7 @@ class Main extends Component {
 
     componentDidMount() {
         if(this.props.auth.isAuthenticated) {
+            this.props.fetchUsers();
             this.props.fetchReagents();
             this.props.fetchDeletedReagents();
             this.props.fetchSecReagents();
@@ -186,7 +188,8 @@ class Main extends Component {
                     <PrivateRoute exact path="/testhistory/my-tests/recent" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/my-tests/bin" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/assays" component={AssayTypesPage}/>
-                    <PrivateRoute exact path="/account" component={AccountDetails}/> 
+                    <PrivateRoute exact path="/account" component={AccountDetails}/>
+                    <PrivateRoute exact path="/admin" component={AdminPage}/> 
                     <Redirect to="/inventory/primary-reagents/overview" />
                 </Switch>
                 </>
