@@ -30,6 +30,22 @@ class Admin extends Component {
         this.props.putUser(updatedUser);
     }
 
+    deleteUser = (user) => {
+        var updatedUser = {
+            _id: user._id,
+            status:  "DELETED"
+        }
+        this.props.putUser(updatedUser);
+    }
+
+    reActivateUser = (user) => {
+        var updatedUser = {
+            _id: user._id,
+            status:  "ACTIVE"
+        }
+        this.props.putUser(updatedUser);
+    }
+
     handleModalShow = () => {
         this.setState({
             isModalOpen: true
@@ -54,7 +70,7 @@ class Admin extends Component {
                             </div>
                         </div>
                         <div style={{"border-right":"1px solid #E2E2E4", "paddingTop":"81px", "paddingLeft":"10px"}} className="row">
-                            <div className="col-5 ml-2">
+                            <div className="col-6 ml-2">
                                 <div className="container-fluid">
                                     <div className="row">
                                         <span style={{"verticalAlign":"middle"}}>User Management</span>
@@ -66,15 +82,53 @@ class Admin extends Component {
                                             {this.state.usersRenderList.map(user => {
                                                 return(
                                                     <li key={user._id}>
-                                                        <div style={{"border":"1px solid lightgrey", "padding":"20px", "borderRadius":"7px", "backgroundColor":"white", "boxShadow":"0px 0px 3px 0px lightgrey"}} key={user._id} className="user-card">
-                                                            <span>{user.username}</span>
-                                                            <span style={{"float":"right"}}>
-                                                                <select onChange={(e) => this.changeUserRole(user, e)}>
-                                                                    <option selected={user.supervisor ? ("selected") : ""}>Supervisor User</option>
-                                                                    <option selected={!user.supervisor ? ("selected") : ""}>Regular User</option>
-                                                                </select>
-                                                            </span>
-                                                        </div>
+                                                        {
+                                                            user.status!="DELETED" ? (
+                                                                <div style={{"border":"1px solid lightgrey", "padding":"20px", "borderRadius":"7px", "backgroundColor":"white", "boxShadow":"0px 0px 3px 0px lightgrey"}} key={user._id} className="user-card">
+                                                                    <span>{user.username}</span>
+                                                                    <span style={{"float":"right"}}>
+                                                                        {
+                                                                            user.admin ? (
+                                                                                <span>Admin</span>
+                                                                            ) : (
+                                                                                <select style={{"borderRadius":"3px", "height":"27px"}} onChange={(e) => this.changeUserRole(user, e)}>
+                                                                                    <option selected={user.supervisor ? ("selected") : ""}>Supervisor User</option>
+                                                                                    <option selected={!user.supervisor ? ("selected") : ""}>Regular User</option>
+                                                                                </select>
+                                                                            )
+                                                                        }
+                                                                    </span>
+                                                                    <span style={{"float":"right", "height":"27px","border":"1px solid #432F87", "backgroundColor":"#432F87", "color":"white", "borderRadius":"3px", "padding":"0px 3px 0px 3px", "margin-left":"10px", "margin-right":"10px"}}>
+                                                                        <a type="button">Reset Password</a>
+                                                                    </span>
+                                                                    <span style={{"float":"right", "height":"27px","border":"1px solid #432F87", "borderRadius":"3px", "color":"#432F87", "padding":"0px 3px 0px 3px", "margin-left":"10px", "margin-right":"10px"}}>
+                                                                        <a onClick={() => this.deleteUser(user)} type="button">Delete User</a>
+                                                                    </span>
+                                                                </div>
+                                                            ) : (
+                                                                <div style={{"border":"1px solid lightgrey", "padding":"20px", "borderRadius":"7px", "backgroundColor":"#E2E2E4", "boxShadow":"0px 0px 3px 0px lightgrey"}} key={user._id} className="user-card">
+                                                                    <span>{user.username}</span>
+                                                                    <span style={{"float":"right"}}>
+                                                                        {
+                                                                            user.admin ? (
+                                                                                <span>Admin</span>
+                                                                            ) : (
+                                                                                <select style={{"borderRadius":"3px", "height":"27px", "backgroundColor":"grey", "color":"lightgrey"}} onChange={(e) => this.changeUserRole(user, e)}>
+                                                                                    <option selected={user.supervisor ? ("selected") : ""}>Supervisor User</option>
+                                                                                    <option selected={!user.supervisor ? ("selected") : ""}>Regular User</option>
+                                                                                </select>
+                                                                            )
+                                                                        }
+                                                                    </span>
+                                                                    <span style={{"float":"right", "height":"27px","border":"1px solid grey", "backgroundColor":"grey", "color":"lightgrey", "borderRadius":"3px", "padding":"0px 3px 0px 3px", "margin-left":"10px", "margin-right":"10px"}}>
+                                                                        <a type="button">Reset Password</a>
+                                                                    </span>
+                                                                    <span style={{"float":"right", "height":"27px","border":"1px solid #432F87", "borderRadius":"3px", "backgroundColor":"#432F87", "color":"white", "padding":"0px 3px 0px 3px", "margin-left":"10px", "margin-right":"10px"}}>
+                                                                        <a onClick={() => this.reActivateUser(user)} type="button">Reactivate</a>
+                                                                    </span>
+                                                                </div>
+                                                            )
+                                                        }
                                                     </li>
                                                 );
                                             })}
