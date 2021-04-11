@@ -13,10 +13,6 @@ class AccountDetails extends Component {
         super(props);
 
         this.state = {
-            firstName: 'Anne',
-            lastName: 'Miller',
-            username: 'anne.miller@gosh.nhs.uk',
-            role: 'Lab Supervisor',
             oldPassword: '1234567',
             editPassword: false,
         }
@@ -66,10 +62,10 @@ class AccountDetails extends Component {
                                             </div>
                                             <div style={{"margin-left":"10px"}} className="col">
                                                 <div className="row">
-                                                    <a style={{"color":"black"}} href="/account"><span style={{"display":"block", "fontWeight":"600", "color":"#432F87"}}>Achilleas Mitrotasios</span></a>
+                                                    <a style={{"color":"black"}} href="/account"><span style={{"display":"block", "fontWeight":"600", "color":"#432F87"}}>{this.props.auth.user.firstName + ' ' + this.props.auth.user.lastName}</span></a>
                                                 </div>
                                                 <div style={{"color":"gray"}} className="row">
-                                                    Lab Staff
+                                                    {this.props.auth.user.supervisor ? 'Supervisor Account' : 'Regular Account'}   
                                                 </div>
                                             </div>
                                         </div>
@@ -80,7 +76,7 @@ class AccountDetails extends Component {
                                         Username
                                     </div>
                                     <div style={{"fontSize":"20px"}} className="col-10">
-                                        {this.state.username}
+                                        {this.props.auth.user.username}
                                     </div>
                                 </div>
                                 <div style={{"marginTop":"10px"}} className="row">

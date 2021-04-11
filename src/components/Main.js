@@ -89,6 +89,7 @@ class Main extends Component {
         const InventoryPage = () => {
             return(
                 <InventoryNEW 
+                    auth={this.props.auth} 
                     logoutUser={this.props.logoutUser}
                     // Primary Reagents
                     reagents={this.props.reagents.reagents}
@@ -111,15 +112,17 @@ class Main extends Component {
 
         const TestHistoryPage = () => {
             return(
-                <TestHistoryNEW tests={() => this.props.tests.tests.filter(entry => entry.status != "DELETED")}
+                <TestHistoryNEW 
+                    auth={this.props.auth}
+                    logoutUser={this.props.logoutUser}
+                    tests={() => this.props.tests.tests.filter(entry => entry.status != "DELETED")}
                     deletedTests={() => this.props.tests.tests.filter(entry => entry.status == "DELETED")}
                     myTests={() => (this.props.tests.tests.filter(entry => entry.conductedByUsername == this.props.auth.user.username && entry.status != "DELETED"))} 
                     myDeletedTests={() => (this.props.tests.tests.filter(entry => entry.conductedByUsername == this.props.auth.user.username && entry.status != "DELETED"))} 
                     testsErrMess={this.props.tests.errMess} 
                     fetchTests={this.props.fetchTests}
                     putTest={this.props.putTest}
-                    deleteTest={this.props.deleteTest} 
-                    logoutUser={this.props.logoutUser}/>
+                    deleteTest={this.props.deleteTest} />
             );
         }
 
@@ -194,7 +197,7 @@ class Main extends Component {
                     <PrivateRoute exact path="/testhistory/my-tests/recent" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/my-tests/bin" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/assays" component={AssayTypesPage}/>
-                    <PrivateRoute exact path="/account" component={AccountDetails}/>
+                    <PrivateRoute exact path="/account" component={() => <AccountDetails auth={this.props.auth}/>}/>
                     <PrivateRoute exact path="/admin" component={AdminPage}/> 
                     <Redirect to="/inventory/primary-reagents/overview" />
                 </Switch>
