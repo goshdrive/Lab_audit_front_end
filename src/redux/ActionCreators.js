@@ -22,7 +22,6 @@ export const checkJWTToken = () => (dispatch) => {
             }
             else if (!response.success) {
                 localStorage.removeItem('token');
-                localStorage.removeItem('creds');
                 var error = new Error('Error ' + response.err.name);
                 error.response = response;
                 throw error;
@@ -40,7 +39,6 @@ export const checkJWTToken = () => (dispatch) => {
 
 export const loginUser = (creds) => (dispatch) => {
     // We dispatch requestLogin to kickoff the call to the API
-    dispatch(requestLogin(creds))
 
     return fetch(baseUrl + 'users/login', {
         method: 'POST',
@@ -66,8 +64,9 @@ export const loginUser = (creds) => (dispatch) => {
         if (response.success) {
             // If login was successful, set the token in local storage
             localStorage.setItem('token', response.token);
-            localStorage.setItem('creds', JSON.stringify(creds));
+            localStorage.setItem('userData', JSON.stringify(response.user));
             // Dispatch the success action
+            dispatch(requestLogin(response.user));
             dispatch(receiveLogin(response));
         }
         else {
@@ -79,10 +78,10 @@ export const loginUser = (creds) => (dispatch) => {
     .catch(error => dispatch(loginError(error.message)))
 };
 
-export const requestLogin = (creds) => {
+export const requestLogin = (userData) => {
     return {
         type: ActionTypes.LOGIN_REQUEST,
-        creds
+        userData
     }
 }
   

@@ -22,7 +22,15 @@ export const Login = (props) => {
         props.fetchDeletedSecReagents();
         props.fetchTests();
         props.fetchTestTypes();
-        return <Redirect to={from} />;
+        
+        var userData = JSON.parse(localStorage.getItem('userData'))
+        if (userData.admin == true) {
+            props.fetchUsers();
+            return <Redirect to='/admin' />;
+        }
+        else {
+            return <Redirect to={from} />;
+        }
     }
 
     const handleLogin = (values) => {

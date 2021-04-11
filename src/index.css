@@ -229,3 +229,7 @@ h4 {
 #login-right {
   background-color: #F6F5FA;
 }
+
+a:hover {
+  text-decoration: none;
+}

@@ -147,7 +147,8 @@ class Main extends Component {
                     putUser={this.props.putUser}
                     postUser={this.props.postUser}
                     fetchUsers={this.props.testTypes.errMess} 
-                    usersErrMess={this.props.usersErrMess}/>
+                    usersErrMess={this.props.usersErrMess}
+                    logoutUser={this.props.logoutUser}/>
             );
         }
 
@@ -172,6 +173,7 @@ class Main extends Component {
                                 auth={this.props.auth} 
                                 loginUser={this.props.loginUser} 
                                 logoutUser={this.props.logoutUser}
+                                fetchUsers={this.props.fetchUsers}
                                 fetchReagents={this.props.fetchReagents}
                                 fetchDeletedReagents={this.props.fetchDeletedReagents}
                                 fetchSecReagents={this.props.fetchSecReagents}
