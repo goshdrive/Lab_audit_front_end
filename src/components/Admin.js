@@ -21,7 +21,11 @@ class Admin extends Component {
     }
 
     changeUserRole = (user, e) => {
-        alert(user._id)
+        var updatedUser = {
+            _id: user._id,
+            supervisor:  e.target.value=="Supervisor User" ? true : false
+        }
+        this.props.putUser(updatedUser);
     }
 
     render() {

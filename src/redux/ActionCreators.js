@@ -168,6 +168,47 @@ export const usersFailed = (errmess) => ({
     payload: errmess
 });
 
+// PUT
+export const putUser = (
+    updatedUser
+) => (dispatch) => {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+    
+    return fetch(baseUrl + 'users/' + updatedUser._id, {
+        method: 'PUT',
+        body: JSON.stringify(updatedUser),
+        headers: { 
+            'Content-Type':'application/json',
+            'Authorization': bearer
+        },
+        credentials: 'same-origin'
+        })
+        .then(response => {
+            if (response.ok) {
+                return response
+            }
+            else {
+                var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                error.response = response;
+                throw error;
+            }
+        }, 
+        error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+        })
+        .then(response => response.json())
+        .then(response => {dispatch(updateUser(response))})
+        .catch(error => { console.log('Post reagents', error.message) 
+            alert('Reagent could not be posted\nError: '+ error.message)})
+}
+
+export const updateUser = (user) => ({
+    type: ActionTypes.UPDATE_USER,
+    payload: user
+});
+
 ///////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////

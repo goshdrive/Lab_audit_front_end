@@ -15,6 +15,15 @@ export const Users = (state = {
         case ActionTypes.USERS_FAILED:
             return {...state, isLoading: false, errMess: action.payload, users: []}
         
+        case ActionTypes.UPDATE_USER:
+            var user = action.payload;
+
+            var usersCopy = state.users.slice()
+            var foundIndex = usersCopy.findIndex(entry => entry._id == user._id);
+            usersCopy[foundIndex] = user;
+
+            return {...state, users: usersCopy}
+        
         default:
             return state;
     }
