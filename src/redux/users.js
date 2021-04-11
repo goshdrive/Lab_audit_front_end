@@ -14,6 +14,10 @@ export const Users = (state = {
     
         case ActionTypes.USERS_FAILED:
             return {...state, isLoading: false, errMess: action.payload, users: []}
+    
+        case ActionTypes.ADD_USER:
+            var user = action.payload;
+            return {...state, users: state.users.concat(user)};
         
         case ActionTypes.UPDATE_USER:
             var user = action.payload;

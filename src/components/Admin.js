@@ -1,4 +1,5 @@
 import React, { createRef, Component } from 'react';
+import AddUser from './AddUser'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons'
 
@@ -8,7 +9,8 @@ class Admin extends Component {
 
         this.state = {
             users: this.props.users,
-            usersRenderList: this.props.users
+            usersRenderList: this.props.users,
+            isModalOpen: false 
         }
     }
 
@@ -28,6 +30,18 @@ class Admin extends Component {
         this.props.putUser(updatedUser);
     }
 
+    handleModalShow = () => {
+        this.setState({
+            isModalOpen: true
+        });
+    }
+
+    handleModalClose = () => {
+        this.setState({
+            isModalOpen: false
+        });
+    }
+
     render() {
         return (
             <div id="page-wrap" className="container-fluid">         
@@ -45,7 +59,7 @@ class Admin extends Component {
                                     <div className="row">
                                         <span style={{"verticalAlign":"middle"}}>User Management</span>
                                         <span><FontAwesomeIcon style={{"verticalAlign":"middle", "marginLeft":"30px"}} icon={faSearch} size='sm'/><input style={{"border":"1px solid lightgrey", "borderRadius":"4px", "marginLeft":"5px"}} type="text" onChange={(e => this.handleChange(e))}/></span>
-                                        <span className="ml-auto"><a style={{"verticalAlign":"middle"}} ><FontAwesomeIcon icon={faPlus} size='sm'/>{' '}Add New User</a></span>
+                                        <span className="ml-auto"><a style={{"verticalAlign":"middle"}} type="button" onClick={this.handleModalShow}><FontAwesomeIcon icon={faPlus} size='sm'/>{' '}Add New User</a></span>
                                     </div>
                                     <div className="row">
                                         <ul style={{"width":"100%"}} className="list-unstyled">
@@ -71,6 +85,8 @@ class Admin extends Component {
                         </div>
                     </div>
                 </div>
+                <AddUser isModalOpen={this.state.isModalOpen} handleModalClose={this.handleModalClose} handleModalOpen={this.handleModalShow} 
+                    postUser={this.props.postUser} />
             </div>
         );
     }

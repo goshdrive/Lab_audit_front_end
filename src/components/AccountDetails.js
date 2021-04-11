@@ -152,7 +152,7 @@ class AccountDetails extends Component {
                                         <div className="mt-3 row">
                                             <div style={{"fontSize":"18px"}} className="col offset-1">
                                                 <button style={{"backgroundColor":"#432F87", "border":"none", "borderRadius":"5px", "boxShadow":"0px 0px 3px 0px grey", "color":"white", "padding":"2px 10px 2px 10px"}} type="submit" disabled={submitting}>
-                                                Save Password
+                                                    Save Password
                                                 </button>
                                             </div>
                                         </div>

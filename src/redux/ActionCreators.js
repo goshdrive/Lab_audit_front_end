@@ -168,6 +168,41 @@ export const usersFailed = (errmess) => ({
     payload: errmess
 });
 
+// POST
+export const postUser = (user) => (dispatch) => {
+    
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+    
+    return fetch(baseUrl + 'users/signup', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': bearer
+      },
+      body: JSON.stringify(user)
+    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+        error => {
+          throw error;
+        })
+      .then(response => response.json())
+      .then(response => dispatch(addUser(response.user)))
+      .catch(error => { console.log('User', error.message); alert("Registration failed")});
+};
+
+export const addUser = (user) => ({
+    type: ActionTypes.ADD_USER,
+    payload: user
+});
+
 // PUT
 export const putUser = (
     updatedUser

@@ -7,6 +7,7 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE'
 export const RENDER_USERS = 'RENDER_USERS' // XX
 export const USERS_LOADING = 'USERS_LOADING'
 export const USERS_FAILED = 'USERS_FAILED'
+export const ADD_USER = 'ADD_USER'
 export const UPDATE_USER = 'UPDATE_USER'
 export const CHECK_TOKEN = 'CHECK_TOKEN'
 export const RENDER_REAGENTS = 'RENDER_REAGENTS' // XX

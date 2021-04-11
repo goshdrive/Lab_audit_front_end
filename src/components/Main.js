@@ -12,7 +12,7 @@ import InventoryNEW from './InventoryNEW';
 import AssayTypes from './AssayTypes';
 import { connect } from 'react-redux';
 import { checkJWTToken, loginUser, logoutUser, 
-    fetchUsers, putUser,
+    fetchUsers, postUser, putUser,
     fetchReagents, postReagent, putReagent, deleteReagent, fetchDeletedReagents,
     fetchSecReagents, fetchDeletedSecReagents, putSecReagent, deleteSecReagent, 
     deleteTest, fetchTests, putTest, fetchTestTypes,
@@ -37,6 +37,7 @@ const mapDispatchToProps = (dispatch) => ({
     loginUser: (creds) => dispatch(loginUser(creds)),
     logoutUser: () => dispatch(logoutUser()), 
     fetchUsers: () => dispatch(fetchUsers()), 
+    postUser: (user) => dispatch(postUser(user)), 
     putUser: (user) => dispatch(putUser(user)), 
     putReagent: (reagent) => {dispatch(putReagent(reagent))},
     deleteReagent: (reagent_id) => {dispatch(deleteReagent(reagent_id))},
@@ -144,6 +145,7 @@ class Main extends Component {
             return(
                 <Admin users={this.props.users.users} 
                     putUser={this.props.putUser}
+                    postUser={this.props.postUser}
                     fetchUsers={this.props.testTypes.errMess} 
                     usersErrMess={this.props.usersErrMess}/>
             );
