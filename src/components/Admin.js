@@ -20,6 +20,10 @@ class Admin extends Component {
         })
     }
 
+    changeUserRole = (user, e) => {
+        alert(user._id)
+    }
+
     render() {
         return (
             <div id="page-wrap" className="container-fluid">         
@@ -43,13 +47,13 @@ class Admin extends Component {
                                         <ul style={{"width":"100%"}} className="list-unstyled">
                                             {this.state.usersRenderList.map(user => {
                                                 return(
-                                                    <li>
+                                                    <li key={user._id}>
                                                         <div style={{"border":"1px solid lightgrey", "padding":"20px", "borderRadius":"7px", "backgroundColor":"white", "boxShadow":"0px 0px 3px 0px lightgrey"}} key={user._id} className="user-card">
                                                             <span>{user.username}</span>
                                                             <span style={{"float":"right"}}>
-                                                                <select value={user.supervisor ? ("Supervisor User") : "Regular User"}>
-                                                                    <option>Supervisor User</option>
-                                                                    <option>Regular User</option>
+                                                                <select onChange={(e) => this.changeUserRole(user, e)}>
+                                                                    <option selected={user.supervisor ? ("selected") : ""}>Supervisor User</option>
+                                                                    <option selected={!user.supervisor ? ("selected") : ""}>Regular User</option>
                                                                 </select>
                                                             </span>
                                                         </div>
