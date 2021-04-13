@@ -133,7 +133,12 @@ class TestHistoryNEW extends Component {
                                                 </div>
                                                 <div style={{"margin-left":"10px"}} className="col">
                                                     <div className="row">
-                                                        <a style={{"color":"black"}} href="/account"><span style={{"display":"block"}}>{this.props.auth.user.firstName + ' ' + this.props.auth.user.lastName}</span></a>
+                                                        <a style={{"color":"black"}} href="/account">
+                                                            <span style={{"display":"block"}}>
+                                                                {JSON.parse(localStorage.getItem('userData')).firstName
+                                                                    + ' ' + JSON.parse(localStorage.getItem('userData')).lastName}
+                                                            </span>
+                                                        </a>
                                                     </div>
                                                     <div style={{"color":"gray"}} className="row">
                                                     {this.props.auth.user.supervisor ? 'Supervisor Account' : 'Regular Account'}

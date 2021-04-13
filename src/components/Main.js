@@ -174,6 +174,7 @@ class Main extends Component {
                         component={() => 
                             (<Login 
                                 auth={this.props.auth} 
+                                checkJWTToken = {this.props.checkJWTToken}
                                 loginUser={this.props.loginUser} 
                                 logoutUser={this.props.logoutUser}
                                 fetchUsers={this.props.fetchUsers}

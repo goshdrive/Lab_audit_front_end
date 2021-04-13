@@ -22,6 +22,7 @@ export const Login = (props) => {
         props.fetchDeletedSecReagents();
         props.fetchTests();
         props.fetchTestTypes();
+        props.checkJWTToken();
         
         var userData = JSON.parse(localStorage.getItem('userData'))
         if (userData.admin == true) {

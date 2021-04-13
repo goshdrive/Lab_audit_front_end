@@ -22,6 +22,7 @@ export const checkJWTToken = () => (dispatch) => {
             }
             else if (!response.success) {
                 localStorage.removeItem('token');
+                localStorage.removeItem('userData');
                 var error = new Error('Error ' + response.err.name);
                 error.response = response;
                 throw error;

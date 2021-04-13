@@ -13,7 +13,7 @@ class AccountDetails extends Component {
         super(props);
 
         this.state = {
-            oldPassword: '1234567',
+            oldPassword: 'password',
             editPassword: false,
         }
     }
