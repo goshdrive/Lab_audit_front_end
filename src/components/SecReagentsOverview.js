@@ -9,7 +9,7 @@ import { Checkbox } from './CheckBox';
 import QRCode  from 'qrcode.react';
 import html2canvas from 'html2canvas';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolderPlus, faPencilAlt, faDownload, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faFolderPlus, faPencilAlt, faDownload, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export const SecReagentsOverview = (props) => {
     
@@ -239,6 +239,35 @@ export const SecReagentsOverview = (props) => {
                     <div className="row">
                         <div className="col text-center">
                             <ul style={{"position": "fixed", "paddingLeft":"20px"}} className="list-unstyled">
+                            <li>
+                                    <a type="button" onClick={disposeReagents} className="dot"
+                                    style={{"line-height":"40px",
+                                    "border": "0.5px solid white",
+                                    "width": "50px",
+                                    "background-color": "white",
+                                    "border-radius": "50%",
+                                    "paddingRight":"3px",
+                                    "display": "inline-block",
+                                    "box-shadow": "0px 0px 5px 0px lightgrey",
+                                    "text-align": "center",
+                                    "vertical-align": "middle"}}>
+                                    <FontAwesomeIcon icon={faTimes} color="rgba(67, 47, 135, 0.9)" size='lg'/></a>
+                                </li>
+                                <li>
+                                    <a type="button" onClick={downloadQR} className="dot"
+                                    style={{"line-height":"40px",
+                                    "border": "0.5px solid white",
+                                    "width": "50px",
+                                    "background-color": "white",
+                                    "border-radius": "50%",
+                                    "display": "inline-block",
+                                    "paddingRight":"3px",
+                                    "box-shadow": "0px 0px 5px 0px lightgrey",
+                                    "text-align": "center",
+                                    "vertical-align": "middle",
+                                    "align":"middle"}}>
+                                    <FontAwesomeIcon icon={faDownload} color="rgba(67, 47, 135, 0.9)" size='lg'/></a>
+                                </li>
                                 <li>
                                     <a type="button" onClick={deleteRows} className="dot"
                                     style={{"line-height":"40px",
@@ -251,7 +280,7 @@ export const SecReagentsOverview = (props) => {
                                     "box-shadow": "0px 0px 5px 0px lightgrey",
                                     "text-align": "center",
                                     "vertical-align": "middle"}}>
-                                    <FontAwesomeIcon icon={faTimes} color="grey" size='lg'/></a>
+                                    <FontAwesomeIcon icon={faTrash} color="grey" size='lg'/></a>
                                 </li>
                             </ul>
                         </div>    

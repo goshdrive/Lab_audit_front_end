@@ -11,7 +11,7 @@ import QRCode  from 'qrcode.react';
 import html2canvas from 'html2canvas';
 import EditReagent from './EditReagent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolderPlus, faPencilAlt, faDownload, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faFolderPlus, faPencilAlt, faDownload, faTimes, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export const PrimaryReagents = (props) => {
     
@@ -319,6 +319,20 @@ export const PrimaryReagents = (props) => {
                                     <FontAwesomeIcon icon={faPencilAlt} color="white" size='lg'/></a>
                                 </li>
                                 <li>
+                                    <a type="button" onClick={disposeReagents} className="dot"
+                                    style={{"line-height":"40px",
+                                    "border": "0.5px solid white",
+                                    "width": "50px",
+                                    "background-color": "white",
+                                    "border-radius": "50%",
+                                    "paddingRight":"3px",
+                                    "display": "inline-block",
+                                    "box-shadow": "0px 0px 5px 0px lightgrey",
+                                    "text-align": "center",
+                                    "vertical-align": "middle"}}>
+                                    <FontAwesomeIcon icon={faTimes} color="rgba(67, 47, 135, 0.9)" size='lg'/></a>
+                                </li>
+                                <li>
                                     <a type="button" onClick={downloadQR} className="dot"
                                     style={{"line-height":"40px",
                                     "border": "0.5px solid white",
@@ -345,7 +359,7 @@ export const PrimaryReagents = (props) => {
                                     "box-shadow": "0px 0px 5px 0px lightgrey",
                                     "text-align": "center",
                                     "vertical-align": "middle"}}>
-                                    <FontAwesomeIcon icon={faTimes} color="grey" size='lg'/></a>
+                                    <FontAwesomeIcon icon={faTrash} color="grey" size='lg'/></a>
                                 </li>
                             </ul>
                         </div>    
