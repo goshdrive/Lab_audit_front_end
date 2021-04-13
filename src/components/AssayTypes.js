@@ -20,37 +20,37 @@ const RenderAssay = React.forwardRef(( props, ref) =>
                             <div className="col-12">
                                 <h5>Reagents</h5>
                             </div>                           
-                            {props.assayType.metadata[0].children.map(reagent => {
+                            {props.assayType.metadata[0] ? (props.assayType.metadata[0].children.map(reagent => {
                                 return(
                                     <div className="col-6" key={reagent.key}>
                                         {reagent.label}
                                     </div>
                                 );
-                            })}
+                            })) : null}
                         </div>                         
                         <div className="row">                                
                             <div className="col-12">
                                 <h5>Reagent Data</h5>
                             </div>
-                            {props.assayType.metadata[1].children.map(reagentDataInput => {
+                            {props.assayType.metadata[1] ? (props.assayType.metadata[1].children.map(reagentDataInput => {
                                 return(
                                     <div className="col-6" key={reagentDataInput.key}>
                                         {reagentDataInput.label}
                                     </div>
                                 );
-                            })}
+                            })) : null}
                         </div>
                         <div className="row">  
                             <div className="col-12">
                                 <h5>Other</h5>
                             </div>                              
-                            {props.assayType.metadata[2].children.map(otherInput => {
+                            {props.assayType.metadata[2] ? (props.assayType.metadata[2].children.map(otherInput => {
                                 return(
                                     <div className="col-6" key={otherInput.key}>
                                         {otherInput.label}
                                     </div>
                                 );
-                            })}
+                            })) : null}
                         </div>                      
                 </Card.Body>
             </Card>
