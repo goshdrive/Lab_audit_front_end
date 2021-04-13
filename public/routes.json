@@ -41,12 +41,12 @@
             "statusCode": 200
         },
         {
-            "route": "/inventory/test-history/all-tests/overview",
+            "route": "/inventory/testhistory/all-tests/overview",
             "serve": "index.html",
             "statusCode": 200
         },
         {
-            "route": "/inventory/test-history/all-tests/bin",
+            "route": "/inventory/testhistory/all-tests/bin",
             "serve": "index.html",
             "statusCode": 200
         },
