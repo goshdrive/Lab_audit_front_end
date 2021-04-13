@@ -34,7 +34,7 @@ class TestHistoryNEW extends Component {
                         putTest={this.props.putTest}
                         deleteTest={this.props.deleteTest} />  
                 );
-            case 'all-tests/bin':
+            case 'all-tests/deleted':
                 return(
                     <AllTestsBin deletedTests={this.props.deletedTests} 
                         testsErrMess={this.props.testsErrMess}
@@ -50,7 +50,7 @@ class TestHistoryNEW extends Component {
                         putTest={this.props.putTest}
                         deleteTest={this.props.deleteTest} />  
                 );
-            case 'my-tests/bin':
+            case 'my-tests/deleted':
                 return(
                     <MyTestsBin myDeletedTests={this.props.myDeletedTests} 
                         testsErrMess={this.props.testsErrMess}
@@ -106,8 +106,8 @@ class TestHistoryNEW extends Component {
                                                     href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/overview' : '/testhistory/my-tests/overview'}
                                                     className={this.state.currentPath.split('/')[1]=='overview' ? 'selected' : ''}><span><FaLayerGroup /></span> Overview</a></li>
                                             <li><a type="button" 
-                                                    href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/bin' : '/test-history/my-tests/bin'}
-                                                    className={this.state.currentPath.split('/')[1]=='bin' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> Bin</a></li>
+                                                    href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/deleted' : '/test-history/my-tests/deleted'}
+                                                    className={this.state.currentPath.split('/')[1]=='deleted' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> Bin</a></li>
                                         </ul>
                                     </div>
                                 </div>

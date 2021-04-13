@@ -193,10 +193,10 @@ class Main extends Component {
                     <PrivateRoute exact path="/inventory/secondary-reagents/bin" component={InventoryPage}/>
                     <PrivateRoute exact path="/testhistory/all-tests/overview" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/all-tests/recent" component={TestHistoryPage}/>
-                    <PrivateRoute exact path="/testhistory/all-tests/bin" component={TestHistoryPage}/>
+                    <PrivateRoute exact path="/testhistory/all-tests/deleted" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/my-tests/overview" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/my-tests/recent" component={TestHistoryPage}/>
-                    <PrivateRoute exact path="/testhistory/my-tests/bin" component={TestHistoryPage}/>
+                    <PrivateRoute exact path="/testhistory/my-tests/deleted" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/assays" component={AssayTypesPage}/>
                     <PrivateRoute exact path="/account" component={() => <AccountDetails auth={this.props.auth}/>}/>
                     <PrivateRoute exact path="/admin" component={AdminPage}/> 
