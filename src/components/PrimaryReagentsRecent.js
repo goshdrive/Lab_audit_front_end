@@ -85,12 +85,26 @@ export const PrimaryReagentsRecent = (props) => {
     }
 
     const deleteRows = () => { 
-        selectedFlatRows.forEach(row => {     
-            var update = {
-                _id: row.original._id,
-                status: "DELETED"
+        selectedFlatRows.forEach(row => {  
+            if (row.original) {
+                var update = {
+                    _id: row.original._id,
+                    status: "DELETED"
+                }
+                props.putReagent(update);
+            }   
+        });
+    }
+
+    const disposeReagents = () => { 
+        selectedFlatRows.forEach(row => { 
+            if (row.original) {    
+                var update = {
+                    _id: row.original._id,
+                    status: "DISPOSED"
+                }
+                props.putReagent(update);
             }
-            props.putReagent(update);
         });
     }
 

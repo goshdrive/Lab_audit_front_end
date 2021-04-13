@@ -6,6 +6,8 @@ import {AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import { GlobalFilter } from './GlobalFilter';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { Checkbox } from './CheckBox';
+import QRCode  from 'qrcode.react';
+import html2canvas from 'html2canvas';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderPlus, faPencilAlt, faDownload, faTimes } from '@fortawesome/free-solid-svg-icons'
 
@@ -67,13 +69,56 @@ export const SecReagentsOverview = (props) => {
     const [selectedRow, setSelectRows] = useState('')
 
     const deleteRows = () => { 
-        selectedFlatRows.forEach(row => {     
-            var update = {
-                _id: row.original._id,
-                status: "DELETED"
-            }
-            props.putSecReagent(update);
+        selectedFlatRows.forEach(row => {  
+            if (row.original) {
+                var update = {
+                    _id: row.original._id,
+                    status: "DELETED"
+                }
+                props.putSecReagent(update);
+            }   
         });
+    }
+
+    const disposeReagents = () => { 
+        selectedFlatRows.forEach(row => { 
+            if (row.original) {    
+                var update = {
+                    _id: row.original._id,
+                    status: "DISPOSED"
+                }
+                props.putSecReagent(update);
+            }
+        });
+    }
+
+    const downloadQR = () => {
+
+        document.getElementById("hidden-qr").style.display = "block";
+        //document.getElementById("hidden-qr").style.marginTop = "1500px";
+
+        selectedFlatRows.forEach(row => {
+            if (row.original != null) {
+                var elemId = String(row.original._id)+"-ext" 
+                var elem = document.getElementById(`${elemId}`)
+                elem.style.display = "block";           
+                html2canvas(elem).then(function(canvas) {
+                    elem.style.display = "none";  
+                    const pngUrl = canvas
+                        .toDataURL("image/png")
+                        .replace("image/png", "image/octet-stream");  
+                    let downloadLink = document.createElement("a");
+                    downloadLink.href = pngUrl;
+                    downloadLink.download = elemId+".png";
+                    document.body.appendChild(downloadLink);
+                    downloadLink.click();
+                    document.body.removeChild(downloadLink);                                   
+                })    
+            }            
+        });
+
+        document.getElementById("hidden-qr").style.display = "none";
+        //document.getElementById("hidden-qr").style.marginTop = "0px";
     }
 
     const renderRowSubComponent = React.useCallback(
@@ -155,6 +200,39 @@ export const SecReagentsOverview = (props) => {
                     })}
                     </tbody>
                 </table>
+                <div id="hidden-qr">                    
+                    {
+                        selectedFlatRows.map(row => {
+                            if (row.original == null) {
+                                return null
+                            } 
+                            else {
+                                return( 
+                                    <div style={{display: "none"}} key={row.original._id} id={String(row.original._id)+"-ext"} className="container">
+                                        <div className="row">                                            
+                                            <h5><b>LOT Number</b>: {row.original.lotNr} {"\n"}</h5>                                                                                                                                                                                            
+                                        </div>               
+                                        <div className="row">                                    
+                                            <QRCode
+                                                id={String(row.original._id)}
+                                                value={String(row.original._id)}
+                                                size={290}
+                                                level={"H"}
+                                                includeMargin={false}
+                                            />
+                                        </div>              
+                                        <div className="row">
+                                            <p><b>Unique ID</b>: {row.original._id}</p>{' '}    
+                                        </div>                        
+                                        <div className="row">
+                                            <p><b>Pack No</b>: 1/5</p>                                                                                                    
+                                        </div>                                                                                           
+                                    </div>
+                                );
+                            }                                        
+                        })
+                    }
+                </div>
             </div>
             <div className="col-1">
                 {selectedFlatRows[0] ? (

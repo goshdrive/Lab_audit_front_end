@@ -8,7 +8,6 @@ import { Button }  from "react-bootstrap";
 import { Checkbox } from './CheckBox';
 import {AiFillCaretDown, AiFillCaretUp, AiOutlineRight, AiOutlineDown, AiFillFolderAdd} from 'react-icons/ai';
 import QRCode  from 'qrcode.react';
-//import { Portal } from 'react-portal';
 import html2canvas from 'html2canvas';
 import EditReagent from './EditReagent';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -98,12 +97,26 @@ export const PrimaryReagents = (props) => {
     }
 
     const deleteRows = () => { 
-        selectedFlatRows.forEach(row => {     
-            var update = {
-                _id: row.original._id,
-                status: "DELETED"
+        selectedFlatRows.forEach(row => {  
+            if (row.original) {
+                var update = {
+                    _id: row.original._id,
+                    status: "DELETED"
+                }
+                props.putReagent(update);
+            }   
+        });
+    }
+
+    const disposeReagents = () => { 
+        selectedFlatRows.forEach(row => { 
+            if (row.original) {    
+                var update = {
+                    _id: row.original._id,
+                    status: "DISPOSED"
+                }
+                props.putReagent(update);
             }
-            props.putReagent(update);
         });
     }
 
