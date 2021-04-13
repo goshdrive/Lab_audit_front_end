@@ -21,7 +21,7 @@
             "statusCode": 200
         },
         {
-            "route": "/inventory/primary-reagents/bin",
+            "route": "/inventory/primary-reagents/deleted",
             "serve": "index.html",
             "statusCode": 200
         },
@@ -36,7 +36,7 @@
             "statusCode": 200
         },
         {
-            "route": "/inventory/secondary-reagents/bin",
+            "route": "/inventory/secondary-reagents/deleted",
             "serve": "index.html",
             "statusCode": 200
         },
