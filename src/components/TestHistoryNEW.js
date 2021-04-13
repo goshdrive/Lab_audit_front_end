@@ -106,7 +106,7 @@ class TestHistoryNEW extends Component {
                                                     href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/overview' : '/testhistory/my-tests/overview'}
                                                     className={this.state.currentPath.split('/')[1]=='overview' ? 'selected' : ''}><span><FaLayerGroup /></span> Overview</a></li>
                                             <li><a type="button" 
-                                                    href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/deleted' : '/test-history/my-tests/deleted'}
+                                                    href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/deleted' : '/testhistory/my-tests/deleted'}
                                                     className={this.state.currentPath.split('/')[1]=='deleted' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> Bin</a></li>
                                         </ul>
                                     </div>
