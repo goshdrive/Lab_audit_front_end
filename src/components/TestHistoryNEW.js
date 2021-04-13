@@ -6,7 +6,7 @@ import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { AllTestsOverview } from './AllTestsOverview';
 import { AllTestsBin } from './AllTestsBin';
 import { MyTestsOverview } from './MyTestsOverview';
-import { MyTestsBin } from './MyTestsOverview';
+import { MyTestsBin } from './MyTestsBin';
 
 class TestHistoryNEW extends Component {
     constructor(props) {
