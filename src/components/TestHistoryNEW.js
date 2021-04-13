@@ -4,9 +4,9 @@ import { RiDeleteBin7Fill, RiTimeFill } from 'react-icons/ri'
 import { FaLayerGroup } from 'react-icons/fa'
 import { HiOutlineSwitchHorizontal } from 'react-icons/hi'
 import { AllTestsOverview } from './AllTestsOverview';
-import { AllTestsRecent } from './AllTestsRecent';
 import { AllTestsBin } from './AllTestsBin';
 import { MyTestsOverview } from './MyTestsOverview';
+import { MyTestsBin } from './MyTestsOverview';
 
 class TestHistoryNEW extends Component {
     constructor(props) {
@@ -52,7 +52,7 @@ class TestHistoryNEW extends Component {
                 );
             case 'my-tests/bin':
                 return(
-                    <MyTestsOverview myDeletedTests={this.props.myDeletedTests} 
+                    <MyTestsBin myDeletedTests={this.props.myDeletedTests} 
                         testsErrMess={this.props.testsErrMess}
                         fetchTests={this.props.fetchTests}
                         putTest={this.props.putTest}

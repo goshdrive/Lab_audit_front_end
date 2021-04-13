@@ -47,7 +47,7 @@ class InventoryNEW extends Component {
                 );
             case 'primary-reagents/bin':
                 return(
-                    <PrimaryReagentsBin reagents={this.props.reagents}
+                    <PrimaryReagentsBin 
                         deletedReagents={this.props.deletedReagents}
                         fetchReagents={this.props.fetchReagents} 
                         reagentsErrMess={this.props.reagentsErrMess}
@@ -72,7 +72,7 @@ class InventoryNEW extends Component {
             
             case 'secondary-reagents/bin':
                 return(
-                    <SecReagentsBin secReagents={this.props.secReagents} 
+                    <SecReagentsBin 
                         deletedSecReagents={this.props.deletedSecReagents}
                         secReagentsErrMess={this.props.errMess}
                         deleteSecReagent={this.props.deleteSecReagent} 
