@@ -45,7 +45,7 @@ class InventoryNEW extends Component {
                         deleteReagent={this.props.deleteReagent} 
                         putReagent={this.props.putReagent} />
                 );
-            case 'primary-reagents/bin':
+            case 'primary-reagents/deleted':
                 return(
                     <PrimaryReagentsBin 
                         deletedReagents={this.props.deletedReagents}
@@ -70,7 +70,7 @@ class InventoryNEW extends Component {
                         putSecReagent={this.props.putSecReagent} />  
                 );
             
-            case 'secondary-reagents/bin':
+            case 'secondary-reagents/deleted':
                 return(
                     <SecReagentsBin 
                         deletedSecReagents={this.props.deletedSecReagents}
@@ -131,8 +131,8 @@ class InventoryNEW extends Component {
                                                     href={this.state.currentPath.split('/')[0]=='primary-reagents' ? '/inventory/primary-reagents/recent' : '/inventory/secondary-reagents/recent'} 
                                                     className={this.state.currentPath.split('/')[1]=='recent' ? 'selected' : ''}><span><RiTimeFill /></span> Last Used</a></li>
                                             <li><a type="button" 
-                                                    href={this.state.currentPath.split('/')[0]=='primary-reagents' ? '/inventory/primary-reagents/bin' : '/inventory/secondary-reagents/bin'} 
-                                                    className={this.state.currentPath.split('/')[1]=='bin' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> Bin</a></li>
+                                                    href={this.state.currentPath.split('/')[0]=='primary-reagents' ? '/inventory/primary-reagents/deleted' : '/inventory/secondary-reagents/deleted'} 
+                                                    className={this.state.currentPath.split('/')[1]=='deleted' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> Bin</a></li>
                                         </ul>
                                     </div>
                                 </div>

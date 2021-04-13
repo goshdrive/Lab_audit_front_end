@@ -187,10 +187,10 @@ class Main extends Component {
                     {/*<Route path="/inventory" component={InventoryPage}/>*/}
                     <PrivateRoute exact path="/inventory/primary-reagents/overview" component={InventoryPage}/>
                     <PrivateRoute exact path="/inventory/primary-reagents/recent" component={InventoryPage}/>
-                    <PrivateRoute exact path="/inventory/primary-reagents/bin" component={InventoryPage}/>
+                    <PrivateRoute exact path="/inventory/primary-reagents/deleted" component={InventoryPage}/>
                     <PrivateRoute exact path="/inventory/secondary-reagents/overview" component={InventoryPage}/>
                     <PrivateRoute exact path="/inventory/secondary-reagents/recent" component={InventoryPage}/>
-                    <PrivateRoute exact path="/inventory/secondary-reagents/bin" component={InventoryPage}/>
+                    <PrivateRoute exact path="/inventory/secondary-reagents/deleted" component={InventoryPage}/>
                     <PrivateRoute exact path="/testhistory/all-tests/overview" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/all-tests/recent" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/all-tests/deleted" component={TestHistoryPage}/>
