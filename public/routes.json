@@ -41,22 +41,22 @@
             "statusCode": 200
         },
         {
-            "route": "/inventory/testhistory/all-tests/overview",
+            "route": "/testhistory/all-tests/overview",
             "serve": "index.html",
             "statusCode": 200
         },
         {
-            "route": "/inventory/testhistory/all-tests/bin",
+            "route": "/testhistory/all-tests/bin",
             "serve": "index.html",
             "statusCode": 200
         },
         {
-            "route": "/inventory/test-history/my-tests/overview",
+            "route": "/testhistory/my-tests/overview",
             "serve": "index.html",
             "statusCode": 200
         },
         {
-            "route": "/inventory/test-history/my-tests/bin",
+            "route": "/testhistory/my-tests/bin",
             "serve": "index.html",
             "statusCode": 200
         },
