@@ -46,7 +46,7 @@
             "statusCode": 200
         },
         {
-            "route": "/testhistory/all-tests/bin",
+            "route": "/testhistory/all-tests/deleted",
             "serve": "index.html",
             "statusCode": 200
         },
@@ -56,7 +56,7 @@
             "statusCode": 200
         },
         {
-            "route": "/testhistory/my-tests/bin",
+            "route": "/testhistory/my-tests/deleted",
             "serve": "index.html",
             "statusCode": 200
         },
