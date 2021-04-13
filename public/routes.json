@@ -6,6 +6,11 @@
             "statusCode": 200
         },
         {
+            "route": "/admin",
+            "serve": "index.html",
+            "statusCode": 200
+        },
+        {
             "route": "/inventory/primary-reagents/overview",
             "serve": "index.html",
             "statusCode": 200
@@ -22,6 +27,46 @@
         },
         {
             "route": "/inventory/secondary-reagents/overview",
+            "serve": "index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/inventory/secondary-reagents/recent",
+            "serve": "index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/inventory/secondary-reagents/bin",
+            "serve": "index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/inventory/test-history/all-tests/overview",
+            "serve": "index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/inventory/test-history/all-tests/bin",
+            "serve": "index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/inventory/test-history/my-tests/overview",
+            "serve": "index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/inventory/test-history/my-tests/bin",
+            "serve": "index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/assays",
+            "serve": "index.html",
+            "statusCode": 200
+        },
+        {
+            "route": "/account",
             "serve": "index.html",
             "statusCode": 200
         }
