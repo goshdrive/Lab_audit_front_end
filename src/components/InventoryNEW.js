@@ -60,6 +60,7 @@ class InventoryNEW extends Component {
             case 'secondary-reagents/overview':
                 return(
                     <SecReagentsOverview secReagents={this.props.secReagents} 
+                        secReagentsLoading={this.props.secReagentsLoading}
                         secReagentsErrMess={this.props.errMess}
                         deleteSecReagent={this.props.deleteSecReagent} 
                         putSecReagent={this.props.putSecReagent} />  
@@ -67,6 +68,7 @@ class InventoryNEW extends Component {
             case 'secondary-reagents/recent':
                 return(
                     <SecReagentsRecent secReagents={this.props.secReagents} 
+                        secReagentsLoading={this.props.secReagentsLoading}
                         secReagentsErrMess={this.props.errMess}
                         deleteSecReagent={this.props.deleteSecReagent} 
                         putSecReagent={this.props.putSecReagent} />  

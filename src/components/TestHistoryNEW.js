@@ -29,6 +29,7 @@ class TestHistoryNEW extends Component {
             case 'all-tests/overview':
                 return(
                     <AllTestsOverview tests={this.props.tests} 
+                        testsLoading={this.props.testsLoading}
                         testsErrMess={this.props.testsErrMess}
                         fetchTests={this.props.fetchTests}
                         putTest={this.props.putTest}
@@ -37,6 +38,7 @@ class TestHistoryNEW extends Component {
             case 'all-tests/deleted':
                 return(
                     <AllTestsBin deletedTests={this.props.deletedTests} 
+                        testsLoading={this.props.testsLoading}
                         testsErrMess={this.props.testsErrMess}
                         fetchTests={this.props.fetchTests}
                         putTest={this.props.putTest}
@@ -45,6 +47,7 @@ class TestHistoryNEW extends Component {
             case 'my-tests/overview':
                 return(
                     <MyTestsOverview myTests={this.props.myTests} 
+                        testsLoading={this.props.testsLoading}
                         testsErrMess={this.props.testsErrMess}
                         fetchTests={this.props.fetchTests}
                         putTest={this.props.putTest}
@@ -53,6 +56,7 @@ class TestHistoryNEW extends Component {
             case 'my-tests/deleted':
                 return(
                     <MyTestsBin myDeletedTests={this.props.myDeletedTests} 
+                        testsLoading={this.props.testsLoading}
                         testsErrMess={this.props.testsErrMess}
                         fetchTests={this.props.fetchTests}
                         putTest={this.props.putTest}

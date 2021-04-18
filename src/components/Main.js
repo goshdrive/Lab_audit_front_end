@@ -105,6 +105,7 @@ class Main extends Component {
                     deletedSecReagents={this.props.secReagents.deletedSecReagents}
                     fetchSecReagents={this.props.fetchSecReagents}
                     secReagentsErrMess={this.props.secReagents.errMess}
+                    secReagentsLoading={this.props.secReagents.isLoading}
                     deleteSecReagent={this.props.deleteSecReagent} 
                     putSecReagent={this.props.putSecReagent}
                     />
@@ -121,21 +122,13 @@ class Main extends Component {
                     myTests={() => (this.props.tests.tests.filter(entry => entry.conductedByUsername == this.props.auth.user.username && entry.status != "DELETED"))} 
                     myDeletedTests={() => (this.props.tests.tests.filter(entry => entry.conductedByUsername == this.props.auth.user.username && entry.status != "DELETED"))} 
                     testsErrMess={this.props.tests.errMess} 
+                    testsLoading={this.props.tests.isLoading}
                     fetchTests={this.props.fetchTests}
                     putTest={this.props.putTest}
                     deleteTest={this.props.deleteTest} />
             );
         }
-
-        const AssayPage = () => {
-            return(
-                <Assays testTypes={this.props.testTypes.testTypes} 
-                    testTypesErrMess={this.props.testTypes.errMess} 
-                    postTestType={this.props.postTestType}
-                    logoutUser={this.props.logoutUser}/>
-            );
-        }
-
+        
         const AssayTypesPage = () => {
             return(
                 <AssayTypes testTypes={this.props.testTypes.testTypes} 
