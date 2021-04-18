@@ -96,6 +96,7 @@ class Main extends Component {
                     deletedReagents={this.props.reagents.deletedReagents}
                     fetchReagents={this.props.fetchReagents} 
                     reagentsErrMess={this.props.reagents.errMess}
+                    reagentsLoading={this.props.reagents.isLoading}
                     postReagent={this.props.postReagent}
                     deleteReagent={this.props.deleteReagent} 
                     putReagent={this.props.putReagent}

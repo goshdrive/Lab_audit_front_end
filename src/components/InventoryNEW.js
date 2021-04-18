@@ -33,6 +33,7 @@ class InventoryNEW extends Component {
                 return(
                     <PrimaryReagents reagents={this.props.reagents} 
                         reagentsErrMess={this.props.reagentsErrMess}
+                        reagentsLoading={this.props.reagentsLoading}
                         postReagent={this.props.postReagent}
                         deleteReagent={this.props.deleteReagent} 
                         putReagent={this.props.putReagent} />
@@ -41,6 +42,7 @@ class InventoryNEW extends Component {
                 return(
                     <PrimaryReagentsRecent reagents={this.props.reagents} 
                         reagentsErrMess={this.props.reagentsErrMess}
+                        reagentsLoading={this.props.reagentsLoading}
                         postReagent={this.props.postReagent}
                         deleteReagent={this.props.deleteReagent} 
                         putReagent={this.props.putReagent} />

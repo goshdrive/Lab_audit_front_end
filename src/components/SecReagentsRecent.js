@@ -14,8 +14,8 @@ import { faFolderPlus, faPencilAlt, faDownload, faTimes, faTrash } from '@fortaw
 export const SecReagentsRecent = (props) => {
     
     const columns = useMemo(() => COLUMNS, [])
-    //const data = useMemo(() => MOCK_DATA, [])
-    const [data, setData] = useState(props.secReagents, []);
+    const data = useMemo(() => props.secReagents, [])
+    //const [data, setData] = useState(props.secReagents, []);
     
     const tableInstance = useTable({
             columns,

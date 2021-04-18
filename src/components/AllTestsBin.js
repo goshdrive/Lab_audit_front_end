@@ -11,7 +11,7 @@ import { faUndo } from '@fortawesome/free-solid-svg-icons'
 export const AllTestsBin = (props) => {
     
     const columns = useMemo(() => COLUMNS, [])
-    //const data = useMemo(() => MOCK_DATA, [])
+    //const data = useMemo(() => props.deletedTests, [])
     const [data, setData] = useState(props.deletedTests, []);
     
     const tableInstance = useTable({

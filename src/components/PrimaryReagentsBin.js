@@ -8,12 +8,13 @@ import { Button, ButtonGroup } from 'react-bootstrap';
 import { Checkbox } from './CheckBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderPlus, faPencilAlt, faDownload, faTimes, faUndo } from '@fortawesome/free-solid-svg-icons'
+import Loader from "react-loader-spinner";
 
 export const PrimaryReagentsBin = (props) => {
     
     const columns = useMemo(() => COLUMNS, [])
-    //const data = useMemo(() => MOCK_DATA, [])
-    const [data, setData] = useState(props.deletedReagents, []);
+    const data = useMemo(() => props.deletedReagents, [])
+    //const [data, setData] = useState(props.deletedReagents, []);
 
 
     const tableInstance = useTable({
@@ -99,7 +100,7 @@ export const PrimaryReagentsBin = (props) => {
         ),
         []
       )
-
+    
     return(
         <>        
         <div style={{"height":"61px","border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-left": "-20px", "width":"85%",

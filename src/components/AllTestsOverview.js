@@ -11,7 +11,7 @@ import { faFolderPlus, faPencilAlt, faDownload, faTimes } from '@fortawesome/fre
 export const AllTestsOverview = (props) => {
     
     const columns = useMemo(() => COLUMNS, [])
-    //const data = useMemo(() => MOCK_DATA, [])
+    //const data = useMemo(() => props.tests, [])
     const [data, setData] = useState(props.tests, []);
     
     const tableInstance = useTable({
