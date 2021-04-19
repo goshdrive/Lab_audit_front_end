@@ -115,11 +115,11 @@ class TestHistoryNEW extends Component {
                                         </ul>
                                     </div>
                                 </div>
-                                <div style={{"position":"fixed", "bottom": "0px"}} className="row">
-                                    <div style={{"height": "80px", "margin-right":"15px", "border-top":"1px solid rgba(229, 229, 229, 1)", "padding-top":"13px"}} 
+                                <div style={{"position":"absolute", "bottom": "10px", "width":"80%"}} className="row">
+                                    <div style={{"height": "80px", "border-top":"1px solid rgba(229, 229, 229, 1)", "padding-top":"13px"}} 
                                         className="col text-center">
                                             <div className="row">
-                                                <div className="col-3">
+                                                <div style={{"paddingLeft":"0px"}} className="col-3">
                                                     <a className="account-icon" href="/account"><span className="dot" style={{"height": "50px",
                                                                             "width": "50px",
                                                                             "border": "0.5px solid rgba(229, 229, 229, 1)",
@@ -146,7 +146,7 @@ class TestHistoryNEW extends Component {
                                                         </a>
                                                     </div>
                                                     <div style={{"color":"gray"}} className="row">
-                                                    {this.props.auth.user.supervisor ? 'Supervisor Account' : 'Regular Account'}
+                                                        {JSON.parse(localStorage.getItem('userData')).supervisor ? 'Supervisor' : 'Regular'}
                                                     </div>
                                                 </div>
                                             </div>
