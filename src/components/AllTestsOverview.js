@@ -5,6 +5,7 @@ import './table.css';
 import {AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import { GlobalFilter } from './GlobalFilter';
 import { Checkbox } from './CheckBox';
+import TestsCards from './TestsCards'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFolderPlus, faPencilAlt, faDownload, faTimes } from '@fortawesome/free-solid-svg-icons'
 import Loader from "react-loader-spinner";
@@ -90,16 +91,18 @@ export const AllTestsOverview = (props) => {
 
     const renderRowSubComponent = React.useCallback(
         ({ row }) => (
-          <pre
-            style={{
-              fontSize: '10px',
-            }}
-          >
-            <code>{JSON.stringify({ values: row.original }, null, 2)}</code>
-          </pre>
-        ),
-        []
-      )
+        //   <pre
+        //     style={{
+        //       fontSize: '10px',
+        //     }}
+        //   >
+        //     <code>{JSON.stringify({ values: row.original }, null, 2)}</code>
+        //   </pre>
+        // ),
+        // []
+            <TestsCards testValues={row.original}/>
+        )
+    )
     
     if (props.testsLoading) {
         return(

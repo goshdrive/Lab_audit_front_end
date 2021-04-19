@@ -4,6 +4,7 @@ import { COLUMNS } from './ColumnsTH'
 import './table.css';
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 import { GlobalFilter } from './GlobalFilter';
+import TestsCards from './TestsCards';
 import { Checkbox } from './CheckBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUndo } from '@fortawesome/free-solid-svg-icons'
@@ -89,15 +90,17 @@ export const AllTestsBin = (props) => {
 
     const renderRowSubComponent = React.useCallback(
         ({ row }) => (
-          <pre
-            style={{
-              fontSize: '10px',
-            }}
-          >
-            <code>{JSON.stringify({ values: row.original }, null, 2)}</code>
-          </pre>
-        ),
-        []
+        //   <pre
+        //     style={{
+        //       fontSize: '10px',
+        //     }}
+        //   >
+        //     <code>{JSON.stringify({ values: row.original }, null, 2)}</code>
+        //   </pre>
+        // ),
+        // []
+            <TestsCards testValues={row.original}/>
+        )
       )
 
     return(
