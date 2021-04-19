@@ -233,3 +233,12 @@ h4 {
 a:hover {
   text-decoration: none;
 }
+
+.reagent-card-value > .col > b {
+  color: grey;
+}
+
+.reagent-card-value > .col {
+  margin-bottom: 2.5px;
+  margin-top: 2.5px;
+}

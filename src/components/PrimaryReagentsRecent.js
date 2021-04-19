@@ -4,6 +4,7 @@ import { COLUMNS } from './ColsPrimaryReagents'
 import './table.css';
 import {AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import { GlobalFilter } from './GlobalFilter';
+import PrReagentsCards from './PrReagentsCards';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { Checkbox } from './CheckBox';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -140,15 +141,16 @@ export const PrimaryReagentsRecent = (props) => {
 
     const renderRowSubComponent = React.useCallback(
         ({ row }) => (
-          <pre
-            style={{
-              fontSize: '10px',
-            }}
-          >
-            <code>{JSON.stringify({ values: row.original }, null, 2)}</code>
-          </pre>
-        ),
-        []
+        //   <pre
+        //     style={{
+        //       fontSize: '10px',
+        //     }}
+        //   >
+        //     <code>{JSON.stringify({ values: row.original }, null, 2)}</code>
+        //   </pre>
+        // ),
+            <PrReagentsCards reagentValues={row.original}/>
+        )
     )
 
     if (props.reagentsLoading) {

@@ -140,8 +140,8 @@ class InventoryNEW extends Component {
                                         </ul>
                                     </div>
                                 </div>
-                                <div style={{"position":"fixed", "bottom": "0px"}} className="row">
-                                    <div style={{"height": "80px", "margin-right":"15px", "border-top":"1px solid rgba(229, 229, 229, 1)", "padding-top":"13px"}} 
+                                <div style={{"position":"fixed", "bottom": "0px", "width":"15%"}} className="row">
+                                    <div style={{"height": "80px", "border-top":"1px solid rgba(229, 229, 229, 1)", "padding-top":"13px"}} 
                                         className="col text-center">
                                             <div className="row">
                                                 <div className="col-3">
