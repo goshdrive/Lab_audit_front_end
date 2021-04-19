@@ -15,8 +15,8 @@ import { checkJWTToken, loginUser, logoutUser,
     fetchUsers, postUser, putUser,
     fetchReagents, postReagent, putReagent, deleteReagent, fetchDeletedReagents,
     fetchSecReagents, fetchDeletedSecReagents, putSecReagent, deleteSecReagent, 
-    deleteTest, fetchTests, putTest, fetchTestTypes,
-    postTestType} from '../redux/ActionCreators.js'
+    deleteTest, fetchTests, putTest, 
+    fetchTestTypes, postTestType, deleteTestType} from '../redux/ActionCreators.js'
 
 
 const mapStateToProps = state => {
@@ -61,7 +61,8 @@ const mapDispatchToProps = (dispatch) => ({
     putTest: (updatedTest) => {dispatch(putTest(updatedTest))},
     deleteTest: (test_id) => {dispatch(deleteTest(test_id))},
     fetchTestTypes: () => {dispatch(fetchTestTypes())},
-    postTestType: (newTestType) => {dispatch(postTestType(newTestType))}   
+    postTestType: (newTestType) => {dispatch(postTestType(newTestType))},
+    deleteTestType: (testType_id) => {dispatch(deleteTestType(testType_id))},
 });
 
 class Main extends Component {
@@ -134,6 +135,7 @@ class Main extends Component {
                 <AssayTypes testTypes={this.props.testTypes.testTypes} 
                     testTypesErrMess={this.props.testTypes.errMess} 
                     postTestType={this.props.postTestType}
+                    deleteTestType={this.props.deleteTestType}
                     logoutUser={this.props.logoutUser}/>
             );
         }

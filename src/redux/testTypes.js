@@ -17,11 +17,15 @@ export const TestTypes = (state = {
         case ActionTypes.ADD_TESTTYPE:
             var testType = action.payload;
             return {...state, testTypes: state.testTypes.concat(testType)};
+
+        case ActionTypes.UPDATE_TESTTYPE:
+            var testType = action.payload;
+            return {...state, testTypes: state.testTypes.filter(testType => testType.status != "DELETED")};
        
         case ActionTypes.REMOVE_TESTTYPE:
             var testType = action.payload;
             return {...state, testTypes: state.testTypes.filter(
-                item => item.id !== testType
+                item => item._id !== testType._id
             )};
 
         default:

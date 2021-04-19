@@ -4,17 +4,22 @@ import { Form, Field } from 'react-final-form';
 import arrayMutators from 'final-form-arrays';
 import { FieldArray } from 'react-final-form-arrays';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faMinus, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { Accordion, Card, Modal, Button}  from "react-bootstrap";
 
 
 const required = value => (value ? undefined : 'Required')
 const mapping = ["JAN", "FEB", "MAR", "APR", "MAI", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEZ"];
 
-const RenderAssay = React.forwardRef(( props, ref) =>
+const RenderAssay = ( props ) => (
     <div className="col-4 assay-cards" style={{"width":"100%"}}>
             <Card id={props.assayType._id} key={props.assayType._id}>                            
-                <Card.Title><h4 style={{"padding":"10px"}}>{props.assayType.assayName}</h4></Card.Title>
+                <Card.Title>
+                    <span>
+                        <h4 style={{"padding":"10px"}}>{props.assayType.assayName}</h4>
+                        <a type="button" onClick={() => props.deleteTestType(props.assayType._id)}><FontAwesomeIcon icon={faTimes} color="grey" size='md'/></a>
+                    </span>
+                </Card.Title>
                 <Card.Body>         
                         <div className="row">     
                             <div className="col-12">
@@ -385,7 +390,8 @@ class AssayTypes extends Component {
                                                 {this.state.dateSeries[0] ? (this.state.assayTypes.map(assayType => {
                                                 if (Number(assayType.createdAt.substring(5,7)) == this.state.dateSeries[0].substring(5,7)) {
                                                         return(
-                                                            <RenderAssay ref={this.childRef} key={assayType._id} assayType={assayType}/>
+                                                            <RenderAssay ref={this.childRef} key={assayType._id} assayType={assayType}
+                                                                deleteTestType={this.props.deleteTestType} />
                                                         );
                                                     }
                                                     else {
@@ -416,7 +422,8 @@ class AssayTypes extends Component {
                                                                     return(
                                                                         <>
                                                                         <div className="col">
-                                                                                <RenderAssay ref={this.childRef} key={assayType._id} assayType={assayType}/>
+                                                                                <RenderAssay ref={this.childRef} key={assayType._id} assayType={assayType}
+                                                                                    deleteTestType={this.props.deleteTestType} />
                                                                         </div>
                                                                         </>
                                                                     );

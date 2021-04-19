@@ -855,3 +855,44 @@ export const addTestType = (testType) => ({
     type: ActionTypes.ADD_TESTTYPE,
     payload: testType
 });
+
+// DELETE
+export const deleteTestType = (
+    testType_id
+) => (dispatch) => {
+
+    const bearer = 'Bearer ' + localStorage.getItem('token');
+    
+    return fetch(baseUrl + 'test-types/' + testType_id, {
+        method: 'DELETE',
+        headers: { 
+            'Content-Type':'application/json',
+            'Authorization': bearer
+        },
+        credentials: 'same-origin'
+        })
+        .then(response => {
+            if (response.ok) {
+                return response
+            }
+            else {
+                var error = new Error('Error ' + response.status + ': ' + response.statusText)
+                error.response = response;
+                throw error;
+            }
+        }, 
+        error => {
+            var errmess = new Error(error.message);
+            throw errmess;
+        })
+        .then(response => response.json())
+        .then(response => {dispatch(removeTestType(response))})
+        .catch(error => { console.log('Delete reagents', error.message) 
+            alert('Reagent could not be deleted\nError: '+ error.message)})
+        
+}
+
+export const removeTestType = (testType) => ({    
+    type: ActionTypes.REMOVE_TESTTYPE,
+    payload: testType
+});
