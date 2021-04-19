@@ -84,7 +84,7 @@ class AccountDetails extends Component {
                                     <div style={{"fontWeight":"600", "fontSize":"18px", "color":"#432F87"}} className="col-1">
                                         Password
                                     </div>
-                                    <div style={{"fontSize":"18px", "marginRight":"30px"}} className="col-1">
+                                    <div style={{"fontSize":"18px", "marginRight":"52px"}} className="col-1">
                                         **********
                                     </div>
                                     <div style={{"fontSize":"18px"}} className="col-2">
@@ -98,7 +98,7 @@ class AccountDetails extends Component {
                                     onSubmit={this.handleSubmit}
                                     render={({ handleSubmit, form, submitting, pristine, values }) => (
                                         <form onSubmit={handleSubmit}>
-                                        <Field
+                                        {/* <Field
                                             name="oldPassword"
                                             validate={composeValidators(required, matchesOldPassword(this.state.oldPassword))}
                                         >
@@ -113,7 +113,7 @@ class AccountDetails extends Component {
                                                 </div>
                                             </div>
                                             )}
-                                        </Field>
+                                        </Field> */}
                                         <Field
                                             name="newPassword"
                                             validate={required}
