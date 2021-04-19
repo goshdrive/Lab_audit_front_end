@@ -248,25 +248,18 @@ export const PrimaryReagents = (props) => {
                                 {row.cells.map(cell => {
                                 return (
                                     <td
-                                    // For educational purposes, let's color the
-                                    // cell depending on what type it is given
-                                    // from the useGroupBy hook
                                     {...cell.getCellProps()}                                
                                     >
                                     {cell.isGrouped ? (
-                                        // If it's a grouped cell, add an expander and row count
                                         <>
                                         <span {...row.getToggleRowExpandedProps()}>
                                             {row.isExpanded ? <AiOutlineDown/> : <AiOutlineRight/>}
                                         </span>{' '}
-                                        {cell.render('Cell')} ({row.subRows.length})
+                                        {cell.render('Cell')} {/*({row.subRows.length})*/}
                                         </>
                                     ) : cell.isAggregated ? (
-                                        // If the cell is aggregated, use the Aggregated
-                                        // renderer for cell
                                         cell.render('Aggregated')
-                                    ) : cell.isPlaceholder ? null : ( // For cells with repeated values, render null
-                                        // Otherwise, just render the regular cell
+                                    ) : cell.isPlaceholder ? null : (
                                         cell.render('Cell')
                                     )}
                                     </td>
@@ -276,13 +269,6 @@ export const PrimaryReagents = (props) => {
                             {row.isExpanded && !row.subRows.length ? (
                                 <tr>
                                     <td colSpan={visibleColumns.length}>
-                                    {/*
-                                        Inside it, call our renderRowSubComponent function. In reality,
-                                        you could pass whatever you want as props to
-                                        a component like this, including the entire
-                                        table instance. But for this example, we'll just
-                                        pass the row
-                                        */}
                                     {renderRowSubComponent({ row })}
                                     </td>
                                 </tr>
