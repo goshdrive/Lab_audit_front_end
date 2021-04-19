@@ -159,7 +159,18 @@ class Main extends Component {
                     state: { from: props.location }
                   }} />
             )} />
-          );
+        );
+
+        const ProtectedRoute = ({ component: Component, ...rest }) => (
+            <Route {...rest} render={(props) => (
+              this.props.auth.isAuthenticated && JSON.parse(localStorage.getItem('userData')).supervisor
+                ? <Component {...props} />
+                : <Redirect to={{
+                    pathname: '/',
+                    state: { from: props.location }
+                  }} />
+            )} />
+        );
 
         return(
                 <>
@@ -191,7 +202,7 @@ class Main extends Component {
                     <PrivateRoute exact path="/testhistory/my-tests/overview" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/my-tests/recent" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/my-tests/deleted" component={TestHistoryPage}/>
-                    <PrivateRoute exact path="/assays" component={AssayTypesPage}/>
+                    <ProtectedRoute exact path="/assays" component={AssayTypesPage}/>
                     <PrivateRoute exact path="/account" component={() => <AccountDetails 
                                                                             auth={this.props.auth} 
                                                                             logoutUser={this.props.logoutUser}

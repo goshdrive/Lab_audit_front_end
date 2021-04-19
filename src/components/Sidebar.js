@@ -13,9 +13,11 @@ function Sidebar(props) {
       <a className="menu-item" href="/testhistory/all-tests/overview">
       <span><RiHistoryLine/>&nbsp;&nbsp;Test History</span>
       </a>
-      <a className="menu-item" href="/assays">
-      <span><MdCreateNewFolder/>&nbsp;&nbsp;Assays</span>
-      </a>
+      {JSON.parse(localStorage.getItem('userData')).supervisor ? 
+        <a className="menu-item" href="/assays">
+          <span><MdCreateNewFolder/>&nbsp;&nbsp;Assays</span>
+        </a> :
+        null}
       <a className="menu-item" href="/account">
       <span><RiAccountBoxLine/>&nbsp;&nbsp;Account</span>
       </a>
