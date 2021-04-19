@@ -205,12 +205,12 @@ export const addUser = (user) => ({
 
 // PUT
 export const putUser = (
-    updatedUser
+    updatedUser, setpassword=false
 ) => (dispatch) => {
 
     const bearer = 'Bearer ' + localStorage.getItem('token');
     
-    return fetch(baseUrl + 'users/' + updatedUser._id, {
+    return fetch(baseUrl + 'users/' + updatedUser._id + '?setpassword=' + setpassword, {
         method: 'PUT',
         body: JSON.stringify(updatedUser),
         headers: { 
@@ -235,8 +235,8 @@ export const putUser = (
         })
         .then(response => response.json())
         .then(response => {dispatch(updateUser(response))})
-        .catch(error => { console.log('Post reagents', error.message) 
-            alert('Reagent could not be posted\nError: '+ error.message)})
+        .catch(error => { console.log('Update User Info.', error.message) 
+            alert('Update could not be performed. \nError: '+ error.message)})
 }
 
 export const updateUser = (user) => ({

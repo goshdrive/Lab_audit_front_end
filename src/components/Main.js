@@ -38,8 +38,8 @@ const mapDispatchToProps = (dispatch) => ({
     logoutUser: () => dispatch(logoutUser()), 
     fetchUsers: () => dispatch(fetchUsers()), 
     postUser: (user) => dispatch(postUser(user)), 
-    putUser: (user) => dispatch(putUser(user)), 
-    putReagent: (reagent) => {dispatch(putReagent(reagent))},
+    putUser: (user, setpassword) => dispatch(putUser(user, setpassword)), 
+    putReagent: (reagent, action) => {dispatch(putReagent(reagent, action))},
     deleteReagent: (reagent_id) => {dispatch(deleteReagent(reagent_id))},
     postReagent: (
         unit,
@@ -55,7 +55,7 @@ const mapDispatchToProps = (dispatch) => ({
     fetchDeletedReagents: () => {dispatch(fetchDeletedReagents())},
     fetchSecReagents: () => {dispatch(fetchSecReagents())},
     fetchDeletedSecReagents: () => {dispatch(fetchDeletedSecReagents())},
-    putSecReagent: (secReagent) => {dispatch(putSecReagent(secReagent))},
+    putSecReagent: (secReagent, action) => {dispatch(putSecReagent(secReagent, action))},
     deleteSecReagent: (secReagent_id) => {dispatch(deleteSecReagent(secReagent_id))},
     fetchTests: () => {dispatch(fetchTests())},
     putTest: (updatedTest) => {dispatch(putTest(updatedTest))},
@@ -192,7 +192,10 @@ class Main extends Component {
                     <PrivateRoute exact path="/testhistory/my-tests/recent" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/testhistory/my-tests/deleted" component={TestHistoryPage}/>
                     <PrivateRoute exact path="/assays" component={AssayTypesPage}/>
-                    <PrivateRoute exact path="/account" component={() => <AccountDetails auth={this.props.auth} logoutUser={this.props.logoutUser}/>}/>
+                    <PrivateRoute exact path="/account" component={() => <AccountDetails 
+                                                                            auth={this.props.auth} 
+                                                                            logoutUser={this.props.logoutUser}
+                                                                            putUser={this.props.putUser}/>}/>
                     <PrivateRoute exact path="/admin" component={AdminPage}/> 
                     <Redirect to="/inventory/primary-reagents/overview" />
                 </Switch>

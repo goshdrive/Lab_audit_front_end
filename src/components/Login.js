@@ -63,7 +63,7 @@ export const Login = (props) => {
                                             {({ input, meta }) => (
                                                 <div className="col-12">
                                                     <input {...input} placeholder="Username" className="login-input"/>
-                                                    {meta.error && meta.touched && <span style={{"textAlign": "left", "color":"red"}}><br></br>{meta.error}</span>}
+                                                    {meta.error && meta.touched && <span style={{"textAlign": "left", "color":"red"}} className="error"><br></br>{meta.error}</span>}
                                                 </div>
                                             )}
                                             </Field>
@@ -78,7 +78,7 @@ export const Login = (props) => {
                                             {({ input, meta }) => (
                                                 <div className="col-12">
                                                     <input {...input} placeholder="Password" className="login-input"/>
-                                                    {meta.error && meta.touched && <span style={{"textAlign": "left", "color":"red"}}><br></br>{meta.error}</span>}
+                                                    {meta.error && meta.touched && <span style={{"textAlign": "left", "color":"red"}} className="error"><br></br>{meta.error}</span>}
                                                 </div>
                                             )}
                                             </Field>

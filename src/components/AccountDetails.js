@@ -3,6 +3,8 @@ import { Form, Field } from 'react-final-form';
 import Sidebar from './Sidebar';
 
 const required = value => (value ? undefined : 'Required')
+const minLength = value => (value.length >= 8 ? undefined : 'Password must be at least 8 characters')
+const containsNumber = value => (/\d/.test(value) ? undefined : 'Password must contain at least one number')
 const matchesOldPassword = oldPassword => value => ( value == oldPassword ? undefined : 'Does not match old password' )
 const newPasswordsMatch = newPassword => value => ( value == newPassword ? undefined : 'Passwords do not match' )
 const composeValidators = (...validators) => value =>
@@ -13,8 +15,7 @@ class AccountDetails extends Component {
         super(props);
 
         this.state = {
-            oldPassword: 'password',
-            editPassword: false,
+            editPassword: false
         }
     }
 
@@ -25,7 +26,12 @@ class AccountDetails extends Component {
     }
 
     handleSubmit = async values => {
-        alert(values);
+        this.props.putUser({
+            _id: JSON.parse(localStorage.getItem('userData'))._id,
+            "password": values.confirmPassword
+        }, true);
+        
+        alert("Password Successfully Changed!")
     }
 
     render() {
@@ -116,7 +122,7 @@ class AccountDetails extends Component {
                                         </Field> */}
                                         <Field
                                             name="newPassword"
-                                            validate={required}
+                                            validate={composeValidators(required, containsNumber, minLength)}
                                         >
                                             {({ input, meta }) => (
                                             <div style={{"marginTop":"10px"}} className="row">
@@ -125,7 +131,7 @@ class AccountDetails extends Component {
                                                 </div>
                                                 <div className="col-11">
                                                     <input style={{"width":"230px", "border":"none", "borderRadius":"5px", "height":"30px", "boxShadow":"0px 0px 3px 0px lightgrey"}} {...input} type="password" placeholder="New Password" />
-                                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                    {meta.error && meta.submitFailed && <span style={{"marginLeft":"10px", "color":"red"}} className="error">{meta.error}</span>}
                                                 </div>
                                             </div>
                                             )}
@@ -139,9 +145,9 @@ class AccountDetails extends Component {
                                                 <div style={{"fontWeight":"600", "fontSize":"18px", "color":"#432F87"}} className="col-1">
                                                     Confirm
                                                 </div>
-                                                <div className="col-5">
+                                                <div className="col-11">
                                                     <input style={{"width":"230px", "border":"none", "borderRadius":"5px", "height":"30px", "boxShadow":"0px 0px 3px 0px lightgrey"}} {...input} type="password" placeholder="Confirm New Password" />
-                                                    {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                    {meta.error && meta.submitFailed && <span style={{"marginLeft":"10px", "color":"red"}} className="error">{meta.error}</span>}
                                                 </div>
                                             </div>
                                             )}
