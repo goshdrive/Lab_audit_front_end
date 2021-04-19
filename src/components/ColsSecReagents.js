@@ -35,6 +35,11 @@ export const COLUMNS = [
         accessor: 'createdBy',
     },
     {
+        Header: 'Status',
+        accessor: 'status',
+        canGroupBy: false
+    },
+    {
         Header: 'Updated At',
         accessor: 'updatedAt',
     }    

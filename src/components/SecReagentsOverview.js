@@ -6,6 +6,7 @@ import {AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import { GlobalFilter } from './GlobalFilter';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { Checkbox } from './CheckBox';
+import SecReagentsCards from './SecReagentsCards';
 import QRCode  from 'qrcode.react';
 import html2canvas from 'html2canvas';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -124,16 +125,18 @@ export const SecReagentsOverview = (props) => {
 
     const renderRowSubComponent = React.useCallback(
         ({ row }) => (
-          <pre
-            style={{
-              fontSize: '10px',
-            }}
-          >
-            <code>{JSON.stringify({ values: row.original }, null, 2)}</code>
-          </pre>
-        ),
-        []
-      )
+        //   <pre
+        //     style={{
+        //       fontSize: '10px',
+        //     }}
+        //   >
+        //     <code>{JSON.stringify({ values: row.original }, null, 2)}</code>
+        //   </pre>
+        // ),
+        // []
+            <SecReagentsCards reagentValues={row.original}/>
+        )
+    )
     
     if (props.secReagentsLoading) {
         return (

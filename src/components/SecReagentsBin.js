@@ -6,6 +6,7 @@ import {AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import { GlobalFilter } from './GlobalFilter';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { Checkbox } from './CheckBox';
+import SecReagentsCards from './SecReagentsCards';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUndo } from '@fortawesome/free-solid-svg-icons'
 
@@ -88,17 +89,18 @@ export const SecReagentsBin = (props) => {
 
     const renderRowSubComponent = React.useCallback(
         ({ row }) => (
-          <pre
-            style={{
-              fontSize: '10px',
-            }}
-          >
-            <code>{JSON.stringify({ values: row.original }, null, 2)}</code>
-          </pre>
-        ),
-        []
+        //   <pre
+        //     style={{
+        //       fontSize: '10px',
+        //     }}
+        //   >
+        //     <code>{JSON.stringify({ values: row.original }, null, 2)}</code>
+        //   </pre>
+        // ),
+        // []
+        <SecReagentsCards reagentValues={row.original}/>
       )
-
+    )
     return(
         <>        
         <div style={{"height":"61px","border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-left": "-20px", "width":"85%",

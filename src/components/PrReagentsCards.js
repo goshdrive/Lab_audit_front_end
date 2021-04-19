@@ -39,7 +39,7 @@ class PrReagentsCards extends Component {
                             <b>Disposed By</b>
                         </div>
                         <div className="col">
-                            {this.props.reagentValues.disposedBy}
+                            {this.props.reagentValues.discardedBy}
                         </div>
                     </div>
                 </div>
