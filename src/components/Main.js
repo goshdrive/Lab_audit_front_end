@@ -172,6 +172,17 @@ class Main extends Component {
             )} />
         );
 
+        const AdminRoute = ({ component: Component, ...rest }) => (
+            <Route {...rest} render={(props) => (
+              this.props.auth.isAuthenticated && JSON.parse(localStorage.getItem('userData')).admin
+                ? <Component {...props} />
+                : <Redirect to={{
+                    pathname: '/',
+                    state: { from: props.location }
+                  }} />
+            )} />
+        );
+
         return(
                 <>
                 <Switch>
@@ -207,7 +218,7 @@ class Main extends Component {
                                                                             auth={this.props.auth} 
                                                                             logoutUser={this.props.logoutUser}
                                                                             putUser={this.props.putUser}/>}/>
-                    <PrivateRoute exact path="/admin" component={AdminPage}/> 
+                    <AdminRoute exact path="/admin" component={AdminPage}/> 
                     <Redirect to="/inventory/primary-reagents/overview" />
                 </Switch>
                 </>
