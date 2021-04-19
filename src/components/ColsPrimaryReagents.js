@@ -75,9 +75,8 @@ export const COLUMNS = [
         canGroupBy: false
     },
     {
-        Header: 'First Used By',
-        accessor: 'firstUsedBy',
-        aggregate: topValue,
+        Header: 'Status',
+        accessor: 'status',
         canGroupBy: false
     },
     {
