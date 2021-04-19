@@ -15,6 +15,7 @@ class EditReagent extends Component {
             expiryDate: null,
             dateReceived: null,
             storageLocation: '',
+            status: '',
             condition: '',
             comment: '',
             action: '',
@@ -29,6 +30,7 @@ class EditReagent extends Component {
         this.setState({ catNr: nextProps.selectedRow.selectedFlatRows ? nextProps.selectedRow.selectedFlatRows.catNr : ''});
         this.setState({ expiryDate: nextProps.selectedRow.selectedFlatRows ? nextProps.selectedRow.selectedFlatRows.expiryDate.substring(0, 10) : null});
         this.setState({ dateReceived: nextProps.selectedRow.selectedFlatRows ? nextProps.selectedRow.selectedFlatRows.dateReceived.substring(0, 10) : null});
+        this.setState({ status: nextProps.selectedRow.selectedFlatRows ? nextProps.selectedRow.selectedFlatRows.status : ''});
         this.setState({ condition: nextProps.selectedRow.selectedFlatRows ? nextProps.selectedRow.selectedFlatRows.condition : ''});
         this.setState({ comment: nextProps.selectedRow.selectedFlatRows ? nextProps.selectedRow.selectedFlatRows.comment : ''});
         this.setState({ action: nextProps.selectedRow.selectedFlatRows ? nextProps.selectedRow.selectedFlatRows.action : ''});
@@ -52,14 +54,21 @@ class EditReagent extends Component {
     // props.changeEditReagentForm(data);        
 
     handleSubmit = (values) => {
+        var expiryDate = new Date(values.expiryDate);
+        expiryDate = expiryDate.toISOString();
+
+        var dateReceived = new Date(values.dateReceived);
+        dateReceived = dateReceived.toISOString();
+
         var updatedReagent = {
-            _id: this.props.selectedRow._id,
+            _id: this.props.selectedRow.selectedFlatRows._id,
             reagentName: values.reagentName,
             lotNr: values.lotNr,
             catNr: values.catNr,
-            expiryDate: "2021-08-24T21:11:32Z",
-            dateReceived: "2021-02-07T07:11:13Z",
+            expiryDate: expiryDate,
+            dateReceived: dateReceived,
             storageLocation: values.storageLocation,
+            status: values.status,
             condition: values.condition,
             comment: values.comment,
             action: values.action,
@@ -92,6 +101,7 @@ class EditReagent extends Component {
                                 expiryDate: this.state.expiryDate,
                                 dateReceived: this.state.dateReceived,
                                 storageLocation: this.state.storageLocation,
+                                status: this.state.status,
                                 condition: this.state.condition,
                                 comment: this.state.comment,
                                 action: this.state.action
@@ -204,6 +214,19 @@ class EditReagent extends Component {
                                                             <option selected value="Room 1">Room 1</option>
                                                             <option value="Room 2">Room 2</option>
                                                             <option value="Room 3">Room 3</option>
+                                                        </Field>
+                                                    </div>
+                                                </div>
+                                                <div className="row">
+                                                    <div className="col-6">
+                                                        <label>Status</label>
+                                                        <Field
+                                                        name="status"
+                                                        component="select"
+                                                        defaultValue="Room 1"
+                                                        >
+                                                            <option selected value="OK">OK</option>
+                                                            <option value="DISPOSED">DISPOSED</option>
                                                         </Field>
                                                     </div>
                                                 </div>
