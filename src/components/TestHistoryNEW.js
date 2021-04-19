@@ -132,7 +132,8 @@ class TestHistoryNEW extends Component {
                                                                             "color":"#432F87",
                                                                             "font-weight":"600"
                                                                             }}>
-                                                        AM
+                                                        {JSON.parse(localStorage.getItem('userData')).firstName.substring(0,1)
+                                                                    + JSON.parse(localStorage.getItem('userData')).lastName.substring(0,1)}
                                                     </span></a>
                                                 </div>
                                                 <div style={{"margin-left":"10px"}} className="col">
