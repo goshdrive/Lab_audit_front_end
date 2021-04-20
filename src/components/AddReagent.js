@@ -198,7 +198,7 @@ class AddReagent extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-12">
-                                            <button type="submit" disabled={submitting || pristine}>
+                                            <button className="submit-button" type="submit" disabled={submitting || pristine}>
                                                 Add Reagents
                                             </button>
                                         </div>
