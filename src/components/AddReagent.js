@@ -90,7 +90,7 @@ class AddReagent extends Component {
                                             <div className="col-12">
                                                 <label>Reagent Name</label>
                                                 <input {...input} placeholder="Reagent Name"/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                             </div>
                                         )}
                                         </Field>
@@ -106,7 +106,7 @@ class AddReagent extends Component {
                                             <div className="col-12">
                                                 <label>Supplier</label>
                                                 <input {...input} placeholder="Supplier"/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                             </div>
                                         )}
                                         </Field>
@@ -122,7 +122,7 @@ class AddReagent extends Component {
                                             <div className="col-6">
                                                 <label>Lot Number</label>
                                                 <input {...input} placeholder="Lot Number"/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                             </div>
                                         )}
                                         </Field>
@@ -136,7 +136,7 @@ class AddReagent extends Component {
                                             <div className="col-6">
                                                 <label>Cat Number</label>
                                                 <input {...input} placeholder="Cat Number"/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                             </div>
                                         )}
                                         </Field>
@@ -152,7 +152,7 @@ class AddReagent extends Component {
                                             <div className="col-6">
                                                 <label>Expiry Date</label>
                                                 <input {...input}/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                             </div>
                                         )}
                                         </Field>
@@ -166,7 +166,7 @@ class AddReagent extends Component {
                                             <div className="col-6">
                                                 <label>Date Received</label>
                                                 <input {...input}/>
-                                                {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                             </div>
                                         )}
                                         </Field>
@@ -184,9 +184,7 @@ class AddReagent extends Component {
                                                 <option value="Room 3">Room 3</option>
                                             </Field>
                                         </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-12">
+                                        <div className="col-6">
                                             <label>Unit</label>
                                             <Field
                                             name="unit"
@@ -198,6 +196,14 @@ class AddReagent extends Component {
                                     </div>
                                     <div className="row">
                                         <div className="col-12">
+                                            <button className="cancel-button" type="button"
+                                                        onClick={() => {
+                                                            this.props.onSidebarToggle();
+                                                            var fields = form.getRegisteredFields()
+                                                            fields.map(field => form.resetFieldState(field))
+                                                        }}>
+                                                        Cancel
+                                                    </button>
                                             <button className="submit-button" type="submit" disabled={submitting || pristine}>
                                                 Add Reagents
                                             </button>

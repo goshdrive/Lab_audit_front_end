@@ -107,7 +107,7 @@ class EditReagent extends Component {
                                                     <div className="col-6">
                                                         <label>Reagent Name</label>
                                                         <input {...input} placeholder="Reagent Name"/>
-                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                        {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                                     </div>
                                                     </>
                                                 )}
@@ -122,7 +122,7 @@ class EditReagent extends Component {
                                                     <div className="col-6">
                                                         <label>Supplier</label>
                                                         <input {...input} placeholder="Supplier"/>
-                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                        {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                                     </div>
                                                 )}
                                                 </Field>
@@ -138,7 +138,7 @@ class EditReagent extends Component {
                                                     <div className="col-6">
                                                         <label>Lot Number</label>
                                                         <input {...input} placeholder="Lot Number"/>
-                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                        {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                                     </div>
                                                 )}
                                                 </Field>
@@ -152,7 +152,7 @@ class EditReagent extends Component {
                                                     <div className="col-6">
                                                         <label>Cat Number</label>
                                                         <input {...input} placeholder="Cat Number"/>
-                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                        {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                                     </div>
                                                 )}
                                                 </Field>
@@ -168,7 +168,7 @@ class EditReagent extends Component {
                                                     <div className="col-6">
                                                         <label>Expiry Date</label>
                                                         <input {...input}/>
-                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                        {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                                     </div>
                                                 )}
                                                 </Field>
@@ -182,7 +182,7 @@ class EditReagent extends Component {
                                                     <div className="col-6">
                                                         <label>Date Received</label>
                                                         <input {...input}/>
-                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                        {meta.error && meta.touched && <span className="error">{meta.error}</span>}
                                                     </div>
                                                 )}
                                                 </Field>
@@ -193,7 +193,7 @@ class EditReagent extends Component {
                                                     <Field
                                                     name="storageLocation"
                                                     component="select"
-                                                    defaultValue="Room 1"
+                                                    defaultValue={this.state.storageLocation}
                                                     >
                                                         <option selected value="Room 1">Room 1</option>
                                                         <option value="Room 2">Room 2</option>
@@ -205,7 +205,7 @@ class EditReagent extends Component {
                                                     <Field
                                                     name="status"
                                                     component="select"
-                                                    defaultValue="Room 1"
+                                                    defaultValue={this.state.status}
                                                     >
                                                         <option selected value="OK">OK</option>
                                                         <option value="DISPOSED">DISPOSED</option>
@@ -250,7 +250,7 @@ class EditReagent extends Component {
                                             </div>                                                
                                             <div className="row">
                                                 <div className="col-12">
-                                                    <button type="button"
+                                                    <button className="cancel-button" type="button"
                                                         onClick={() => {
                                                             this.props.handleModalClose();
                                                             var fields = form.getRegisteredFields()
