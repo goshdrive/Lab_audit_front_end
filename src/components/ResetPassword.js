@@ -32,7 +32,7 @@ class ResetPassword extends Component {
         return(
             <Modal show={this.props.isModalOpen} onHide={this.props.handleModalClose}>
                 <Modal.Header closeButton>
-                    <h4>{this.props.selectedUser ? this.props.selectedUser._id : "HI"}</h4>
+                    <h4>Reset Password for {this.props.selectedUser ? this.props.selectedUser.username : ''}</h4>
                 </Modal.Header>
                 <Modal.Body>
                     <div className="col-12">
@@ -42,7 +42,7 @@ class ResetPassword extends Component {
                                 <div className="container-fluid">
                                     <div className="row ml-2 mt-2">
                                         <div className="container-fluid">
-                                            <form id="editReagentForm" onSubmit={handleSubmit}>
+                                            <form id="addUserForm" onSubmit={handleSubmit}>
                                                 <div className="row">
                                                     <Field
                                                     name="newPassword"
@@ -77,14 +77,14 @@ class ResetPassword extends Component {
                                                 </div>                   
                                                 <div className="row">
                                                     <div className="col-12">
-                                                        <button type="button"
+                                                        <button className="cancel-button" type="button"
                                                             onClick={() => {
                                                                 this.props.handleModalClose();
                                                                 var fields = form.getRegisteredFields()
                                                                 fields.map(field => form.resetFieldState(field))}}>
                                                             Cancel
                                                         </button>
-                                                        <button type="submit" disabled={submitting || pristine}>
+                                                        <button className="submit-button" type="submit" disabled={submitting || pristine}>
                                                             Change Password
                                                         </button>
                                                     </div>                                                    

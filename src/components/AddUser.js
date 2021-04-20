@@ -51,100 +51,98 @@ class AddUser extends Component {
                             render={({ handleSubmit, form, submitting, pristine, values }) => (
                                 <div className="container-fluid">
                                     <div className="row ml-2 mt-2">
-                                        <div className="container-fluid">
-                                            <form id="editReagentForm" onSubmit={handleSubmit}>
-                                                <div className="row">
-                                                    <div className="col-6">
-                                                        <label>User Role</label>
-                                                        <Field
-                                                        name="role"
-                                                        component="select"
-                                                        defaultValue="regular"
-                                                        >
-                                                            <option selected value="regular">Regular User</option>
-                                                            <option value="supervisor">Supervisor User</option>
-                                                            <option value="admin">Admin</option>
-                                                        </Field>
-                                                    </div>
-                                                </div>
-                                                <div className="row">
+                                        <form id="addUserForm" onSubmit={handleSubmit}>
+                                            <div className="row">
+                                                <div className="col-6">
+                                                    <label>User Role</label>
                                                     <Field
-                                                    name="username"
-                                                    component="input"
-                                                    type="text"
-                                                    validate={composeValidators(required, usernameCheck(values.role))}
+                                                    name="role"
+                                                    component="select"
+                                                    defaultValue="regular"
                                                     >
-                                                    {({ input, meta }) => (
-                                                        <div className="col-12">
-                                                            <label>Username</label>
-                                                            <input {...input} placeholder="Username"/>
-                                                            {meta.error && meta.submitFailed && <span>{meta.error}</span>}
-                                                        </div>
-                                                    )}
+                                                        <option selected value="regular">Regular User</option>
+                                                        <option value="supervisor">Supervisor User</option>
+                                                        <option value="admin">Admin</option>
                                                     </Field>
                                                 </div>
-                                                <div className="row">
-                                                    <Field
-                                                    name="password"
-                                                    component="input"
-                                                    type="password"
-                                                    validate={required}
-                                                    >
-                                                    {({ input, meta }) => (
-                                                        <div className="col-12">
-                                                            <label>Password</label>
-                                                            <input {...input} placeholder="Password"/>
-                                                            {meta.error && meta.submitFailed && <span>{meta.error}</span>}
-                                                        </div>
-                                                    )}
-                                                    </Field>
-                                                </div>
-                                                <div className="row">
-                                                    <Field
-                                                    name="firstName"
-                                                    component="input"
-                                                    type="text"
-                                                    validate={required}
-                                                    >
-                                                    {({ input, meta }) => (
-                                                        <div className="col-6">
-                                                            <label>First Name</label>
-                                                            <input {...input} placeholder="First Name"/>
-                                                            {meta.error && meta.submitFailed && <span>{meta.error}</span>}
-                                                        </div>
-                                                    )}
-                                                    </Field>
-                                                    <Field
-                                                    name="lastName"
-                                                    component="input"
-                                                    type="text"
-                                                    validate={required}
-                                                    >
-                                                    {({ input, meta }) => (
-                                                        <div className="col-6">
-                                                            <label>Last Name</label>
-                                                            <input {...input} placeholder="Last Name"/>
-                                                            {meta.error && meta.submitFailed && <span>{meta.error}</span>}
-                                                        </div>
-                                                    )}
-                                                    </Field>
-                                                </div>                               
-                                                <div className="row">
+                                            </div>
+                                            <div className="row">
+                                                <Field
+                                                name="username"
+                                                component="input"
+                                                type="text"
+                                                validate={composeValidators(required, usernameCheck(values.role))}
+                                                >
+                                                {({ input, meta }) => (
                                                     <div className="col-12">
-                                                        <button type="submit" disabled={submitting || pristine}>
-                                                            Add User
-                                                        </button>
-                                                        <button type="button"
-                                                            onClick={() => {
-                                                                this.props.handleModalClose();
-                                                                var fields = form.getRegisteredFields()
-                                                                fields.map(field => form.resetFieldState(field))}}>
-                                                            Cancel
-                                                        </button>
-                                                    </div>                                                    
-                                                </div>
-                                            </form>
-                                        </div>                                               
+                                                        <label>Username</label>
+                                                        <input {...input} placeholder="Username"/>
+                                                        {meta.error && meta.submitFailed && <span>{meta.error}</span>}
+                                                    </div>
+                                                )}
+                                                </Field>
+                                            </div>
+                                            <div className="row">
+                                                <Field
+                                                name="password"
+                                                component="input"
+                                                type="password"
+                                                validate={required}
+                                                >
+                                                {({ input, meta }) => (
+                                                    <div className="col-12">
+                                                        <label>Password</label>
+                                                        <input {...input} placeholder="Password"/>
+                                                        {meta.error && meta.submitFailed && <span>{meta.error}</span>}
+                                                    </div>
+                                                )}
+                                                </Field>
+                                            </div>
+                                            <div className="row">
+                                                <Field
+                                                name="firstName"
+                                                component="input"
+                                                type="text"
+                                                validate={required}
+                                                >
+                                                {({ input, meta }) => (
+                                                    <div className="col-6">
+                                                        <label>First Name</label>
+                                                        <input {...input} placeholder="First Name"/>
+                                                        {meta.error && meta.submitFailed && <span>{meta.error}</span>}
+                                                    </div>
+                                                )}
+                                                </Field>
+                                                <Field
+                                                name="lastName"
+                                                component="input"
+                                                type="text"
+                                                validate={required}
+                                                >
+                                                {({ input, meta }) => (
+                                                    <div className="col-6">
+                                                        <label>Last Name</label>
+                                                        <input {...input} placeholder="Last Name"/>
+                                                        {meta.error && meta.submitFailed && <span>{meta.error}</span>}
+                                                    </div>
+                                                )}
+                                                </Field>
+                                            </div>                               
+                                            <div className="row">
+                                                <div className="col-12">
+                                                    <button class="cancel-button" type="button"
+                                                        onClick={() => {
+                                                            this.props.handleModalClose();
+                                                            var fields = form.getRegisteredFields()
+                                                            fields.map(field => form.resetFieldState(field))}}>
+                                                        Cancel
+                                                    </button>
+                                                    <button class="submit-button" type="submit" disabled={submitting || pristine}>
+                                                        Add User
+                                                    </button>
+                                                </div>                                                    
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             )}
