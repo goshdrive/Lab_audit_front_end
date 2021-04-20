@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect, useLocation } from "react-router-dom";
 import { Form, Field } from 'react-final-form';
+import HomeImage from '../home.svg'
 
 const required = value => (value ? undefined : 'Required')
 
@@ -96,18 +97,34 @@ export const Login = (props) => {
                             </>
                         )}
                     /> 
-                <div className="row">{props.auth.errMess == "Error 401: Unauthorized" ? ("Login Unsuccessfull") : ""}</div> 
-                    </div>
-                    <div style={{"paddingTop":"10%"}} id="login-right" className="col-8">
+                    {props.auth.errMess == "Error 401: Unauthorized" ? (
                         <div className="row">
-                            <div className="col-5 ml-auto">
-                                <img src="assets/images/Humaaans_Wireframe.png" height="500px" width="500px" alt="image" />
+                            <div className="container">
+                                <div className="row">
+                                    <div style={{"paddingLeft":"20%", "paddingRight":"20%", "paddingTop":"10%"}} className="col-12 text-center">
+                                        <div style={{"height":"100px", "backgroundColor":"rgba(255,0,0, 0.6)", "width":"100%", "borderRadius":"5px", 
+                                            "color":"white", "fontSize":"18px", "fontWeight":"500", "padding":"5%"}}>
+                                            <span>You have entered an invalid username or password</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="col-7 mr-auto">
-                                <img className="block-center" src="assets/images/Humaaans_Space.png" height="500px" width="680px" alt="image" />
-                            </div>              
+                        </div> 
+                    ) : null}
+                </div>
+                <div style={{"paddingTop":"5%","paddingLeft":"10%"}} id="login-right" className="col-8">
+                    <div className="row">
+                        {/* <div className="col-5 ml-auto">
+                            <img src="assets/images/Humaaans_Wireframe.png" height="500px" width="500px" alt="image" />
+                        </div>
+                        <div className="col-7 mr-auto">
+                            <img className="block-center" src="assets/images/Humaaans_Space.png" height="500px" width="680px" alt="image" />
+                        </div>               */}
+                        <div className="col-5">
+                            <img src={HomeImage} height="800px" width="800px" alt="image" />
                         </div>
                     </div>
+                </div>
                 </div>                  
             </div>
         );
