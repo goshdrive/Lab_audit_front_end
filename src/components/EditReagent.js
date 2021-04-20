@@ -36,22 +36,7 @@ class EditReagent extends Component {
         this.setState({ action: nextProps.selectedRow.selectedFlatRows ? nextProps.selectedRow.selectedFlatRows.action : ''});
         this.setState({ unit: nextProps.selectedRow.selectedFlatRows ? nextProps.selectedRow.selectedFlatRows.unit : ''});
         this.setState({ assayName: nextProps.selectedRow.selectedFlatRows ? nextProps.selectedRow.selectedFlatRows.assayName : ''});
-    }
-
-    // const data = {
-    //     reagentName: selectedFlatRows[0] ? selectedFlatRows[0].reagentName : '', 
-    //     supplier: selectedFlatRows[0] ? selectedFlatRows[0].supplier : '', 
-    //     lotNr: selectedFlatRows[0] ? selectedFlatRows[0].lotNr : '', 
-    //     catNr: selectedFlatRows[0] ? selectedFlatRows[0].catNr : '', 
-    //     expiryDate: selectedFlatRows[0] ? selectedFlatRows[0].expiryDate.substring(0, 10) : '',
-    //     dateReceived: selectedFlatRows[0] ? selectedFlatRows[0].dateReceived.substring(0, 10) : '',             
-    //     storageLocation: selectedFlatRows[0] ? selectedFlatRows[0].storageLocation : '',
-    //     condition: selectedFlatRows[0] ? selectedFlatRows[0].condition : '', 
-    //     comment: selectedFlatRows[0] ? selectedFlatRows[0].comment : '',
-    //     action: selectedFlatRows[0] ? selectedFlatRows[0].action : ''  
-    // }
-    // console.log(selectedFlatRows[0].storageLocation);
-    // props.changeEditReagentForm(data);        
+    }      
 
     handleSubmit = (values) => {
         var expiryDate = new Date(values.expiryDate);
@@ -90,7 +75,7 @@ class EditReagent extends Component {
                     <h4>Edit Reagent</h4>
                 </Modal.Header>
                 <Modal.Body>
-                    <div className="col-12">
+                    <div className="container-fluid">
                         <Form
                             onSubmit={this.handleSubmit}
                             initialValues={{ 
@@ -107,176 +92,178 @@ class EditReagent extends Component {
                                 action: this.state.action
                             }}
                             render={({ handleSubmit, form, submitting, pristine, values }) => (
-                                <div className="container-fluid">
-                                    <div className="row ml-2 mt-2">
-                                        <div className="container-fluid">
-                                            <form id="editReagentForm" onSubmit={handleSubmit}>
-                                                <div className="row">
-                                                    <Field
-                                                    name="reagentName"
-                                                    component="input"
-                                                    type="text"
-                                                    validate={required}
-                                                    >
-                                                    {({ input, meta }) => (
-                                                        <div className="col-12">
-                                                            <label>Reagent Name</label>
-                                                            <input {...input} placeholder="Reagent Name"/>
-                                                            {meta.error && meta.touched && <span>{meta.error}</span>}
-                                                        </div>
-                                                    )}
-                                                    </Field>
-                                                </div>
-                                                <div className="row">
-                                                    <Field
-                                                    name="supplier"
-                                                    component="input"
-                                                    type="text"
-                                                    validate={required}
-                                                    >
-                                                    {({ input, meta }) => (
-                                                        <div className="col-12">
-                                                            <label>Supplier</label>
-                                                            <input {...input} placeholder="Supplier"/>
-                                                            {meta.error && meta.touched && <span>{meta.error}</span>}
-                                                        </div>
-                                                    )}
-                                                    </Field>
-                                                </div>
-                                                <div className="row">
-                                                    <Field
-                                                    name="lotNr"
-                                                    component="input"
-                                                    type="text"
-                                                    validate={required}
-                                                    >
-                                                    {({ input, meta }) => (
-                                                        <div className="col-6">
-                                                            <label>Lot Number</label>
-                                                            <input {...input} placeholder="Lot Number"/>
-                                                            {meta.error && meta.touched && <span>{meta.error}</span>}
-                                                        </div>
-                                                    )}
-                                                    </Field>
-                                                    <Field
-                                                    name="catNr"
-                                                    component="input"
-                                                    type="text"
-                                                    validate={required}
-                                                    >
-                                                    {({ input, meta }) => (
-                                                        <div className="col-6">
-                                                            <label>Cat Number</label>
-                                                            <input {...input} placeholder="Cat Number"/>
-                                                            {meta.error && meta.touched && <span>{meta.error}</span>}
-                                                        </div>
-                                                    )}
-                                                    </Field>
-                                                </div>
-                                                <div className="row">
-                                                    <Field
-                                                    name="expiryDate"
-                                                    component="input"
-                                                    type="date"
-                                                    validate={required}
-                                                    >
-                                                    {({ input, meta }) => (
-                                                        <div className="col-6">
-                                                            <label>Expiry Date</label>
-                                                            <input {...input}/>
-                                                            {meta.error && meta.touched && <span>{meta.error}</span>}
-                                                        </div>
-                                                    )}
-                                                    </Field>
-                                                    <Field
-                                                    name="dateReceived"
-                                                    component="input"
-                                                    type="date"
-                                                    validate={required}
-                                                    >
-                                                    {({ input, meta }) => (
-                                                        <div className="col-6">
-                                                            <label>Date Received</label>
-                                                            <input {...input}/>
-                                                            {meta.error && meta.touched && <span>{meta.error}</span>}
-                                                        </div>
-                                                    )}
-                                                    </Field>
-                                                </div>
-                                                <div className="row">
+                                <div className="row ml-2 mt-2">
+                                    <div className="col-12">
+                                        <form id="editReagentForm" onSubmit={handleSubmit}>
+                                            <div className="row">
+                                                <Field
+                                                name="reagentName"
+                                                component="input"
+                                                type="text"
+                                                validate={required}
+                                                >
+                                                {({ input, meta }) => (
+                                                    <>
                                                     <div className="col-6">
-                                                        <label>Storage Location</label>
-                                                        <Field
-                                                        name="storageLocation"
-                                                        component="select"
-                                                        defaultValue="Room 1"
-                                                        >
-                                                            <option selected value="Room 1">Room 1</option>
-                                                            <option value="Room 2">Room 2</option>
-                                                            <option value="Room 3">Room 3</option>
-                                                        </Field>
+                                                        <label>Reagent Name</label>
+                                                        <input {...input} placeholder="Reagent Name"/>
+                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
                                                     </div>
-                                                </div>
-                                                <div className="row">
+                                                    </>
+                                                )}
+                                                </Field>
+                                                <Field
+                                                name="supplier"
+                                                component="input"
+                                                type="text"
+                                                validate={required}
+                                                >
+                                                {({ input, meta }) => (
                                                     <div className="col-6">
-                                                        <label>Status</label>
-                                                        <Field
-                                                        name="status"
-                                                        component="select"
-                                                        defaultValue="Room 1"
-                                                        >
-                                                            <option selected value="OK">OK</option>
-                                                            <option value="DISPOSED">DISPOSED</option>
-                                                        </Field>
+                                                        <label>Supplier</label>
+                                                        <input {...input} placeholder="Supplier"/>
+                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
                                                     </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-12">
-                                                        <label>Condition</label>
-                                                        <Field
-                                                        name="condition"
-                                                        component="input"
-                                                        type="text"
-                                                        />
+                                                )}
+                                                </Field>
+                                            </div>
+                                            <div className="row">
+                                                <Field
+                                                name="lotNr"
+                                                component="input"
+                                                type="text"
+                                                validate={required}
+                                                >
+                                                {({ input, meta }) => (
+                                                    <div className="col-6">
+                                                        <label>Lot Number</label>
+                                                        <input {...input} placeholder="Lot Number"/>
+                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
                                                     </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-12">
-                                                        <label>Comment</label>
-                                                        <Field
-                                                        name="comment"
-                                                        component="input"
-                                                        type="textarea"
-                                                        />
+                                                )}
+                                                </Field>
+                                                <Field
+                                                name="catNr"
+                                                component="input"
+                                                type="text"
+                                                validate={required}
+                                                >
+                                                {({ input, meta }) => (
+                                                    <div className="col-6">
+                                                        <label>Cat Number</label>
+                                                        <input {...input} placeholder="Cat Number"/>
+                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
                                                     </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-12">
-                                                        <label>Action</label>
-                                                        <Field
-                                                        name="comment"
-                                                        component="input"
-                                                        type="textarea"
-                                                        />
+                                                )}
+                                                </Field>
+                                            </div>
+                                            <div className="row">
+                                                <Field
+                                                name="expiryDate"
+                                                component="input"
+                                                type="date"
+                                                validate={required}
+                                                >
+                                                {({ input, meta }) => (
+                                                    <div className="col-6">
+                                                        <label>Expiry Date</label>
+                                                        <input {...input}/>
+                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
                                                     </div>
-                                                </div>                                                
-                                                <div className="row">
-                                                    <div className="col-12">
-                                                        <button type="submit" disabled={submitting || pristine}>
-                                                            Save Changes
-                                                        </button>
-                                                        <button type="button"
-                                                            onClick={() => {
-                                                                this.props.handleModalClose();
-                                                                var fields = form.getRegisteredFields()
-                                                                fields.map(field => form.resetFieldState(field))}}>
-                                                            Cancel
-                                                        </button>
-                                                    </div>                                                    
+                                                )}
+                                                </Field>
+                                                <Field
+                                                name="dateReceived"
+                                                component="input"
+                                                type="date"
+                                                validate={required}
+                                                >
+                                                {({ input, meta }) => (
+                                                    <div className="col-6">
+                                                        <label>Date Received</label>
+                                                        <input {...input}/>
+                                                        {meta.error && meta.touched && <span>{meta.error}</span>}
+                                                    </div>
+                                                )}
+                                                </Field>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-6">
+                                                    <label>Storage Location</label>
+                                                    <Field
+                                                    name="storageLocation"
+                                                    component="select"
+                                                    defaultValue="Room 1"
+                                                    >
+                                                        <option selected value="Room 1">Room 1</option>
+                                                        <option value="Room 2">Room 2</option>
+                                                        <option value="Room 3">Room 3</option>
+                                                    </Field>
                                                 </div>
-                                            </form>
-                                        </div>                                               
-                                    </div>
+                                                <div className="col-6">
+                                                    <label className="mr-5">Status</label>
+                                                    <Field
+                                                    name="status"
+                                                    component="select"
+                                                    defaultValue="Room 1"
+                                                    >
+                                                        <option selected value="OK">OK</option>
+                                                        <option value="DISPOSED">DISPOSED</option>
+                                                    </Field>
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-3">
+                                                    <label>Condition</label>
+                                                </div>
+                                                <div className="col-9">
+                                                    <Field
+                                                    name="condition"
+                                                    component="input"
+                                                    type="text"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-3">
+                                                    <label>Comment</label>
+                                                </div>
+                                                <div className="col-9">
+                                                    <Field
+                                                    name="comment"
+                                                    component="input"
+                                                    type="textarea"
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="row">
+                                                <div className="col-3">
+                                                    <label>Action</label>
+                                                </div>
+                                                <div className="col-9">
+                                                    <Field
+                                                    name="comment"
+                                                    component="input"
+                                                    type="textarea"
+                                                    />
+                                                </div>
+                                            </div>                                                
+                                            <div className="row">
+                                                <div className="col-12">
+                                                    <button type="button"
+                                                        onClick={() => {
+                                                            this.props.handleModalClose();
+                                                            var fields = form.getRegisteredFields()
+                                                            fields.map(field => form.resetFieldState(field))}}>
+                                                        Cancel
+                                                    </button>
+                                                    <button className="submit-button" type="submit" disabled={submitting || pristine}>
+                                                        Save Changes
+                                                    </button>
+                                                </div>                                                    
+                                            </div>
+                                        </form>
+                                    </div>                                               
                                 </div>
                             )}
                         />
