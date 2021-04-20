@@ -9,51 +9,70 @@ import { Accordion, Card, Modal, Button}  from "react-bootstrap";
 
 
 const required = value => (value ? undefined : 'Required')
-const mapping = ["JAN", "FEB", "MAR", "APR", "MAI", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEZ"];
+const mapping = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 const RenderAssay = ( props ) => (
-    <div className="col-4 assay-cards" style={{"width":"100%"}}>
-            <Card id={props.assayType._id} key={props.assayType._id}>                            
+    <div className="col-xl-6 assay-cards" style={{"width":"100%"}}>
+            <Card style={{"backgroundColor": "white"}} id={props.assayType._id} key={props.assayType._id}>                            
                 <Card.Title>
-                    <span>
-                        <h4 style={{"padding":"10px"}}>{props.assayType.assayName}</h4>
-                        <a type="button" onClick={() => props.deleteTestType(props.assayType._id)}><FontAwesomeIcon icon={faTimes} color="grey" size='md'/></a>
-                    </span>
+                    <div style={{"marginRight":"10px"}} className="row">
+                        <div className="col-10">
+                            <h4 style={{"padding":"10px"}}><b>{props.assayType.assayName}</b></h4>
+                        </div>
+                        <div style={{"paddingTop":"10px", "paddingRight":"10px"}} className="col-1 ml-auto">
+                            <a type="button" onClick={() => props.deleteTestType(props.assayType._id)}><FontAwesomeIcon icon={faTimes} color="grey" size='md'/></a>
+                        </div>
+                    </div>
                 </Card.Title>
                 <Card.Body>         
                         <div className="row">     
                             <div className="col-12">
-                                <h5>Reagents</h5>
+                                <h4>Reagents</h4>
                             </div>                           
-                            {props.assayType.metadata[0] ? (props.assayType.metadata[0].children.map(reagent => {
+                            {props.assayType.metadata[0] ? (props.assayType.metadata[0].children.map((reagent, index) => {
                                 return(
+                                    <>
+                                    <div style={{"color":"grey"}} className="col-6" key={reagent.key}>
+                                        <b>{"Reagent Input #" + String(index+1)}</b>
+                                    </div>
                                     <div className="col-6" key={reagent.key}>
                                         {reagent.label}
                                     </div>
+                                    </>
                                 );
                             })) : null}
                         </div>                         
-                        <div className="row">                                
+                        <div className="row mt-3">                                
                             <div className="col-12">
-                                <h5>Reagent Data</h5>
+                                <h4>Reagent Data</h4>
                             </div>
-                            {props.assayType.metadata[1] ? (props.assayType.metadata[1].children.map(reagentDataInput => {
+                            {props.assayType.metadata[1] ? (props.assayType.metadata[1].children.map((reagentDataInput, index) => {
                                 return(
+                                    <>
+                                    <div style={{"color":"grey"}} className="col-6" key={reagentDataInput.key}>
+                                        <b>{"Reagent Data #" + String(index+1)}</b>
+                                    </div>
                                     <div className="col-6" key={reagentDataInput.key}>
                                         {reagentDataInput.label}
                                     </div>
+                                    </>
                                 );
                             })) : null}
                         </div>
-                        <div className="row">  
+                        <div className="row mt-3">  
                             <div className="col-12">
-                                <h5>Other</h5>
+                                <h4>Other</h4>
                             </div>                              
-                            {props.assayType.metadata[2] ? (props.assayType.metadata[2].children.map(otherInput => {
+                            {props.assayType.metadata[2] ? (props.assayType.metadata[2].children.map((otherInput, index) => {
                                 return(
+                                    <>
+                                    <div style={{"color":"grey"}} className="col-6" key={otherInput.key}>
+                                        <b>{"Other Input #" + String(index+1)}</b>
+                                    </div>
                                     <div className="col-6" key={otherInput.key}>
                                         {otherInput.label}
                                     </div>
+                                    </>
                                 );
                             })) : null}
                         </div>                      
@@ -421,10 +440,8 @@ class AssayTypes extends Component {
                                                                 if (Number(assayType.createdAt.substring(5,7)) == date.substring(5,7)) {
                                                                     return(
                                                                         <>
-                                                                        <div className="col">
-                                                                                <RenderAssay ref={this.childRef} key={assayType._id} assayType={assayType}
-                                                                                    deleteTestType={this.props.deleteTestType} />
-                                                                        </div>
+                                                                        <RenderAssay ref={this.childRef} key={assayType._id} assayType={assayType}
+                                                                            deleteTestType={this.props.deleteTestType} />
                                                                         </>
                                                                     );
                                                                 }
