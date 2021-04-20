@@ -91,40 +91,41 @@ tbody svg {
   color: #432F87
 }
 
-#assay-name-input {
+#addAssayType > .container > .row > div > #assay-name-input {
   width: 46%;
   height: 40px;
   border-top: none;
   border-right: none;
   border-left: none;
   border-bottom: 3px solid lightgray;
-  margin-bottom: 0px;
+  margin-bottom: 10px;
   background-color: rgba(47, 73, 209, 0.0);
   color: #432F87;
   font-size: x-large;
   font-weight: 500;
+  border-radius: 0px;
 }
 
-#assay-name-input:-webkit-autofill,
-#assay-name-input:-webkit-autofill:hover, 
-#assay-name-input:-webkit-autofill:focus, 
-#assay-name-input:-webkit-autofill:active
+#addAssayType > .container > .row > div > #assay-name-input:-webkit-autofill,
+#addAssayType > .container > .row > div > #assay-name-input:-webkit-autofill:hover, 
+#addAssayType > .container > .row > div > #assay-name-input:-webkit-autofill:focus, 
+#addAssayType > .container > .row > div > #assay-name-input:-webkit-autofill:active
 {
  -webkit-box-shadow: 0 0 0 30px rgba(47, 73, 209, 0.12) inset !important;
  -webkit-text-fill-color: #432F87 !important;
 }
 
-#assay-name-input::placeholder {
+#addAssayType > .container > .row > div > #assay-name-input::placeholder {
   font-size: x-large;
   color: grey;
 }
 
-#assay-name-input:focus {
+#addAssayType > .container > .row > div > #assay-name-input:focus {
   outline: none !important;
   border-bottom: 3px solid #432F87;
 }
 
-#assay-name-input:not(:placeholder-shown) {
+#addAssayType > .container > .row > div > #assay-name-input:not(:placeholder-shown) {
   border-top: none;
   border-right: none;
   border-left: none;
@@ -319,4 +320,24 @@ a:hover {
 
 .error {
   color: red;
+}
+
+#addAssayType > .container > .row > div > input {
+  width: 100%;
+  border-radius: 6px;
+  background-color: white;
+  border: none;
+  height: 35px;
+}
+
+#addAssayType > .container > .row > div > select {
+  width: 100%;
+  border-radius: 6px;
+  background-color: white;
+  border: none;
+  height: 35px;
+}
+
+#addAssayType > .container > .row {
+  margin-top: 10px;
 }

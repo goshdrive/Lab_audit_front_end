@@ -259,14 +259,14 @@ class AssayTypes extends Component {
                                                                 name={`${name}.label`}
                                                                 component="input"
                                                                 placeholder="Reagent Name"
-                                                                className="reagent-type-input"
                                                                 />
-                                                            
+                                                            </div>
+                                                            <div className="col-1 my-auto">
                                                                 <span
                                                                 onClick={() => fields.remove(index)}
                                                                 style={{ cursor: 'pointer' }}
                                                                 >
-                                                                ❌
+                                                                <FontAwesomeIcon icon={faTimes} color="grey" size='md'/>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -289,7 +289,7 @@ class AssayTypes extends Component {
                                                         fields.map((name, index) => (
                                                         <div className="row" key={name}>
                                                             {/*<label>{index + 1}</label>*/}
-                                                            <div className="col-5">
+                                                            <div className="col-6">
                                                                 <Field
                                                                 name={`${name}.label`}
                                                                 component="input"
@@ -306,7 +306,7 @@ class AssayTypes extends Component {
                                                                     <option value="false">Date</option>
                                                                 </Field>
                                                             </div>
-                                                            <div className="col-4">
+                                                            <div className="col-3">
                                                                 <Field
                                                                 name={`${name}.required`}
                                                                 component="select"
@@ -315,11 +315,13 @@ class AssayTypes extends Component {
                                                                     <option selected value="true">Required</option>
                                                                     <option value="false">Not Required</option>
                                                                 </Field>
+                                                            </div>
+                                                            <div className="col-1 my-auto">
                                                                 <span
                                                                 onClick={() => fields.remove(index)}
                                                                 style={{ cursor: 'pointer' }}
                                                                 >
-                                                                ❌
+                                                                <FontAwesomeIcon icon={faTimes} color="grey" size='md'/>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -341,7 +343,7 @@ class AssayTypes extends Component {
                                                         fields.map((name, index) => (
                                                         <div className="row" key={name}>
                                                             {/*<label>{index + 1}</label>*/}
-                                                            <div className="col-5">
+                                                            <div className="col-6">
                                                                 <Field
                                                                 name={`${name}.label`}
                                                                 component="input"
@@ -358,7 +360,7 @@ class AssayTypes extends Component {
                                                                     <option value="false">Date</option>
                                                                 </Field>
                                                             </div>
-                                                            <div className="col-4">
+                                                            <div className="col-3">
                                                                 <Field
                                                                 name={`${name}.required`}
                                                                 component="select"
@@ -367,11 +369,13 @@ class AssayTypes extends Component {
                                                                     <option selected value="true">Required</option>
                                                                     <option value="false">Not Required</option>
                                                                 </Field>
+                                                            </div>
+                                                            <div className="col-1 my-auto">
                                                                 <span
                                                                 onClick={() => fields.remove(index)}
                                                                 style={{ cursor: 'pointer' }}
                                                                 >
-                                                                ❌
+                                                                <FontAwesomeIcon icon={faTimes} color="grey" size='md'/>
                                                                 </span>
                                                             </div>
                                                         </div>
