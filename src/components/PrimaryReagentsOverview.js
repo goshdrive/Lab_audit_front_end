@@ -313,7 +313,7 @@ export const PrimaryReagents = (props) => {
                                                 <p><b>Unique ID</b>: {row.original._id}</p>{' '}    
                                             </div>                        
                                             <div className="row">
-                                                <p><b>Pack No</b>: 1/5</p>                                                                                                    
+                                                <p><b>Pack No</b>: {row.original.unit}</p>                                                                                                    
                                             </div>                                                                                           
                                         </div>
                                     );
