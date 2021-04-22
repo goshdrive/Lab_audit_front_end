@@ -6,6 +6,7 @@ import {AiFillCaretDown, AiFillCaretUp} from 'react-icons/ai';
 import { GlobalFilter } from './GlobalFilter';
 import { Button, ButtonGroup } from 'react-bootstrap';
 import { Checkbox } from './CheckBox';
+import EditSecReagent from './EditSecReagent';
 import SecReagentsCards from './SecReagentsCards';
 import QRCode  from 'qrcode.react';
 import html2canvas from 'html2canvas';
@@ -69,6 +70,16 @@ export const SecReagentsRecent = (props) => {
     const { globalFilter } = state
 
     const [selectedRow, setSelectRows] = useState('')
+
+    const [isModalOpen, setModalState] = useState(false)
+
+    const handleModalShow = () => {
+        setModalState(true);
+    }
+
+    const handleModalClose = () => {
+        setModalState(false);
+    }
 
     const deleteRows = () => { 
         selectedFlatRows.forEach(row => {  
@@ -270,7 +281,7 @@ export const SecReagentsRecent = (props) => {
                 <div className="col-1 text-center">
                     {selectedFlatRows[0] ? (
                         <ul style={{"position": "fixed", "textAlign":"center", "paddingLeft":"0.5%"}} className="list-unstyled">
-                            {/* <li>
+                            <li>
                                 <div className="text-center">
                                     <a type="button" onClick={handleModalShow} className="dot" style={{"line-height":"50px",
                                     "border": "rgba(67, 47, 135, 0.9)",
@@ -283,8 +294,8 @@ export const SecReagentsRecent = (props) => {
                                     "vertical-align": "middle"}}>
                                     <FontAwesomeIcon icon={faPencilAlt} color="white" size='lg'/></a>
                                 </div>
-                                <div className="subtitle">Dispose</div>
-                            </li> */}
+                                <div className="subtitle">Edit</div>
+                            </li>
                             <li>
                                 <div className="text-center">
                                     <a type="button" onClick={disposeReagents} className="dot"
@@ -337,6 +348,11 @@ export const SecReagentsRecent = (props) => {
                         </ul>
                     ) : null}
                 </div>
+                <EditSecReagent isModalOpen={isModalOpen} handleModalClose={handleModalClose} handleModalOpen={handleModalShow} 
+                    selectedRow={{selectedFlatRows: selectedFlatRows.map((row) => row.original)[0] != null ? 
+                        selectedFlatRows.map((row) => row.original)[0] : 
+                        selectedFlatRows.map((row) => row.original)[1]}} 
+                        putSecReagent={props.putSecReagent} />
             </div>
             
             </>

@@ -338,7 +338,7 @@ export const PrimaryReagents = (props) => {
                                     "vertical-align": "middle"}}>
                                     <FontAwesomeIcon icon={faPencilAlt} color="white" size='lg'/></a>
                                 </div>
-                                <div className="subtitle">Dispose</div>
+                                <div className="subtitle">Edit</div>
                             </li>
                             <li>
                                 <div className="text-center">
