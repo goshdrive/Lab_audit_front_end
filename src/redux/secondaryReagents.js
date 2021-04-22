@@ -24,7 +24,7 @@ export const SecReagents = (state = {
         case ActionTypes.UPDATE_SEC_REAGENT:
             var secReagent = action.payload;
             if (secReagent.status == "DELETED") {
-                return {...state, secReagent: state.secReagent.filter(
+                return {...state, secReagents: state.secReagents.filter(
                             item => item._id !== secReagent._id
                         ), deletedSecReagents: state.deletedSecReagents.concat(secReagent)};
             }
