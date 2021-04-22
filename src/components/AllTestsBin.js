@@ -170,13 +170,12 @@ export const AllTestsBin = (props) => {
                     </tbody>
                 </table>
             </div>
-            <div className="col-1">
+            <div className="col-1 text-center">
                 {selectedFlatRows[0] ? (
-                    <div className="row">
-                        <div className="col text-center">
-                            <ul style={{"position": "fixed", "paddingLeft":"20px"}} className="list-unstyled">
-                            <li>
-                                <a type="button" onClick={undoDelete} className="dot" style={{"line-height":"40px",
+                    <ul style={{"position": "fixed", "textAlign":"center", "paddingLeft":"1%"}} className="list-unstyled">
+                        <li>
+                            <div className="textCenter">
+                                <a type="button" onClick={undoDelete} className="dot" style={{"line-height":"50px",
                                 "border": "rgba(67, 47, 135, 0.9)",
                                 "width": "50px",
                                 "background-color": "rgba(67, 47, 135, 0.9)",
@@ -186,12 +185,12 @@ export const AllTestsBin = (props) => {
                                 "text-align": "center",
                                 "vertical-align": "middle"}}>
                                 <FontAwesomeIcon icon={faUndo} color="white" size='lg'/></a>
-                                </li>
-                            </ul>
-                        </div>    
-                    </div>
+                            </div>
+                            <div className="subtitle">Restore</div>
+                        </li>
+                    </ul>
                 ) : null}
-            </div>  
+            </div>   
         </div>
         
         </>

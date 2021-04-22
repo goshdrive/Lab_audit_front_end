@@ -200,30 +200,28 @@ export const MyTestsOverview = (props) => {
                         </tbody>
                     </table>
                 </div>
-                <div className="col-1">
+                <div className="col-1 text-center">
                     {selectedFlatRows[0] ? (
-                        <div className="row">
-                            <div className="col text-center">
-                                <ul style={{"position": "fixed", "paddingLeft":"20px"}} className="list-unstyled">
-                                    <li>
-                                        <a type="button" onClick={deleteRows} className="dot"
-                                        style={{"line-height":"40px",
-                                        "border": "0.5px solid white",
-                                        "width": "50px",
-                                        "background-color": "white",
-                                        "border-radius": "50%",
-                                        "paddingRight":"3px",
-                                        "display": "inline-block",
-                                        "box-shadow": "0px 0px 5px 0px lightgrey",
-                                        "text-align": "center",
-                                        "vertical-align": "middle"}}>
-                                        <FontAwesomeIcon icon={faTimes} color="grey" size='lg'/></a>
-                                    </li>
-                                </ul>
-                            </div>    
-                        </div>
+                        <ul style={{"position": "fixed", "paddingLeft":"1%"}} className="list-unstyled">
+                            <li>
+                                <div className="text-center">
+                                    <a type="button" onClick={deleteRows} className="dot"
+                                    style={{"line-height":"50px",
+                                    "border": "0.5px solid white",
+                                    "width": "50px",
+                                    "background-color": "white",
+                                    "border-radius": "50%",
+                                    "display": "inline-block",
+                                    "box-shadow": "0px 0px 5px 0px lightgrey",
+                                    "text-align": "center",
+                                    "vertical-align": "middle"}}>
+                                    <FontAwesomeIcon icon={faTimes} color="grey" size='lg'/></a>
+                                </div>
+                                <div className="subtitle">Delete</div>
+                            </li>
+                        </ul>
                     ) : null}
-                </div>  
+                </div>    
             </div>
             
             </>

@@ -76,7 +76,7 @@ class TestHistoryNEW extends Component {
                                 <span className="menu-header"> Test History </span>
                             </div>
                         </div>
-                        <div style={{"border-right":"1px solid #E2E2E4"}} className="row side-info justify-content-center bg-blue flex-grow-1">
+                        <div style={{"border-right":"1px solid #E2E2E4",  "backgroundColor":"#F6F5FA"}} className="row side-info justify-content-center bg-blue flex-grow-1">
                             <div style={{"margin-top":"15px"}} className="container-fluid side-info-container">
                                 <div className="row">
                                     <div style={{"margin-right":"15px", 

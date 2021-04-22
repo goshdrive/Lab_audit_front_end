@@ -173,7 +173,7 @@ export const PrimaryReagentsBin = (props) => {
             </div>
             <div className="col-1 text-center">
                 {selectedFlatRows[0] ? (
-                        <ul style={{"position": "fixed", "paddingLeft":"20px"}} className="list-unstyled">
+                        <ul style={{"position": "fixed", "paddingLeft":"1%"}} className="list-unstyled">
                             <li>
                                 <div className="text-center">
                                     <a type="button" onClick={undoDelete} className="dot" style={{"line-height":"50px",
