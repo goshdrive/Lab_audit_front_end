@@ -16,9 +16,16 @@ class InventoryNEW extends Component {
         super(props);
 
         this.state = {
-            currentPath: ''
+            currentPath: '',
+            isSidebarOpen: false
         }
     }   
+
+    toggleSidebar = () => {
+        this.setState({
+            isSidebarOpen: !this.state.isSidebarOpen
+        });
+    }
 
     componentDidMount() {
         const currentPath = window.location.pathname.split('/').splice(2,).join('/');
@@ -36,7 +43,9 @@ class InventoryNEW extends Component {
                         reagentsLoading={this.props.reagentsLoading}
                         postReagent={this.props.postReagent}
                         deleteReagent={this.props.deleteReagent} 
-                        putReagent={this.props.putReagent} />
+                        putReagent={this.props.putReagent} 
+                        toggleSidebar={this.toggleSidebar}
+                        isSidebarOpen={this.state.isSidebarOpen}/>
                 );
             case 'primary-reagents/recent':
                 return(
@@ -88,6 +97,7 @@ class InventoryNEW extends Component {
     render() {
         return(
             <div id="page-wrap" className="container-fluid">                
+                <a onClick={this.toggleSidebar}><div className={"sidebar-open-"+String(this.state.isSidebarOpen)}></div></a>
                 <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} logoutUser={this.props.logoutUser} />                        
                 <div className="row min-vh-100">
                     <div style={{"position":"fixed", "zIndex":"7"}} className="col-2 d-flex flex-column h-100">

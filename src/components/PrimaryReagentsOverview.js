@@ -88,6 +88,7 @@ export const PrimaryReagents = (props) => {
 
     const toggleSidebar = (form=null) => {     
         setSidebarState(!isSidebarOpen);
+        props.toggleSidebar();
     }    
 
     const handleModalShow = () => {
@@ -392,7 +393,7 @@ export const PrimaryReagents = (props) => {
                         </ul>
                     ) : null}
                 </div>
-                <AddReagent isSidebarOpen={isSidebarOpen} onSidebarToggle={toggleSidebar} 
+                <AddReagent isSidebarOpen={props.isSidebarOpen} onSidebarToggle={toggleSidebar} 
                     selectedRow={{selectedFlatRows: selectedFlatRows.map((row) => row.original)[0] != null ? 
                         selectedFlatRows.map((row) => row.original)[0] : 
                         selectedFlatRows.map((row) => row.original)[1]}}

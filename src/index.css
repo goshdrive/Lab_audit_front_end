@@ -378,3 +378,15 @@ a:hover {
 .subtitle {
   font-size: 12px;
 }
+
+.sidebar-open-true{
+  background-color: red;
+  position: fixed;
+  display: flex;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  z-index: 11;
+  background: rgba(0, 0, 0, 0.3);
+}
