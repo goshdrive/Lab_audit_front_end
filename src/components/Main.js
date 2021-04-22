@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import Assays from './Assays'
 import AccountDetails from './AccountDetails'
 import Sidebar from './Sidebar.js';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { Login } from './Login';
-import { TestHistory } from './TestHistory';
 import Admin from './Admin';
 import TestHistoryNEW from './TestHistoryNEW';
-import { Inventory } from './Inventory';
 import InventoryNEW from './InventoryNEW';
 import AssayTypes from './AssayTypes';
 import { connect } from 'react-redux';
@@ -89,7 +86,7 @@ class Main extends Component {
     render() {
         const InventoryPage = () => {
             return(
-                <InventoryNEW 
+                <InventoryNEW
                     auth={this.props.auth} 
                     logoutUser={this.props.logoutUser}
                     // Primary Reagents

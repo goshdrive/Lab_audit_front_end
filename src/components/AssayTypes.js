@@ -141,7 +141,7 @@ class AssayTypes extends Component {
                         key: key,
                         label: inputField.label,
                         required: true,
-                        type: "text"
+                        type: "reagent"
                     }
                 );
             });
