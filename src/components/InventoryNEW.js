@@ -136,7 +136,7 @@ class InventoryNEW extends Component {
                                                     className={this.state.currentPath.split('/')[1]=='recent' ? 'selected' : ''}><span><RiTimeFill /></span> Last Used</a></li>
                                             <li><a type="button" 
                                                     href={this.state.currentPath.split('/')[0]=='primary-reagents' ? '/inventory/primary-reagents/deleted' : '/inventory/secondary-reagents/deleted'} 
-                                                    className={this.state.currentPath.split('/')[1]=='deleted' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> Bin</a></li>
+                                                    className={this.state.currentPath.split('/')[1]=='deleted' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> Deleted</a></li>
                                         </ul>
                                     </div>
                                 </div>
