@@ -374,3 +374,7 @@ a:hover {
 #addUserForm > .row {
   margin-top: 20px;
 }
+
+.subtitle {
+  font-size: 12px;
+}
