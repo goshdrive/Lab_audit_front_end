@@ -120,7 +120,7 @@ class InventoryNEW extends Component {
                                         <span style={{"font-weight":"700", "font-size":"large", 
                                             "color": "rgba(237, 139, 0, 0.95)", "padding-left": "10px",
                                             "vertical-align":"middle"}}> 
-                                                {this.state.currentPath.split('/')[0]=='primary-reagents' ? 'Primary Reagents' : 'Secondary Reagents'}
+                                                {this.state.currentPath.split('/')[0]=='primary-reagents' ? 'Primary' : 'Secondary'}
                                             </span>
                                         <span style={{"padding-left": "5px"}}> </span>
                                     </div>
