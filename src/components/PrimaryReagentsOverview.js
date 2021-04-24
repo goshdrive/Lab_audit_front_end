@@ -346,7 +346,10 @@ export const PrimaryReagents = (props) => {
                         <ul className="list-unstyled">
                             <li>
                                 <div>
-                                    <a type="button" style={{"backgroundColor":"rgba(67, 47, 135, 0.9)"}} onClick={handleModalShow} className="dot action-button">
+                                    <a type="button" onClick={handleModalShow} 
+                                        style={{"backgroundColor":"rgba(67, 47, 135, 0.9)",
+                                            "boxShadow":"0px 0px 5px 0px rgba(67, 47, 135, 0.9)"}}
+                                        className="dot action-button">
                                     <FontAwesomeIcon icon={faPencilAlt} color="white" size='lg'/></a>
                                 </div>
                                 <div className="subtitle">Edit</div>

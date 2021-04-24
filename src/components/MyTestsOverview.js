@@ -138,7 +138,18 @@ export const MyTestsOverview = (props) => {
                 <div style={{"padding-right":"20px"}} className="col-2 ml-auto text-right">
                 </div>
             </div>
-            <div style={{"paddingTop":"61px"}} className="table-container row"> 
+            {selectedFlatRows[0] ? (
+                <>
+                <div className="action-button-row row d-xl-none float-left">
+                    <div className="col-2 col-md-1">
+                        <a type="button" onClick={deleteRows} className="dot action-button">
+                        <FontAwesomeIcon icon={faTrash} color="grey" size='lg'/></a>
+                    </div>
+                </div>
+                <div className="row proxy-row d-xl-none"></div>
+                </>
+            ) : null}
+            <div className="table-container row"> 
                 <div style={{"padding-top":"10px", "padding-bottom":"0px", "padding-left":"0px", "padding-right":"10px"}} className="col-11">
                     <table {...getTableProps()}>
                         <thead>
@@ -192,21 +203,12 @@ export const MyTestsOverview = (props) => {
                         </tbody>
                     </table>
                 </div>
-                <div className="col-1 text-center button-col">
+                <div className="col-1 text-center button-col d-none d-xl-block">
                     {selectedFlatRows[0] ? (
                         <ul className="list-unstyled">
                             <li>
                                 <div>
-                                    <a type="button" onClick={deleteRows} className="dot"
-                                    style={{"line-height":"50px",
-                                    "border": "0.5px solid white",
-                                    "width": "50px",
-                                    "background-color": "white",
-                                    "border-radius": "50%",
-                                    "display": "inline-block",
-                                    "box-shadow": "0px 0px 5px 0px lightgrey",
-                                    "text-align": "center",
-                                    "vertical-align": "middle"}}>
+                                    <a type="button" onClick={deleteRows} className="dot action-button">
                                     <FontAwesomeIcon icon={faTrash} color="grey" size='lg'/></a>
                                 </div>
                                 <div className="subtitle">Delete</div>
