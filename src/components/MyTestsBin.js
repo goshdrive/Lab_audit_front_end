@@ -106,7 +106,7 @@ export const MyTestsBin = (props) => {
     return(
         <>        
         <div className="row header table">
-            <div className="col-6 col-sm-8 col-lg-6">
+            <div className="col-12 col-lg-6">
                 <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
             </div>
             <div style={{"padding-right":"20px"}} className="col-2 ml-auto text-right">

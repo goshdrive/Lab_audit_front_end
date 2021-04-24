@@ -158,21 +158,19 @@ class InventoryNEW extends Component {
                                         className="col text-center">
                                             <div className="row">
                                                 <div style={{"paddingLeft":"0px"}} className="col-3">
-                                                    <a className="account-icon" href="/account"><span className="dot" style={{"height": "50px",
-                                                                            "width": "50px",
-                                                                            "border": "0.5px solid rgba(229, 229, 229, 1)",
-                                                                            "background-color": "#ffffff",
-                                                                            "border-radius": "50%",
-                                                                            "display": "inline-block",
-                                                                            "box-shadow": "0px 0px 1px 0px #888888",
-                                                                            "padding":"12px",
-                                                                            "margin-right":"10px",
-                                                                            "color":"#432F87",
-                                                                            "font-weight":"600"
-                                                                            }}>
-                                                        {JSON.parse(localStorage.getItem('userData')).firstName.substring(0,1)
-                                                                    + JSON.parse(localStorage.getItem('userData')).lastName.substring(0,1)}
-                                                    </span></a>
+                                                    <a href="/account" className="dot"
+                                                        style={{"line-height":"50px",
+                                                        "border": "0.5px solid white",
+                                                        "width": "50px",
+                                                        "background-color": "white",
+                                                        "border-radius": "50%",
+                                                        "display": "inline-block",
+                                                        "box-shadow": "0px 0px 5px 0px lightgrey",
+                                                        "text-align": "center",
+                                                        "vertical-align": "middle"}}>
+                                                            {JSON.parse(localStorage.getItem('userData')).firstName.substring(0,1)
+                                                                        + JSON.parse(localStorage.getItem('userData')).lastName.substring(0,1)}
+                                                        </a>
                                                 </div>
                                                 <div style={{"margin-left":"10px"}} className="col">
                                                     <div className="row">
@@ -183,8 +181,10 @@ class InventoryNEW extends Component {
                                                             </span>
                                                         </a>
                                                     </div>
-                                                    <div className="d-none d-xl-inline" style={{"color":"gray"}} className="row">
-                                                        {JSON.parse(localStorage.getItem('userData')).supervisor ? 'Supervisor' : 'Regular'}
+                                                    <div style={{"color":"gray"}} className="row">
+                                                        <span className="d-none d-xl-inline" style={{"display":"block"}}>
+                                                            {JSON.parse(localStorage.getItem('userData')).supervisor ? 'Supervisor' : 'Regular'}
+                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
