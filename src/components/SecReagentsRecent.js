@@ -100,7 +100,7 @@ export const SecReagentsRecent = (props) => {
                     _id: row.original._id,
                     status: "DISPOSED"
                 }
-                props.putSecReagent(update);
+                props.putSecReagent(update, "dispose");
             }
         });
     }

@@ -106,7 +106,7 @@ export const PrimaryReagentsRecent = (props) => {
                     _id: row.original._id,
                     status: "DISPOSED"
                 }
-                props.putReagent(update);
+                props.putReagent(update, "dispose");
             }
         });
     }
