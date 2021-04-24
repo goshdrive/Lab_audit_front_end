@@ -28,7 +28,7 @@ class Admin extends Component {
     changeUserRole = (user, e) => {
         var updatedUser = {
             _id: user._id,
-            supervisor:  e.target.value=="Supervisor User" ? true : false
+            supervisor:  e.target.value=="Supervisor User" ? true : false,
         }
         this.props.putUser(updatedUser);
     }
@@ -123,16 +123,11 @@ class Admin extends Component {
                                                                     <div style={{"border":"1px solid lightgrey", "padding":"20px", "borderRadius":"7px", "backgroundColor":"white", "boxShadow":"0px 0px 3px 0px lightgrey"}} key={user._id} className="user-card">
                                                                         <span>{user.username}</span>
                                                                         <span className="float-right">
-                                                                            {
-                                                                                user.admin ? (
-                                                                                    <span>Admin</span>
-                                                                                ) : (
-                                                                                    <select style={{"borderRadius":"3px", "height":"27px"}} onChange={(e) => this.changeUserRole(user, e)}>
-                                                                                        <option selected={user.supervisor ? ("selected") : ""}>Supervisor User</option>
-                                                                                        <option selected={!user.supervisor ? ("selected") : ""}>Regular User</option>
-                                                                                    </select>
-                                                                                )
-                                                                            }
+                                                                            <select style={{"borderRadius":"3px", "height":"27px"}} onChange={(e) => this.changeUserRole(user, e)}>
+                                                                                <option selected={user.supervisor && !user.admin ? ("selected") : ""}>Supervisor User</option>
+                                                                                    <option selected={!user.supervisor && !user.admin ? ("selected") : ""}>Regular User</option>
+                                                                                    <option selected={!user.supervisor && user.admin ? ("selected") : ""}>Admin</option>
+                                                                            </select>
                                                                         </span>
                                                                         <span style={{"float":"right", "height":"27px","border":"1px solid #432F87", "backgroundColor":"#432F87", "color":"white", "borderRadius":"3px", "padding":"0px 5px 0px 5px", "margin-left":"10px", "margin-right":"10px"}}>
                                                                             <a onClick={() => this.handlePasswordModalShow(user)} type="button">Reset Password</a>
@@ -144,18 +139,6 @@ class Admin extends Component {
                                                                 ) : (
                                                                     <div style={{"border":"1px solid lightgrey", "padding":"20px", "borderRadius":"7px", "backgroundColor":"#E2E2E4", "boxShadow":"0px 0px 3px 0px lightgrey"}} key={user._id} className="user-card">
                                                                         <span>{user.username}</span>
-                                                                        <span className="float-right">
-                                                                            {
-                                                                                user.admin ? (
-                                                                                    <span>Admin</span>
-                                                                                ) : (
-                                                                                    <select style={{"borderRadius":"3px", "height":"27px", "backgroundColor":"grey", "color":"lightgrey"}} onChange={(e) => this.changeUserRole(user, e)}>
-                                                                                        <option selected={user.supervisor ? ("selected") : ""}>Supervisor User</option>
-                                                                                        <option selected={!user.supervisor ? ("selected") : ""}>Regular User</option>
-                                                                                    </select>
-                                                                                )
-                                                                            }
-                                                                        </span>
                                                                         <span style={{"float":"right", "height":"27px","border":"1px solid grey", "backgroundColor":"grey", "color":"lightgrey", "borderRadius":"3px", "padding":"0px 3px 0px 3px", "margin-left":"10px", "margin-right":"10px"}}>
                                                                             <a type="button">Reset Password</a>
                                                                         </span>
