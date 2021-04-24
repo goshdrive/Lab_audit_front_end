@@ -54,7 +54,9 @@ class InventoryNEW extends Component {
                         reagentsLoading={this.props.reagentsLoading}
                         postReagent={this.props.postReagent}
                         deleteReagent={this.props.deleteReagent} 
-                        putReagent={this.props.putReagent} />
+                        putReagent={this.props.putReagent}
+                        toggleSidebar={this.toggleSidebar}
+                        isSidebarOpen={this.state.isSidebarOpen}/>
                 );
             case 'primary-reagents/deleted':
                 return(
