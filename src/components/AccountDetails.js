@@ -46,57 +46,49 @@ class AccountDetails extends Component {
                             </div>
                         </div>
                         <div style={{"border-right":"1px solid #E2E2E4", "paddingTop":"81px", "paddingLeft":"18px"}} className="row">
-                            <div className="col">
-                                <div className="row">
-                                    <div className="col-2">
-                                        <div className="row">
-                                            <div className="col-3">
-                                                <a className="account-icon" href="/account"><span className="dot" style={{"height": "50px",
-                                                                        "width": "50px",
-                                                                        "border": "0.5px solid rgba(229, 229, 229, 1)",
-                                                                        "background-color": "#ffffff",
-                                                                        "border-radius": "50%",
-                                                                        "display": "inline-block",
-                                                                        "box-shadow": "0px 0px 1px 0px #888888",
-                                                                        "padding":"12px",
-                                                                        "margin-right":"10px",
-                                                                        "color":"#432F87",
-                                                                        "font-weight":"600"
-                                                                        }}>
-                                                    {JSON.parse(localStorage.getItem('userData')).firstName.substring(0,1)
-                                                                    + JSON.parse(localStorage.getItem('userData')).lastName.substring(0,1)}
-                                                </span></a>
-                                            </div>
-                                            <div style={{"margin-left":"10px"}} className="col">
-                                                <div className="row">
-                                                    <a style={{"color":"black"}} href="/account"><span style={{"display":"block", "fontWeight":"600", "color":"#432F87"}}>{this.props.auth.user.firstName + ' ' + this.props.auth.user.lastName}</span></a>
-                                                </div>
-                                                <div style={{"color":"gray"}} className="row">
-                                                    {this.props.auth.user.supervisor ? 'Supervisor Account' : 'Regular Account'}   
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div className="col-12">
+                                <div className="row">    
+                                    <div>
+                                        <a className="account-icon" href="/account"><span className="dot" style={{"height": "50px",
+                                                                    "width": "50px",
+                                                                    "border": "0.5px solid rgba(229, 229, 229, 1)",
+                                                                    "background-color": "#ffffff",
+                                                                    "border-radius": "50%",
+                                                                    "display": "inline-block",
+                                                                    "box-shadow": "0px 0px 1px 0px #888888",
+                                                                    "padding":"12px",
+                                                                    "margin-right":"10px",
+                                                                    "color":"#432F87",
+                                                                    "font-weight":"600"
+                                                                    }}>
+                                                {JSON.parse(localStorage.getItem('userData')).firstName.substring(0,1)
+                                                                + JSON.parse(localStorage.getItem('userData')).lastName.substring(0,1)}
+                                        </span></a>
+                                    </div>
+                                    <div>
+                                        <a style={{"color":"black"}} href="/account"><span style={{"display":"block", "fontWeight":"600", "color":"#432F87"}}>{this.props.auth.user.firstName + ' ' + this.props.auth.user.lastName}</span></a>
+                                        <span>{this.props.auth.user.supervisor ? 'Supervisor Account' : 'Regular Account'}   </span>        
                                     </div>
                                 </div>
                                 <div style={{"marginTop":"20px"}} className="row">
-                                    <div style={{"fontWeight":"600", "fontSize":"18px", "color":"#432F87"}} className="col-1">
+                                    <div style={{"fontWeight":"600", "fontSize":"18px", "color":"#432F87", "padding":"0px"}} className="col-2 col-lg-1">
                                         Username
                                     </div>
-                                    <div style={{"fontSize":"20px"}} className="col-10">
+                                    <div style={{"fontSize":"20px"}} className="col">
                                         {this.props.auth.user.username}
                                     </div>
                                 </div>
                                 <div style={{"marginTop":"10px"}} className="row">
-                                    <div style={{"fontWeight":"600", "fontSize":"18px", "color":"#432F87"}} className="col-1">
+                                    <div style={{"fontWeight":"600", "fontSize":"18px", "color":"#432F87", "padding":"0px"}} className="col-2 col-lg-1">
                                         Password
                                     </div>
-                                    <div style={{"fontSize":"18px", "marginRight":"52px"}} className="col-1">
+                                    <div style={{"fontSize":"18px"}} className="col-3 col-md-2 col-xl-1">
                                         **********
                                     </div>
-                                    <div style={{"fontSize":"18px"}} className="col-2">
-                                        <button style={{"backgroundColor":"#432F87", "border":"none", "borderRadius":"5px", "boxShadow":"0px 0px 3px 0px grey", "color":"white", "padding":"2px 10px 2px 10px"}} onClick={this.editPassword}>
-                                            Edit
-                                        </button>
+                                    <div style={{"fontSize":"18px"}} className="col-1 text-center">
+                                            <button style={{"backgroundColor":"#432F87", "border":"none", "borderRadius":"5px", "boxShadow":"0px 0px 3px 0px grey", "color":"white", "padding":"2px 10px 2px 10px"}} onClick={this.editPassword}>
+                                                Edit
+                                            </button>
                                     </div>
                                 </div>
                                 {!this.state.editPassword ? <div></div> : (
@@ -126,10 +118,10 @@ class AccountDetails extends Component {
                                         >
                                             {({ input, meta }) => (
                                             <div style={{"marginTop":"10px"}} className="row">
-                                                <div style={{"fontWeight":"600", "fontSize":"18px", "color":"#432F87", "paddingRight":"10px"}} className="col-1">
+                                                <div style={{"fontWeight":"600", "fontSize":"18px", "color":"#432F87", "padding":"0px"}} className="col-2 col-lg-1">
                                                     New Password
                                                 </div>
-                                                <div className="col-11">
+                                                <div className="col">
                                                     <input style={{"width":"230px", "border":"none", "borderRadius":"5px", "height":"30px", "boxShadow":"0px 0px 3px 0px lightgrey"}} {...input} type="password" placeholder="New Password" />
                                                     {meta.error && meta.submitFailed && <span style={{"marginLeft":"10px", "color":"red"}} className="error">{meta.error}</span>}
                                                 </div>
@@ -142,10 +134,10 @@ class AccountDetails extends Component {
                                         >
                                             {({ input, meta }) => (
                                             <div style={{"marginTop":"10px"}} className="row">
-                                                <div style={{"fontWeight":"600", "fontSize":"18px", "color":"#432F87"}} className="col-1">
+                                                <div style={{"fontWeight":"600", "fontSize":"18px", "color":"#432F87", "padding":"0px"}} className="col-2 col-lg-1">
                                                     Confirm
                                                 </div>
-                                                <div className="col-11">
+                                                <div className="col">
                                                     <input style={{"width":"230px", "border":"none", "borderRadius":"5px", "height":"30px", "boxShadow":"0px 0px 3px 0px lightgrey"}} {...input} type="password" placeholder="Confirm New Password" />
                                                     {meta.error && meta.submitFailed && <span style={{"marginLeft":"10px", "color":"red"}} className="error">{meta.error}</span>}
                                                 </div>
@@ -153,7 +145,7 @@ class AccountDetails extends Component {
                                             )}
                                         </Field>
                                         <div className="mt-3 row">
-                                            <div style={{"fontSize":"18px"}} className="col offset-1">
+                                            <div style={{"fontSize":"18px"}} className="col offset-2 offset-lg-1">
                                                 <button style={{"backgroundColor":"#432F87", "border":"none", "borderRadius":"5px", "boxShadow":"0px 0px 3px 0px grey", "color":"white", "padding":"2px 10px 2px 10px"}} type="submit" disabled={submitting}>
                                                     Save Password
                                                 </button>

@@ -6,10 +6,12 @@
   height: 20px;
   left: 16px;
   top: 20px;
+  z-index: 10;
 }
 
 .bm-burger-bars {
   background: #432F87;
+  z-index: 10;
 }
 
 .bm-burger-bars-hover {
@@ -19,6 +21,7 @@
 .bm-cross-button {
   height: 24px;
   width: 24px;
+  z-index: 10;
 }
 
 .bm-cross {
