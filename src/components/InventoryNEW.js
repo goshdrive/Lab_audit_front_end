@@ -158,16 +158,7 @@ class InventoryNEW extends Component {
                                         className="col text-center">
                                             <div className="row">
                                                 <div style={{"paddingLeft":"0px"}} className="col-3">
-                                                    <a href="/account" className="dot"
-                                                        style={{"line-height":"50px",
-                                                        "border": "0.5px solid white",
-                                                        "width": "50px",
-                                                        "background-color": "white",
-                                                        "border-radius": "50%",
-                                                        "display": "inline-block",
-                                                        "box-shadow": "0px 0px 5px 0px lightgrey",
-                                                        "text-align": "center",
-                                                        "vertical-align": "middle"}}>
+                                                    <a href="/account" className="dot action-button">
                                                             {JSON.parse(localStorage.getItem('userData')).firstName.substring(0,1)
                                                                         + JSON.parse(localStorage.getItem('userData')).lastName.substring(0,1)}
                                                         </a>

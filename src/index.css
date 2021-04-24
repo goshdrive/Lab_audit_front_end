@@ -78,8 +78,32 @@ a.selected {
   padding-left: 5px;
 }
 
+.action-button-row {
+  margin-top: 76px; 
+  width: 100%;
+  position: fixed;
+  padding: 10px 20px 10px 20px;
+  background-color: rgba(47, 73, 209, 0.15);
+}
+
+.action-button {
+  line-height: 50px;
+  border: rgba(67, 47, 135, 0.9);
+  width: 50px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0px 0px 10px 0px lightgrey;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.row.proxy-row {
+  height: 80px;
+}
+
 .table-container {
-  padding-top: 61px;
+  margin-top: 61px;
   padding-left: 15px;
   padding-right: 15px;
   width: 100%;

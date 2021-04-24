@@ -179,7 +179,7 @@ export const PrimaryReagents = (props) => {
                     </span>
                 </div>
             </div>
-            <div style={{"paddingTop":"61px"}} className="table-container row">  
+            <div style={{"paddingTop":"61px"}} className="table-container row">
                 <div style={{"padding-top":"100px", "padding-bottom":"0px", "padding-left":"0px", "padding-right":"10px"}} className="col-11 text-center">
                     <Loader
                         type="TailSpin"
@@ -206,6 +206,32 @@ export const PrimaryReagents = (props) => {
                     </span>
                 </div>
             </div>
+            {selectedFlatRows[0] ? (
+                <>
+                <div className="action-button-row row d-xl-none float-left">
+                    <div className="col-2 col-md-1">
+                        <a type="button" 
+                            style={{"backgroundColor":"rgba(67, 47, 135, 0.9)",
+                                "boxShadow":"0px 0px 5px 0px rgba(67, 47, 135, 0.9)"}}  
+                            onClick={handleModalShow} className="dot action-button">
+                        <FontAwesomeIcon icon={faPencilAlt} color="white" size='lg'/></a>
+                    </div>
+                    <div className="col-2 col-md-1">
+                        <a type="button" onClick={disposeReagents} className="dot action-button">
+                        <FontAwesomeIcon icon={faTimes} color="rgba(67, 47, 135, 0.9)" size='lg'/></a>
+                    </div>
+                    <div className="col-2 col-md-1">
+                        <a type="button" onClick={downloadQR} className="dot action-button">
+                        <FontAwesomeIcon icon={faDownload} color="rgba(67, 47, 135, 0.9)" size='lg'/></a>
+                    </div>
+                    <div className="col-2 col-md-1">
+                        <a type="button" onClick={deleteRows} className="dot action-button">
+                        <FontAwesomeIcon icon={faTrash} color="grey" size='lg'/></a>
+                    </div>
+                </div>
+                <div className="row proxy-row d-xl-none"></div>
+                </>
+            ) : null}
             <div className="table-container row">  
                 <div style={{"padding-top":"10px", "padding-bottom":"0px", "padding-left":"0px", "padding-right":"10px"}} className="col-11">
                     <table {...getTableProps()}>
@@ -315,69 +341,33 @@ export const PrimaryReagents = (props) => {
                         }
                     </div>
                 </div>
-                <div className="col-1 text-center button-col">
+                <div className="col-1 text-center button-col d-none d-xl-block">
                     {selectedFlatRows[0] ? (
                         <ul className="list-unstyled">
                             <li>
                                 <div>
-                                    <a type="button" onClick={handleModalShow} className="dot" style={{"line-height":"50px",
-                                    "border": "rgba(67, 47, 135, 0.9)",
-                                    "width": "50px",
-                                    "background-color": "rgba(67, 47, 135, 0.9)",
-                                    "border-radius": "50%",
-                                    "display": "inline-block",
-                                    "box-shadow": "0px 0px 10px 0px lightgrey",
-                                    "text-align": "center",
-                                    "vertical-align": "middle"}}>
+                                    <a type="button" style={{"backgroundColor":"rgba(67, 47, 135, 0.9)"}} onClick={handleModalShow} className="dot action-button">
                                     <FontAwesomeIcon icon={faPencilAlt} color="white" size='lg'/></a>
                                 </div>
                                 <div className="subtitle">Edit</div>
                             </li>
                             <li>
                                 <div>
-                                    <a type="button" onClick={disposeReagents} className="dot"
-                                    style={{"line-height":"50px",
-                                    "border": "0.5px solid white",
-                                    "width": "50px",
-                                    "background-color": "white",
-                                    "border-radius": "50%",
-                                    "display": "inline-block",
-                                    "box-shadow": "0px 0px 5px 0px lightgrey",
-                                    "text-align": "center",
-                                    "vertical-align": "middle"}}>
+                                    <a type="button" onClick={disposeReagents} className="dot action-button">
                                     <FontAwesomeIcon icon={faTimes} color="rgba(67, 47, 135, 0.9)" size='lg'/></a>
                                 </div>
                                 <div className="subtitle">Dispose</div>
                             </li>
                             <li>
                                 <div>
-                                    <a type="button" onClick={downloadQR} className="dot"
-                                    style={{"line-height":"50px",
-                                    "border": "0.5px solid white",
-                                    "width": "50px",
-                                    "background-color": "white",
-                                    "border-radius": "50%",
-                                    "display": "inline-block",
-                                    "box-shadow": "0px 0px 5px 0px lightgrey",
-                                    "text-align": "center",
-                                    "vertical-align": "middle",
-                                    "align":"middle"}}>
+                                    <a type="button" onClick={downloadQR} className="dot action-button">
                                     <FontAwesomeIcon icon={faDownload} color="rgba(67, 47, 135, 0.9)" size='lg'/></a>
                                 </div>
                                 <div className="subtitle">Download QR</div>
                             </li>
                             <li>
                                 <div>
-                                    <a type="button" onClick={deleteRows} className="dot"
-                                    style={{"line-height":"50px",
-                                    "border": "0.5px solid white",
-                                    "width": "50px",
-                                    "background-color": "white",
-                                    "border-radius": "50%",
-                                    "display": "inline-block",
-                                    "box-shadow": "0px 0px 5px 0px lightgrey",
-                                    "text-align": "center",
-                                    "vertical-align": "middle"}}>
+                                    <a type="button" onClick={deleteRows} className="dot action-button">
                                     <FontAwesomeIcon icon={faTrash} color="grey" size='lg'/></a>
                                 </div>
                                 <div className="subtitle">Delete</div>

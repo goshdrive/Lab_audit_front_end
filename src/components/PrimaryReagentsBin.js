@@ -117,6 +117,20 @@ export const PrimaryReagentsBin = (props) => {
             <div className="col-2 ml-auto text-right">
             </div>
         </div>
+        {selectedFlatRows[0] ? (
+                <>
+                <div className="action-button-row row d-xl-none float-left">
+                    <div className="col-2 col-md-1">
+                        <a type="button" onClick={undoDelete} 
+                            style={{"backgroundColor":"rgba(67, 47, 135, 0.9)",
+                                "boxShadow":"0px 0px 5px 0px rgba(67, 47, 135, 0.9)"}}  
+                            className="dot action-button">
+                        <FontAwesomeIcon icon={faUndo} color="white" size='lg'/></a>
+                    </div>
+                </div>
+                <div className="row proxy-row d-xl-none"></div>
+                </>
+        ) : null}
         <div className="table-container row"> 
             <div style={{"padding-top":"10px", "padding-bottom":"0px", "padding-left":"0px", "padding-right":"10px"}} className="col-11">
                 <table {...getTableProps()}>
@@ -171,20 +185,12 @@ export const PrimaryReagentsBin = (props) => {
                     </tbody>
                 </table>
             </div>
-            <div className="col-1 text-center button-col">
+            <div className="col-1 text-center button-col d-none d-xl-block">
                 {selectedFlatRows[0] ? (
                         <ul className="list-unstyled">
                             <li>
                                 <div className="text-center">
-                                    <a type="button" onClick={undoDelete} className="dot" style={{"line-height":"50px",
-                                    "border": "rgba(67, 47, 135, 0.9)",
-                                    "width": "50px",
-                                    "background-color": "rgba(67, 47, 135, 0.9)",
-                                    "border-radius": "50%",
-                                    "display": "inline-block",
-                                    "box-shadow": "0px 0px 10px 0px lightgrey",
-                                    "text-align": "center",
-                                    "vertical-align": "middle"}}>
+                                    <a type="button" onClick={undoDelete} style={{"backgroundColor":"rgba(67, 47, 135, 0.9)"}} className="dot action-button">
                                     <FontAwesomeIcon icon={faUndo} color="white" size='lg'/></a>
                                 </div>
                                 <div className="subtitle">Restore</div>
