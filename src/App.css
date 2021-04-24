@@ -111,7 +111,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .sidebar-content {
-  width: 500px;
+  width: 450px;
   height: 100%;
   display: flex;
   justify-content: center;
