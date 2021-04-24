@@ -7,7 +7,7 @@ import { GlobalFilter } from './GlobalFilter';
 import { Checkbox } from './CheckBox';
 import TestsCards from './TestsCards';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFolderPlus, faPencilAlt, faDownload, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import Loader from "react-loader-spinner";
 
 export const MyTestsOverview = (props) => {
@@ -118,7 +118,7 @@ export const MyTestsOverview = (props) => {
                 <div style={{"padding-right":"20px"}} className="col-2 ml-auto text-right">
                 </div>
             </div>
-            <div style={{"paddingTop":"61px"}} className="table-container row"> 
+            <div className="table-container row"> 
                 <div style={{"padding-top":"100px", "padding-bottom":"0px", "padding-left":"0px", "padding-right":"10px"}} className="col-11 text-center">
                     <Loader
                         type="TailSpin"
@@ -200,11 +200,11 @@ export const MyTestsOverview = (props) => {
                         </tbody>
                     </table>
                 </div>
-                <div className="col-1 text-center">
+                <div className="col-1 text-center button-col">
                     {selectedFlatRows[0] ? (
-                        <ul style={{"position": "fixed", "paddingLeft":"1%"}} className="list-unstyled">
+                        <ul className="list-unstyled">
                             <li>
-                                <div className="text-center">
+                                <div>
                                     <a type="button" onClick={deleteRows} className="dot"
                                     style={{"line-height":"50px",
                                     "border": "0.5px solid white",
@@ -215,7 +215,7 @@ export const MyTestsOverview = (props) => {
                                     "box-shadow": "0px 0px 5px 0px lightgrey",
                                     "text-align": "center",
                                     "vertical-align": "middle"}}>
-                                    <FontAwesomeIcon icon={faTimes} color="grey" size='lg'/></a>
+                                    <FontAwesomeIcon icon={faTrash} color="grey" size='lg'/></a>
                                 </div>
                                 <div className="subtitle">Delete</div>
                             </li>

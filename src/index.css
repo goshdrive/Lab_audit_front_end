@@ -78,9 +78,10 @@ a.selected {
 }
 
 .table-container {
-  padding-top: 10px;
-  padding-left: 0px;
-  padding-right: 0px;
+  padding-top: 61px;
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 100%;
 }
 
 tbody svg {
@@ -389,4 +390,9 @@ a:hover {
   justify-content: center;
   z-index: 11;
   background: rgba(0, 0, 0, 0.3);
+}
+
+.button-col {
+  position: fixed; 
+  right : 0px
 }

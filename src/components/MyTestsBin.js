@@ -116,7 +116,7 @@ export const MyTestsBin = (props) => {
             <div style={{"padding-right":"20px"}} className="col-2 ml-auto text-right">
             </div>
         </div>
-        <div style={{"paddingTop":"61px"}} className="table-container row"> 
+        <div className="table-container row"> 
             <div style={{"padding-top":"10px", "padding-bottom":"0px", "padding-left":"0px", "padding-right":"10px"}} className="col-11">
                 <table {...getTableProps()}>
                     <thead>
@@ -170,11 +170,11 @@ export const MyTestsBin = (props) => {
                     </tbody>
                 </table>
             </div>
-            <div className="col-1 text-center">
+            <div className="col-1 text-center button-col">
                 {selectedFlatRows[0] ? (
-                    <ul style={{"position": "fixed", "textAlign":"center", "paddingLeft":"1%"}} className="list-unstyled">
+                    <ul className="list-unstyled">
                         <li>
-                            <div className="textCenter">
+                            <div>
                                 <a type="button" onClick={undoDelete} className="dot" style={{"line-height":"50px",
                                 "border": "rgba(67, 47, 135, 0.9)",
                                 "width": "50px",

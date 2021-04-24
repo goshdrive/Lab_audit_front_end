@@ -117,7 +117,7 @@ export const PrimaryReagentsBin = (props) => {
             <div style={{"padding-right":"30px"}} className="col-2 ml-auto text-right">
             </div>
         </div>
-        <div style={{"paddingTop":"61px"}} className="table-container row"> 
+        <div className="table-container row"> 
             <div style={{"padding-top":"10px", "padding-bottom":"0px", "padding-left":"0px", "padding-right":"10px"}} className="col-11">
                 <table {...getTableProps()}>
                     <thead>
@@ -171,9 +171,9 @@ export const PrimaryReagentsBin = (props) => {
                     </tbody>
                 </table>
             </div>
-            <div className="col-1 text-center">
+            <div className="col-1 text-center button-col">
                 {selectedFlatRows[0] ? (
-                        <ul style={{"position": "fixed", "paddingLeft":"1%"}} className="list-unstyled">
+                        <ul className="list-unstyled">
                             <li>
                                 <div className="text-center">
                                     <a type="button" onClick={undoDelete} className="dot" style={{"line-height":"50px",
