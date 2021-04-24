@@ -249,7 +249,7 @@ class EditReagent extends Component {
                                                 </div>
                                                 <div className="col-9">
                                                     <Field
-                                                    name="comment"
+                                                    name="action"
                                                     component="input"
                                                     type="textarea"
                                                     />
