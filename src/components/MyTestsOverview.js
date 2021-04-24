@@ -140,17 +140,17 @@ export const MyTestsOverview = (props) => {
             </div>
             {selectedFlatRows[0] ? (
                 <>
-                <div className="action-button-row row d-xl-none float-left">
+                <div className="action-button-row row d-lg-none float-left">
                     <div className="col-2 col-md-1">
                         <a type="button" onClick={deleteRows} className="dot action-button">
                         <FontAwesomeIcon icon={faTrash} color="grey" size='lg'/></a>
                     </div>
                 </div>
-                <div className="row proxy-row d-xl-none"></div>
+                <div className="row proxy-row d-lg-none"></div>
                 </>
             ) : null}
             <div className="table-container row"> 
-                <div style={{"padding-top":"10px", "padding-bottom":"0px", "padding-left":"0px", "padding-right":"10px"}} className="col-11">
+                <div style={{"padding-top":"10px", "padding-bottom":"0px", "padding-left":"0px", "padding-right":"10px"}} className="col-12 col-lg-11">
                     <table {...getTableProps()}>
                         <thead>
                             {headerGroups.map((headerGroup) => (
@@ -203,7 +203,7 @@ export const MyTestsOverview = (props) => {
                         </tbody>
                     </table>
                 </div>
-                <div className="col-1 text-center button-col d-none d-xl-block">
+                <div className="col-1 text-center button-col d-none d-lg-block">
                     {selectedFlatRows[0] ? (
                         <ul className="list-unstyled">
                             <li>
