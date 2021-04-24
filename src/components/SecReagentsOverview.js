@@ -145,7 +145,7 @@ export const SecReagentsOverview = (props) => {
         //   </pre>
         // ),
         // []
-            <SecReagentsCards reagentValues={row.original}/>
+           <SecReagentsCards reagentValues={row.original}/>
         )
     )
     

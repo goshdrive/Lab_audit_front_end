@@ -43,16 +43,28 @@ class SecReagentsCards extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="col-4">
+                <div className="col-8">
                     <div className="row reagent-card-value">
                         <div className="col">
-                            <h4>Composition LOT Numbers</h4>
+                            <h4>Compositions</h4>
                         </div>
                     </div>
                     {this.props.reagentValues.reagents ? (this.props.reagentValues.reagents.map((reagent, index) => (
                         <div className="row reagent-card-value">
+                            <div className="col col-1">
+                                <b>{index+1}.</b>
+                            </div>
+                            <div className="col col-2">
+                                <b>LOT Number</b>
+                            </div>
                             <div className="col">
                                 {reagent.lotNr}
+                            </div>
+                            <div className="col col-2">
+                                <b>Reagent Name</b>
+                            </div>
+                            <div className="col">
+                                {reagent.reagentName}
                             </div>
                         </div>
                     ))) : ''}
