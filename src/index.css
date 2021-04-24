@@ -11,7 +11,8 @@ body {
 }
 
 #page-wrap {
-  padding: 0;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 code {
@@ -20,7 +21,7 @@ code {
 }
 
 .side-info-container {
-  padding-left: 45px;
+  padding-left: 30px;
 }
 
 .menu-header {
@@ -381,7 +382,6 @@ a:hover {
 }
 
 .sidebar-open-true{
-  background-color: red;
   position: fixed;
   display: flex;
   top: 0;
@@ -390,6 +390,7 @@ a:hover {
   justify-content: center;
   z-index: 11;
   background: rgba(0, 0, 0, 0.3);
+  margin-left: -15px;
 }
 
 .button-col {
@@ -403,4 +404,20 @@ a:hover {
   border-bottom: 1px solid #E2E2E4;
   padding: 10px;
   margin-top: 0px;
+}
+
+.row.header.table {
+  height: 61px;
+  border-bottom: 1px solid #E2E2E4; 
+  background-color: white;
+  width: 83.3333%;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 10; 
+}
+
+.col-10.offset-2 {
+  padding-right: 15px;
+  padding-left: 15px;
 }

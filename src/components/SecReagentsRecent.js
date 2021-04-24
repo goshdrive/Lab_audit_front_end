@@ -152,11 +152,7 @@ export const SecReagentsRecent = (props) => {
     if (props.secReagentsLoading) {
         return (
             <>
-            <div style={{"height":"61px","border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-left": "-20px", "width":"85%",
-                            "display": "flex",
-                            "align-items": "center",
-                            "position":"fixed",
-                            "z-index":"10"}} className="row header">
+            <div className="row header table">
                 <div className="col-6">
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
                 </div>
@@ -180,11 +176,7 @@ export const SecReagentsRecent = (props) => {
     else {
         return(
             <>        
-            <div style={{"height":"61px","border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-left": "-20px", "width":"85%",
-                            "display": "flex",
-                            "align-items": "center",
-                            "position":"fixed",
-                            "z-index":"10"}} className="row header">
+            <div className="row header table">
                 <div className="col-6">
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
                 </div>

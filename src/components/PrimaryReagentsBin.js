@@ -106,15 +106,15 @@ export const PrimaryReagentsBin = (props) => {
     
     return(
         <>        
-        <div style={{"height":"61px","border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-left": "-20px", "width":"85%",
-                        "display": "flex",
-                        "align-items": "center",
-                        "position":"fixed",
-                        "z-index":"10"}} className="row header">
+        <div style={{"height":"61px","border-bottom":"1px solid #E2E2E4", "background-color": "white", "width":"83.3333%",
+                            "display": "flex",
+                            "align-items": "center",
+                            "position":"fixed",
+                            "z-index":"10"}} className="row header">
             <div className="col-6">
                 <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
             </div>
-            <div style={{"padding-right":"30px"}} className="col-2 ml-auto text-right">
+            <div className="col-2 ml-auto text-right">
             </div>
         </div>
         <div className="table-container row"> 

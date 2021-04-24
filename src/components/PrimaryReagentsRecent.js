@@ -157,15 +157,11 @@ export const PrimaryReagentsRecent = (props) => {
     if (props.reagentsLoading) {
         return (
             <>
-            <div style={{"height":"61px","border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-left": "-20px", "width":"85%",
-                            "display": "flex",
-                            "align-items": "center",
-                            "position":"fixed",
-                            "z-index":"10"}} className="row header">
+            <div className="row header table">
                 <div className="col-6">
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
                 </div>
-                <div style={{"padding-right":"30px"}} className="col-2 ml-auto text-right">
+                <div className="col ml-auto text-right">
                     <span>
                         <a style={{"font-size": "medium", "color":"rgba(67, 47, 135, 0.9)"}} type="button" onClick={toggleSidebar}>Add Reagent<span style={{"padding-left":"10px"}}><FontAwesomeIcon icon={faFolderPlus} size='lg' /></span></a>
                     </span>
@@ -188,15 +184,11 @@ export const PrimaryReagentsRecent = (props) => {
     else {
         return(
             <>        
-            <div style={{"height":"61px","border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-left": "-20px", "width":"85%",
-                            "display": "flex",
-                            "align-items": "center",
-                            "position":"fixed",
-                            "z-index":"10"}} className="row header">
+            <div className="row header table">
                 <div className="col-6">
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
                 </div>
-                <div style={{"padding-right":"30px"}} className="col-2 ml-auto text-right">
+                <div className="col ml-auto text-right">
                     <span>
                         <a style={{"font-size": "medium", "color":"rgba(67, 47, 135, 0.9)"}} type="button" onClick={toggleSidebar}>Add Reagent<span style={{"padding-left":"10px"}}><FontAwesomeIcon icon={faFolderPlus} size='lg' /></span></a>
                     </span>

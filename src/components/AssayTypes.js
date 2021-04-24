@@ -194,206 +194,208 @@ class AssayTypes extends Component {
         return(
             <div id="page-wrap" className="container-fluid">         
                 <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} logoutUser={this.props.logoutUser} />                               
-                <div className="row flex-fill h-100 d-flex">
+                <div className="row min-vh-100">
                     <div className="col-4">
                         <div style={{"z-index":"10", "position":"fixed", "border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-top": "0px", "padding": "10px", "width":"110%"}} className="row header">
                             <div className="col my-auto ml-5">
                                 <span className="menu-header"> Assay Types </span>
                             </div>
                         </div>
-                        <div style={{"border-right":"1px solid #E2E2E4", "paddingTop":"81px"}} className="row side-info">
-                            <div style={{"margin-left":"30px", "margin-right":"15px", "border-radius": "7px",
-                                                    "background-color": "rgba(47, 73, 209, 0.15)",                                                    
-                                                    "box-shadow": "0px 0px 5px 0px lightgrey", 
-                                                    "paddingTop":"10px", "paddingBottom":"10px"}} className="container">
-                            <Form 
-                                onSubmit={this.handleSubmit}
-                                mutators={{
-                                ...arrayMutators
-                                }}
-                                render={({
-                                handleSubmit,
-                                form: {
-                                    mutators: { push, pop }
-                                }, // injected from final-form-arrays above
-                                pristine,
-                                form,
-                                submitting,
-                                values
-                                }) => {
-                                    return(
-                                        <form id="addAssayType" onSubmit={handleSubmit}>
-                                            <div className="container">
-                                                <Field
-                                                    name="assayName"
-                                                    component="input"
-                                                    type="text"
-                                                    validate={required}
-                                                    >
-                                                    {({ input, meta }) => (
-                                                        <div className="row">                                  
-                                                            <div className="col">
-                                                                <input {...input} id="assay-name-input" placeholder="New Assay Name..."/>
-                                                                {meta.error && meta.submitFailed && <span>{meta.error}</span>}
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </Field>
-                                                <div className="row input-header">
-                                                    <div className="col-6"><span className="input-h4">Reagents</span>                                                        
-                                                    <button className="button-form-array" type="button" onClick={() => push('reagents', undefined)}>
-                                                            <FontAwesomeIcon icon={faPlus} color="#3e8bd6" size='md'/>
-                                                        </button>{' '}
-                                                        <button className="button-form-array" type="button" onClick={() => pop('reagents')}>
-                                                            <FontAwesomeIcon icon={faMinus} color="#3e8bd6" size='md'/>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <FieldArray name="reagents">
-                                                    {({ fields }) =>
-                                                        fields.map((name, index) => (
-                                                        <div className="row" key={name}>
-                                                            {/*<label>Reagent #{index + 1}</label>*/}
-                                                            <div className="col-6">
-                                                                <Field
-                                                                name={`${name}.label`}
-                                                                component="input"
-                                                                placeholder="Reagent Name"
-                                                                />
-                                                            </div>
-                                                            <div className="col-1 my-auto">
-                                                                <span
-                                                                onClick={() => fields.remove(index)}
-                                                                style={{ cursor: 'pointer' }}
-                                                                >
-                                                                <FontAwesomeIcon icon={faTimes} color="grey" size='md'/>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        ))
-                                                    }
-                                                </FieldArray> 
-                                            </div>
-                                            <div className="container">
-                                                <div className="row input-header">
-                                                    <div className="col-6"><span className="input-h4">Reagent Data</span><button className="button-form-array" type="button" onClick={() => push('reagentData', undefined)}>
-                                                            <FontAwesomeIcon icon={faPlus} color="#3e8bd6" size='md'/>
-                                                        </button>{' '}
-                                                        <button className="button-form-array" type="button" onClick={() => pop('reagentData')}>
-                                                            <FontAwesomeIcon icon={faMinus} color="#3e8bd6" size='md'/>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <FieldArray name="reagentData">
-                                                    {({ fields }) =>
-                                                        fields.map((name, index) => (
-                                                        <div className="row" key={name}>
-                                                            {/*<label>{index + 1}</label>*/}
-                                                            <div className="col-6">
-                                                                <Field
-                                                                name={`${name}.label`}
-                                                                component="input"
-                                                                placeholder="Input Name"
-                                                                />
-                                                            </div>
-                                                            <div className="col-2">
-                                                                <Field
-                                                                name={`${name}.type`}
-                                                                component="select"
-                                                                defaultValue="text"
-                                                                >
-                                                                    <option selected value="text">Text</option>
-                                                                    <option value="false">Date</option>
-                                                                </Field>
-                                                            </div>
-                                                            <div className="col-3">
-                                                                <Field
-                                                                name={`${name}.required`}
-                                                                component="select"
-                                                                defaultValue="true"
-                                                                >
-                                                                    <option selected value="true">Required</option>
-                                                                    <option value="false">Not Required</option>
-                                                                </Field>
-                                                            </div>
-                                                            <div className="col-1 my-auto">
-                                                                <span
-                                                                onClick={() => fields.remove(index)}
-                                                                style={{ cursor: 'pointer' }}
-                                                                >
-                                                                <FontAwesomeIcon icon={faTimes} color="grey" size='md'/>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        ))
-                                                    }
-                                                </FieldArray>
-                                                <div className="row input-header">
-                                                    <div className="col-6"><span className="input-h4">Other Inputs</span>
-                                                        <button className="button-form-array" type="button" onClick={() => push('other', undefined)}>
-                                                            <FontAwesomeIcon icon={faPlus} color="#3e8bd6" size='md'/>
-                                                        </button>{' '}
-                                                        <button className="button-form-array" type="button" onClick={() => pop('other')}>
-                                                            <FontAwesomeIcon icon={faMinus} color="#3e8bd6" size='md'/>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                                <FieldArray name="other">
-                                                    {({ fields }) =>
-                                                        fields.map((name, index) => (
-                                                        <div className="row" key={name}>
-                                                            {/*<label>{index + 1}</label>*/}
-                                                            <div className="col-6">
-                                                                <Field
-                                                                name={`${name}.label`}
-                                                                component="input"
-                                                                placeholder="Input Name"
-                                                                />
-                                                            </div>
-                                                            <div className="col-2">
-                                                                <Field
-                                                                name={`${name}.type`}
-                                                                component="select"
-                                                                defaultValue="text"
-                                                                >
-                                                                    <option selected value="text">Text</option>
-                                                                    <option value="false">Date</option>
-                                                                </Field>
-                                                            </div>
-                                                            <div className="col-3">
-                                                                <Field
-                                                                name={`${name}.required`}
-                                                                component="select"
-                                                                defaultValue="true"
-                                                                >
-                                                                    <option selected value="true">Required</option>
-                                                                    <option value="false">Not Required</option>
-                                                                </Field>
-                                                            </div>
-                                                            <div className="col-1 my-auto">
-                                                                <span
-                                                                onClick={() => fields.remove(index)}
-                                                                style={{ cursor: 'pointer' }}
-                                                                >
-                                                                <FontAwesomeIcon icon={faTimes} color="grey" size='md'/>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        ))
-                                                    }
-                                                </FieldArray>
+                        <div style={{"border-right":"1px solid #E2E2E4", "paddingTop":"81px"}} className="row side-info d-flex flex-column h-100">
+                            <div className="col">
+                                <div style={{"border-radius": "7px",
+                                                        "background-color": "rgba(47, 73, 209, 0.15)",                                                    
+                                                        "box-shadow": "0px 0px 5px 0px lightgrey", 
+                                                        "paddingTop":"10px", "paddingBottom":"10px"}} className="container">
+                                <Form 
+                                    onSubmit={this.handleSubmit}
+                                    mutators={{
+                                    ...arrayMutators
+                                    }}
+                                    render={({
+                                    handleSubmit,
+                                    form: {
+                                        mutators: { push, pop }
+                                    }, // injected from final-form-arrays above
+                                    pristine,
+                                    form,
+                                    submitting,
+                                    values
+                                    }) => {
+                                        return(
+                                            <form id="addAssayType" onSubmit={handleSubmit}>
                                                 <div className="container">
-                                                    <div className="row">
-                                                        <button className="submit-button" type="submit" disabled={submitting || pristine}>
-                                                            Submit
-                                                        </button>
+                                                    <Field
+                                                        name="assayName"
+                                                        component="input"
+                                                        type="text"
+                                                        validate={required}
+                                                        >
+                                                        {({ input, meta }) => (
+                                                            <div className="row">                                  
+                                                                <div className="col">
+                                                                    <input {...input} id="assay-name-input" placeholder="New Assay Name..."/>
+                                                                    {meta.error && meta.submitFailed && <span>{meta.error}</span>}
+                                                                </div>
+                                                            </div>
+                                                        )}
+                                                    </Field>
+                                                    <div className="row input-header">
+                                                        <div className="col-6"><span className="input-h4">Reagents</span>                                                        
+                                                        <button className="button-form-array" type="button" onClick={() => push('reagents', undefined)}>
+                                                                <FontAwesomeIcon icon={faPlus} color="#3e8bd6" size='md'/>
+                                                            </button>{' '}
+                                                            <button className="button-form-array" type="button" onClick={() => pop('reagents')}>
+                                                                <FontAwesomeIcon icon={faMinus} color="#3e8bd6" size='md'/>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <FieldArray name="reagents">
+                                                        {({ fields }) =>
+                                                            fields.map((name, index) => (
+                                                            <div className="row" key={name}>
+                                                                {/*<label>Reagent #{index + 1}</label>*/}
+                                                                <div className="col-6">
+                                                                    <Field
+                                                                    name={`${name}.label`}
+                                                                    component="input"
+                                                                    placeholder="Reagent Name"
+                                                                    />
+                                                                </div>
+                                                                <div className="col-1 my-auto">
+                                                                    <span
+                                                                    onClick={() => fields.remove(index)}
+                                                                    style={{ cursor: 'pointer' }}
+                                                                    >
+                                                                    <FontAwesomeIcon icon={faTimes} color="grey" size='md'/>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            ))
+                                                        }
+                                                    </FieldArray> 
+                                                </div>
+                                                <div className="container">
+                                                    <div className="row input-header">
+                                                        <div className="col-6"><span className="input-h4">Reagent Data</span><button className="button-form-array" type="button" onClick={() => push('reagentData', undefined)}>
+                                                                <FontAwesomeIcon icon={faPlus} color="#3e8bd6" size='md'/>
+                                                            </button>{' '}
+                                                            <button className="button-form-array" type="button" onClick={() => pop('reagentData')}>
+                                                                <FontAwesomeIcon icon={faMinus} color="#3e8bd6" size='md'/>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <FieldArray name="reagentData">
+                                                        {({ fields }) =>
+                                                            fields.map((name, index) => (
+                                                            <div className="row" key={name}>
+                                                                {/*<label>{index + 1}</label>*/}
+                                                                <div className="col-6">
+                                                                    <Field
+                                                                    name={`${name}.label`}
+                                                                    component="input"
+                                                                    placeholder="Input Name"
+                                                                    />
+                                                                </div>
+                                                                <div className="col-2">
+                                                                    <Field
+                                                                    name={`${name}.type`}
+                                                                    component="select"
+                                                                    defaultValue="text"
+                                                                    >
+                                                                        <option selected value="text">Text</option>
+                                                                        <option value="false">Date</option>
+                                                                    </Field>
+                                                                </div>
+                                                                <div className="col-3">
+                                                                    <Field
+                                                                    name={`${name}.required`}
+                                                                    component="select"
+                                                                    defaultValue="true"
+                                                                    >
+                                                                        <option selected value="true">Required</option>
+                                                                        <option value="false">Not Required</option>
+                                                                    </Field>
+                                                                </div>
+                                                                <div className="col-1 my-auto">
+                                                                    <span
+                                                                    onClick={() => fields.remove(index)}
+                                                                    style={{ cursor: 'pointer' }}
+                                                                    >
+                                                                    <FontAwesomeIcon icon={faTimes} color="grey" size='md'/>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            ))
+                                                        }
+                                                    </FieldArray>
+                                                    <div className="row input-header">
+                                                        <div className="col-6"><span className="input-h4">Other Inputs</span>
+                                                            <button className="button-form-array" type="button" onClick={() => push('other', undefined)}>
+                                                                <FontAwesomeIcon icon={faPlus} color="#3e8bd6" size='md'/>
+                                                            </button>{' '}
+                                                            <button className="button-form-array" type="button" onClick={() => pop('other')}>
+                                                                <FontAwesomeIcon icon={faMinus} color="#3e8bd6" size='md'/>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                    <FieldArray name="other">
+                                                        {({ fields }) =>
+                                                            fields.map((name, index) => (
+                                                            <div className="row" key={name}>
+                                                                {/*<label>{index + 1}</label>*/}
+                                                                <div className="col-6">
+                                                                    <Field
+                                                                    name={`${name}.label`}
+                                                                    component="input"
+                                                                    placeholder="Input Name"
+                                                                    />
+                                                                </div>
+                                                                <div className="col-2">
+                                                                    <Field
+                                                                    name={`${name}.type`}
+                                                                    component="select"
+                                                                    defaultValue="text"
+                                                                    >
+                                                                        <option selected value="text">Text</option>
+                                                                        <option value="false">Date</option>
+                                                                    </Field>
+                                                                </div>
+                                                                <div className="col-3">
+                                                                    <Field
+                                                                    name={`${name}.required`}
+                                                                    component="select"
+                                                                    defaultValue="true"
+                                                                    >
+                                                                        <option selected value="true">Required</option>
+                                                                        <option value="false">Not Required</option>
+                                                                    </Field>
+                                                                </div>
+                                                                <div className="col-1 my-auto">
+                                                                    <span
+                                                                    onClick={() => fields.remove(index)}
+                                                                    style={{ cursor: 'pointer' }}
+                                                                    >
+                                                                    <FontAwesomeIcon icon={faTimes} color="grey" size='md'/>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            ))
+                                                        }
+                                                    </FieldArray>
+                                                    <div className="container">
+                                                        <div className="row">
+                                                            <button className="submit-button" type="submit" disabled={submitting || pristine}>
+                                                                Submit
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </form>
-                                    )
-                                }
-                            }/>
+                                            </form>
+                                        )
+                                    }
+                                }/>
+                                </div>
                             </div>
                         </div>
                     </div>
