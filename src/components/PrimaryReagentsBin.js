@@ -110,8 +110,8 @@ export const PrimaryReagentsBin = (props) => {
                             "display": "flex",
                             "align-items": "center",
                             "position":"fixed",
-                            "z-index":"10"}} className="row header">
-            <div className="col-6">
+                            "z-index":"10"}} className="row header table">
+            <div className="col-6 col-sm-8 col-lg-6">
                 <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
             </div>
             <div className="col-2 ml-auto text-right">

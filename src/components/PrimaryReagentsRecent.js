@@ -158,7 +158,7 @@ export const PrimaryReagentsRecent = (props) => {
         return (
             <>
             <div className="row header table">
-                <div className="col-6">
+                <div className="col-6 col-sm-8 col-lg-6">
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
                 </div>
                 <div className="col ml-auto text-right">
@@ -185,7 +185,7 @@ export const PrimaryReagentsRecent = (props) => {
         return(
             <>        
             <div className="row header table">
-                <div className="col-6">
+                <div className="col-6 col-sm-8 col-lg-6">
                     <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter}/>
                 </div>
                 <div className="col ml-auto text-right">
