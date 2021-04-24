@@ -72,8 +72,8 @@ class TestHistoryNEW extends Component {
                 <div className="row flex-fill h-100 d-flex">
                     <div style={{"position":"fixed"}} className="col-2 d-flex flex-column h-100">
                         <div style={{"border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-top": "0px", "padding": "10px"}} className="row header">
-                            <div className="col ml-5">
-                                <span className="menu-header"> Test History </span>
+                            <div style={{"paddingRight":"0px"}} className="col my-auto ml-5">
+                                <span className="menu-header d-none d-xl-inline"> Test History </span>
                             </div>
                         </div>
                         <div style={{"border-right":"1px solid #E2E2E4",  "backgroundColor":"#F6F5FA"}} className="row side-info justify-content-center bg-blue flex-grow-1">
@@ -84,7 +84,9 @@ class TestHistoryNEW extends Component {
                                                     "background-color": "rgba(47, 73, 209, 0.15)",
                                                     "box-shadow": "0px 0px 5px 0px lightgrey",
                                                     "height": "70px",
-                                                    "padding-top":"20px"}} 
+                                                    "padding-top":"20px",
+                                                    "paddingLeft":"0px",
+                                                    "paddingRight":"0px"}} 
                                         className="col text-center section-selection">
                                         <a className="switch" 
                                             href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/my-tests/overview' : '/testhistory/all-tests/overview'}>
@@ -97,21 +99,20 @@ class TestHistoryNEW extends Component {
                                                                         "box-shadow": "0px 0px 1px 0px #888888"}}>
                                             <HiOutlineSwitchHorizontal/>
                                         </span></a>
-                                        <span style={{"font-weight":"700", "font-size":"large", 
+                                        <span className="d-none d-lg-inline" style={{"font-weight":"700", "font-size":"large", 
                                             "color": "rgba(237, 139, 0, 0.95)", "padding-left": "15px",
                                             "vertical-align":"middle"}}>{this.state.currentPath.split('/')[0]=='all-tests' ? 'All Tests' : 'My Tests'}</span>
-                                        <span style={{"padding-left": "5px"}}> </span>
                                     </div>
                                 </div>
                                 <div style={{"margin-top":"30px"}} className="row section-choices">
-                                    <div className="col" style={{"padding":"0px"}}>
+                                    <div className="col text-center text-lg-left" style={{"padding":"0px"}}>
                                         <ul className="list-unstyled">
                                             <li><a type="button" 
                                                     href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/overview' : '/testhistory/my-tests/overview'}
-                                                    className={this.state.currentPath.split('/')[1]=='overview' ? 'selected' : ''}><span><FaLayerGroup /></span> Overview</a></li>
+                                                    className={this.state.currentPath.split('/')[1]=='overview' ? 'selected' : ''}><span><FaLayerGroup /></span> <span className="d-none d-lg-inline">Overview</span></a></li>
                                             <li><a type="button" 
                                                     href={this.state.currentPath.split('/')[0]=='all-tests' ? '/testhistory/all-tests/deleted' : '/testhistory/my-tests/deleted'}
-                                                    className={this.state.currentPath.split('/')[1]=='deleted' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> Deleted</a></li>
+                                                    className={this.state.currentPath.split('/')[1]=='deleted' ? 'selected' : ''}><span><RiDeleteBin7Fill /></span> <span className="d-none d-lg-inline">Deleted</span></a></li>
                                         </ul>
                                     </div>
                                 </div>

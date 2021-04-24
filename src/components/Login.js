@@ -116,7 +116,7 @@ export const Login = (props) => {
                         </div>
                     </div>
                     <div id="login-right" className="col-8 my-auto d-none d-md-block text-center">
-                        <img src={HomeImage} height="70%" width="70%" alt="image" />
+                        <img src={HomeImage} height="60%" width="60%" alt="image" />
                     </div>
                 </div>                  
             </div>
