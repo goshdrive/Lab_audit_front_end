@@ -44,79 +44,80 @@ export const Login = (props) => {
         return(
             <div className="container-fluid login-page">
                 <div className="row min-vh-100">
-                    <div style={{"backgroundColor":"white", "paddingTop":"15%"}} className="col-md-4 text-center vertical-align">
-                        <span style={{"fontSize":"40px", "color":"#432F87", "fontWeight":"700", "display":"block"}}>DRIVE</span>
-                        <span style={{"fontSize":"20px", "color":"#432F87", "fontWeight":"500", "display":"inline-block"}}> LabAssist </span>
-                        <Form
-                        onSubmit={handleLogin}
-                        render={({ handleSubmit, form, submitting, pristine, values }) => (
-                            <>                                     
-                            <div className="row">
-                                <div className="container">
-                                    <form id="loginForm" onSubmit={handleSubmit}>
-                                        <div className="row">
-                                            <Field
-                                            name="username"
-                                            component="input"
-                                            type="text"
-                                            validate={required}
-                                            >
-                                            {({ input, meta }) => (
-                                                <div className="col-12">
-                                                    <input {...input} placeholder="Username" className="login-input"/>
-                                                    {meta.error && meta.touched && <span style={{"textAlign": "left", "color":"red"}} className="error"><br></br>{meta.error}</span>}
+                    <div style={{"backgroundColor":"white"}} className="col-lg-4 my-auto text-center">
+                        <div className="row min-vh-100">
+                            <div className="col my-auto">
+                                <span style={{"fontSize":"40px", "color":"#432F87", "fontWeight":"700", "display":"block"}}>DRIVE</span>
+                                <span style={{"fontSize":"20px", "color":"#432F87", "fontWeight":"500", "display":"inline-block"}}> LabAssist </span>
+                                <Form
+                                onSubmit={handleLogin}
+                                render={({ handleSubmit, form, submitting, pristine, values }) => (
+                                    <>                                     
+                                    <div className="row">
+                                        <div className="container">
+                                            <form id="loginForm" onSubmit={handleSubmit}>
+                                                <div className="row">
+                                                    <Field
+                                                    name="username"
+                                                    component="input"
+                                                    type="text"
+                                                    validate={required}
+                                                    >
+                                                    {({ input, meta }) => (
+                                                        <div className="col-12">
+                                                            <input {...input} placeholder="Username" className="login-input"/>
+                                                            {meta.error && meta.touched && <span style={{"textAlign": "left", "color":"red"}} className="error"><br></br>{meta.error}</span>}
+                                                        </div>
+                                                    )}
+                                                    </Field>
                                                 </div>
-                                            )}
-                                            </Field>
-                                        </div>
-                                        <div className="row">
-                                            <Field
-                                            name="password"
-                                            component="input"
-                                            type="password"
-                                            validate={required}
-                                            >
-                                            {({ input, meta }) => (
-                                                <div className="col-12">
-                                                    <input {...input} placeholder="Password" className="login-input"/>
-                                                    {meta.error && meta.touched && <span style={{"textAlign": "left", "color":"red"}} className="error"><br></br>{meta.error}</span>}
+                                                <div className="row">
+                                                    <Field
+                                                    name="password"
+                                                    component="input"
+                                                    type="password"
+                                                    validate={required}
+                                                    >
+                                                    {({ input, meta }) => (
+                                                        <div className="col-12">
+                                                            <input {...input} placeholder="Password" className="login-input"/>
+                                                            {meta.error && meta.touched && <span style={{"textAlign": "left", "color":"red"}} className="error"><br></br>{meta.error}</span>}
+                                                        </div>
+                                                    )}
+                                                    </Field>
                                                 </div>
-                                            )}
-                                            </Field>
-                                        </div>
-                                        <div className="row">
-                                            <div className="col-12">
-                                                <button className="submit-button" type="submit" disabled={submitting || pristine}>
-                                                    Login
-                                                </button>
+                                                <div className="row">
+                                                    <div className="col-12">
+                                                        <button className="submit-button" type="submit" disabled={submitting || pristine}>
+                                                            Login
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>  
+                                    </div>                                             
+                                    </>
+                                )}/> 
+                                {props.auth.errMess == "Error 401: Unauthorized" ? (
+                                    <div className="row">
+                                        <div className="container">
+                                            <div className="row">
+                                                <div style={{"paddingLeft":"20%", "paddingRight":"20%", "paddingTop":"10%"}} className="col-12 text-center">
+                                                    <div style={{"height":"100px", "backgroundColor":"rgba(255,0,0, 0.6)", "width":"100%", "borderRadius":"5px", 
+                                                        "color":"white", "fontSize":"18px", "fontWeight":"500", "padding":"5%"}}>
+                                                        <span>You have entered an invalid username or password</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>  
-                            </div>                                             
-                            </>
-                        )}
-                    /> 
-                    {props.auth.errMess == "Error 401: Unauthorized" ? (
-                        <div className="row">
-                        <div className="container">
-                            <div className="row">
-                                <div style={{"paddingLeft":"20%", "paddingRight":"20%", "paddingTop":"10%"}} className="col-12 text-center">
-                                    <div style={{"height":"100px", "backgroundColor":"rgba(255,0,0, 0.6)", "width":"100%", "borderRadius":"5px", 
-                                        "color":"white", "fontSize":"18px", "fontWeight":"500", "padding":"5%"}}>
-                                        <span>You have entered an invalid username or password</span>
-                                    </div>
-                                </div>
+                                    </div> 
+                                ) : null}
                             </div>
                         </div>
-                    </div> 
-                    ) : null}
-                </div>
-                <div id="login-right" className="col-8 my-auto d-none d-md-block">
-                    <div className="row">
-                        <img style={{"margin":"0 auto"}} src={HomeImage} height="70%" width="70%" alt="image" />
                     </div>
-                </div>
+                    <div id="login-right" className="col-8 my-auto d-none d-md-block text-center">
+                        <img src={HomeImage} height="70%" width="70%" alt="image" />
+                    </div>
                 </div>                  
             </div>
         );
