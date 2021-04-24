@@ -44,7 +44,7 @@ export const Login = (props) => {
         return(
             <div className="container-fluid login-page">
                 <div className="row min-vh-100">
-                    <div style={{"backgroundColor":"white", "paddingTop":"15%"}} className="col-4 text-center vertical-align">
+                    <div style={{"backgroundColor":"white", "paddingTop":"15%"}} className="col-md-4 text-center vertical-align">
                         <span style={{"fontSize":"40px", "color":"#432F87", "fontWeight":"700", "display":"block"}}>DRIVE</span>
                         <span style={{"fontSize":"20px", "color":"#432F87", "fontWeight":"500", "display":"inline-block"}}> LabAssist </span>
                         <Form
@@ -99,30 +99,22 @@ export const Login = (props) => {
                     /> 
                     {props.auth.errMess == "Error 401: Unauthorized" ? (
                         <div className="row">
-                            <div className="container">
-                                <div className="row">
-                                    <div style={{"paddingLeft":"20%", "paddingRight":"20%", "paddingTop":"10%"}} className="col-12 text-center">
-                                        <div style={{"height":"100px", "backgroundColor":"rgba(255,0,0, 0.6)", "width":"100%", "borderRadius":"5px", 
-                                            "color":"white", "fontSize":"18px", "fontWeight":"500", "padding":"5%"}}>
-                                            <span>You have entered an invalid username or password</span>
-                                        </div>
+                        <div className="container">
+                            <div className="row">
+                                <div style={{"paddingLeft":"20%", "paddingRight":"20%", "paddingTop":"10%"}} className="col-12 text-center">
+                                    <div style={{"height":"100px", "backgroundColor":"rgba(255,0,0, 0.6)", "width":"100%", "borderRadius":"5px", 
+                                        "color":"white", "fontSize":"18px", "fontWeight":"500", "padding":"5%"}}>
+                                        <span>You have entered an invalid username or password</span>
                                     </div>
                                 </div>
                             </div>
-                        </div> 
+                        </div>
+                    </div> 
                     ) : null}
                 </div>
-                <div style={{"paddingTop":"5%","paddingLeft":"10%"}} id="login-right" className="col-8">
+                <div id="login-right" className="col-8 my-auto d-none d-md-block">
                     <div className="row">
-                        {/* <div className="col-5 ml-auto">
-                            <img src="assets/images/Humaaans_Wireframe.png" height="500px" width="500px" alt="image" />
-                        </div>
-                        <div className="col-7 mr-auto">
-                            <img className="block-center" src="assets/images/Humaaans_Space.png" height="500px" width="680px" alt="image" />
-                        </div>               */}
-                        <div className="col-5">
-                            <img src={HomeImage} height="800px" width="800px" alt="image" />
-                        </div>
+                        <img style={{"margin":"0 auto"}} src={HomeImage} height="70%" width="70%" alt="image" />
                     </div>
                 </div>
                 </div>                  
