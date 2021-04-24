@@ -33,7 +33,7 @@ const RenderAssay = ( props ) => (
                                 return(
                                     <>
                                     <div style={{"color":"grey"}} className="col-6" key={reagent.key}>
-                                        <b>{"Reagent Input #" + String(index+1)}</b>
+                                        <b>Reagent&nbsp;Input&nbsp;#{String(index+1)}</b>
                                     </div>
                                     <div className="col-6" key={reagent.key}>
                                         {reagent.label}
@@ -50,7 +50,7 @@ const RenderAssay = ( props ) => (
                                 return(
                                     <>
                                     <div style={{"color":"grey"}} className="col-6" key={reagentDataInput.key}>
-                                        <b>{"Reagent Data #" + String(index+1)}</b>
+                                        <b>Reagent&nbsp;Data&nbsp;#{String(index+1)}</b>
                                     </div>
                                     <div className="col-6" key={reagentDataInput.key}>
                                         {reagentDataInput.label}
@@ -67,7 +67,7 @@ const RenderAssay = ( props ) => (
                                 return(
                                     <>
                                     <div style={{"color":"grey"}} className="col-6" key={otherInput.key}>
-                                        <b>{"Other Input #" + String(index+1)}</b>
+                                        <b>Other&nbsp;Input&nbsp;#{String(index+1)}</b>
                                     </div>
                                     <div className="col-6" key={otherInput.key}>
                                         {otherInput.label}
@@ -194,13 +194,13 @@ class AssayTypes extends Component {
         return(
             <div id="page-wrap" className="container-fluid">         
                 <Sidebar pageWrapId={'page-wrap'} outerContainerId={'outer-container'} logoutUser={this.props.logoutUser} />                               
-                <div className="row min-vh-100">
-                    <div className="col-4">
-                        <div style={{"z-index":"10", "position":"fixed", "border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-top": "0px", "padding": "10px", "width":"110%"}} className="row header">
+                <div style={{"z-index":"10", "position":"fixed", "border-bottom":"1px solid #E2E2E4", "background-color": "white", "margin-top": "0px", "padding": "10px", "width":"110%"}} className="row header">
                             <div className="col my-auto ml-5">
                                 <span className="menu-header"> Assay Types </span>
                             </div>
                         </div>
+                <div className="row min-vh-100">
+                    <div className="col-4 d-none d-lg-block">
                         <div style={{"border-right":"1px solid #E2E2E4", "paddingTop":"81px"}} className="row side-info d-flex flex-column h-100">
                             <div className="col">
                                 <div style={{"border-radius": "7px",
@@ -233,21 +233,24 @@ class AssayTypes extends Component {
                                                         >
                                                         {({ input, meta }) => (
                                                             <div className="row">                                  
-                                                                <div className="col">
-                                                                    <input {...input} id="assay-name-input" placeholder="New Assay Name..."/>
+                                                                <div className="col-12 col-xl-6">
+                                                                    <input {...input} id="assay-name-input" placeholder="Assay Name..."/>
                                                                     {meta.error && meta.submitFailed && <span>{meta.error}</span>}
                                                                 </div>
                                                             </div>
                                                         )}
                                                     </Field>
                                                     <div className="row input-header">
-                                                        <div className="col-6"><span className="input-h4">Reagents</span>                                                        
-                                                        <button className="button-form-array" type="button" onClick={() => push('reagents', undefined)}>
-                                                                <FontAwesomeIcon icon={faPlus} color="#3e8bd6" size='md'/>
-                                                            </button>{' '}
-                                                            <button className="button-form-array" type="button" onClick={() => pop('reagents')}>
-                                                                <FontAwesomeIcon icon={faMinus} color="#3e8bd6" size='md'/>
-                                                            </button>
+                                                        <div className="col-12">
+                                                            <span className="input-h4">Reagents</span>   
+                                                            <span style={{"white-space": "nowrap"}}>
+                                                                <button className="button-form-array" type="button" onClick={() => push('reagents', undefined)}>
+                                                                    <FontAwesomeIcon icon={faPlus} color="#3e8bd6" size='md'/>
+                                                                </button>&nbsp;
+                                                                <button className="button-form-array" type="button" onClick={() => pop('reagents')}>
+                                                                    <FontAwesomeIcon icon={faMinus} color="#3e8bd6" size='md'/>
+                                                                </button>
+                                                            </span>                                                     
                                                         </div>
                                                     </div>
                                                     <FieldArray name="reagents">
@@ -255,7 +258,7 @@ class AssayTypes extends Component {
                                                             fields.map((name, index) => (
                                                             <div className="row" key={name}>
                                                                 {/*<label>Reagent #{index + 1}</label>*/}
-                                                                <div className="col-6">
+                                                                <div className="col-10 col-xl-6">
                                                                     <Field
                                                                     name={`${name}.label`}
                                                                     component="input"
@@ -277,7 +280,9 @@ class AssayTypes extends Component {
                                                 </div>
                                                 <div className="container">
                                                     <div className="row input-header">
-                                                        <div className="col-6"><span className="input-h4">Reagent Data</span><button className="button-form-array" type="button" onClick={() => push('reagentData', undefined)}>
+                                                        <div className="col-12">
+                                                            <span className="input-h4">Reagent Data</span>
+                                                            <button className="button-form-array" type="button" onClick={() => push('reagentData', undefined)}>
                                                                 <FontAwesomeIcon icon={faPlus} color="#3e8bd6" size='md'/>
                                                             </button>{' '}
                                                             <button className="button-form-array" type="button" onClick={() => pop('reagentData')}>
@@ -290,7 +295,7 @@ class AssayTypes extends Component {
                                                             fields.map((name, index) => (
                                                             <div className="row" key={name}>
                                                                 {/*<label>{index + 1}</label>*/}
-                                                                <div className="col-6">
+                                                                <div className="col-5 xl-col-6">
                                                                     <Field
                                                                     name={`${name}.label`}
                                                                     component="input"
@@ -330,7 +335,7 @@ class AssayTypes extends Component {
                                                         }
                                                     </FieldArray>
                                                     <div className="row input-header">
-                                                        <div className="col-6"><span className="input-h4">Other Inputs</span>
+                                                        <div className="col-12"><span className="input-h4">Other Inputs</span>
                                                             <button className="button-form-array" type="button" onClick={() => push('other', undefined)}>
                                                                 <FontAwesomeIcon icon={faPlus} color="#3e8bd6" size='md'/>
                                                             </button>{' '}
@@ -344,7 +349,7 @@ class AssayTypes extends Component {
                                                             fields.map((name, index) => (
                                                             <div className="row" key={name}>
                                                                 {/*<label>{index + 1}</label>*/}
-                                                                <div className="col-6">
+                                                                <div className="col-5 xl-col-6">
                                                                     <Field
                                                                     name={`${name}.label`}
                                                                     component="input"
@@ -399,7 +404,7 @@ class AssayTypes extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="col-8">  
+                    <div className="col-12 col-lg-8">  
                         <div style={{"padding-top":"81px", "paddingRight":"15px"}} className="row">
                             <div className="col">
                             <Accordion defaultActiveKey="0">
