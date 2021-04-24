@@ -105,12 +105,12 @@ class Admin extends Component {
                             </div>
                         </div>
                         <div style={{"border-right":"1px solid #E2E2E4", "paddingTop":"81px", "paddingLeft":"10px"}} className="row">
-                            <div className="col-6 ml-2">
+                            <div className="col-lg-8 col-xl-6 ml-2">
                                 <div className="container-fluid">
                                     <div className="row">
                                         <span style={{"color":"#432F87", "fontSize":"20px"}}>User Management</span>
                                         <span><FontAwesomeIcon style={{"marginLeft":"30px"}} icon={faSearch} size='sm'/><input style={{"border":"1px solid lightgrey", "borderRadius":"4px", "marginLeft":"5px"}} type="text" onChange={(e => this.handleChange(e))}/></span>
-                                        <span className="ml-auto"><a style={{"color":"#432F87"}} type="button" onClick={this.handleAddUserModalShow}><FontAwesomeIcon icon={faPlus} size='sm'/>{' '}Add New User</a></span>
+                                        <span className="ml-auto"><a style={{"color":"#432F87"}} type="button" onClick={this.handleAddUserModalShow}><FontAwesomeIcon icon={faPlus} size='sm'/> <span className="d-none d-sm-inline">Add New User</span></a></span>
                                     </div>
                                     <div className="row">
                                         <ul style={{"width":"100%"}} className="list-unstyled">
@@ -122,7 +122,7 @@ class Admin extends Component {
                                                                 user.status!="DELETED" ? (
                                                                     <div style={{"border":"1px solid lightgrey", "padding":"20px", "borderRadius":"7px", "backgroundColor":"white", "boxShadow":"0px 0px 3px 0px lightgrey"}} key={user._id} className="user-card">
                                                                         <span>{user.username}</span>
-                                                                        <span style={{"float":"right"}}>
+                                                                        <span className="float-right">
                                                                             {
                                                                                 user.admin ? (
                                                                                     <span>Admin</span>
@@ -144,7 +144,7 @@ class Admin extends Component {
                                                                 ) : (
                                                                     <div style={{"border":"1px solid lightgrey", "padding":"20px", "borderRadius":"7px", "backgroundColor":"#E2E2E4", "boxShadow":"0px 0px 3px 0px lightgrey"}} key={user._id} className="user-card">
                                                                         <span>{user.username}</span>
-                                                                        <span style={{"float":"right"}}>
+                                                                        <span className="float-right">
                                                                             {
                                                                                 user.admin ? (
                                                                                     <span>Admin</span>
