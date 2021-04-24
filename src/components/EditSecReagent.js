@@ -34,7 +34,13 @@ class EditSecReagent extends Component {
             status: values.status
         }
 
-        const action = "editDetails"
+        if ((values.status != this.state.status) && (values.status=="DISPOSED")) {
+            var action = "dispose"    
+        }
+        else {
+            var action = "editDetails"
+        }
+
         this.props.putSecReagent(updatedReagent, action);
 
         this.props.handleModalClose();

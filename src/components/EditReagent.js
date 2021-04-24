@@ -1,3 +1,4 @@
+import { isThursday } from 'date-fns';
 import React, { Component } from 'react';
 import { Modal, Button}  from "react-bootstrap";
 import { Form, Field } from 'react-final-form';
@@ -60,7 +61,13 @@ class EditReagent extends Component {
             supplier: values.supplier
         }
 
-        const action = "editDetails"
+        if ((values.status != this.state.status) && (values.status=="DISPOSED")) {
+            var action = "dispose"    
+        }
+        else {
+            var action = "editDetails"
+        }
+
         this.props.putReagent(updatedReagent, action);
 
         this.props.handleModalClose();
