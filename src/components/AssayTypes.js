@@ -96,7 +96,7 @@ class AssayTypes extends Component {
 
     componentDidMount() {
         var dateSeries = this.state.assayTypes.map(assayType => new Date(assayType.createdAt));
-        dateSeries.sort().reverse();
+        dateSeries.sort();
         dateSeries = dateSeries.map(date => date.toISOString().substring(0, 7))
         dateSeries = [...new Set(dateSeries)]
         
