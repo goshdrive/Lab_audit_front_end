@@ -13,6 +13,11 @@ export const COLUMNS = [
         ),
     },
     {
+        Header: 'Date Created',
+        accessor: 'dateCreated',
+        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): '')
+    },    
+    {
         Header: 'Reagent Name',
         accessor: 'reagentName',
     },
@@ -21,23 +26,35 @@ export const COLUMNS = [
         accessor: 'lotNr',
     },
     {
-        Header: 'Date Created',
-        accessor: 'dateCreated',
-        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): '')
-    },    
-    {
         Header: 'Expiry Date',
         accessor: 'expiryDate',
-        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): '')
+        Cell: ({value}) => (value!=null ? (new Date(value) < new Date() ? 
+                                <span style={{"color":"#F08080"}}>{format(new Date(value), 'dd/MM/yyyy')}</span> :
+                                <span>{format(new Date(value), 'dd/MM/yyyy')}</span>) : '')
     },    
-    {
-        Header: 'Created By',
-        accessor: 'createdBy',
-    },
     {
         Header: 'Status',
         accessor: 'status',
+        Cell: ({value}) => {
+            switch(value) {
+                case "DISPOSED":
+                    return <><span style={{"color":"orange"}}>Disposed
+                    </span> <span style={{"backgroundColor":"orange", "height":"10px", "width":"10px", "borderRadius":"50%", "display":"inline-block"}}></span></>;
+                case "DELETED":
+                    return <><span style={{"color":"#F08080"}}>Deleted
+                    </span> <span style={{"backgroundColor":"#F08080", "height":"10px", "width":"10px", "borderRadius":"50%", "display":"inline-block"}}></span></>;
+                case "OK":
+                    return <><span style={{"color":"lightgreen"}}>Ok
+                    </span> <span style={{"backgroundColor":"lightgreen", "height":"10px", "width":"10px", "borderRadius":"50%", "display":"inline-block"}}></span></>;
+                default:
+                    return "";
+            }
+        },
         canGroupBy: false
+    },
+    {
+        Header: 'Created By',
+        accessor: 'createdBy',
     },
     {
         Header: 'Updated At',

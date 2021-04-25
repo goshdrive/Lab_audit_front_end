@@ -49,7 +49,9 @@ export const COLUMNS = [
     {
         Header: 'Expiry Date',
         accessor: 'expiryDate',
-        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): ''),
+        Cell: ({value}) => (value!=null ? (new Date(value) < new Date() ? 
+                                <span style={{"color":"#F08080"}}>{format(new Date(value), 'dd/MM/yyyy')}</span> :
+                                <span>{format(new Date(value), 'dd/MM/yyyy')}</span>) : ''),
         aggregate: topValue,
         canGroupBy: false
     },
