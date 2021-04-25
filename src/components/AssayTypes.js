@@ -309,7 +309,7 @@ class AssayTypes extends Component {
                                                                     defaultValue="text"
                                                                     >
                                                                         <option selected value="text">Text</option>
-                                                                        <option value="false">Date</option>
+                                                                        <option value="date">Date</option>
                                                                     </Field>
                                                                 </div>
                                                                 <div className="col-3">
@@ -363,7 +363,7 @@ class AssayTypes extends Component {
                                                                     defaultValue="text"
                                                                     >
                                                                         <option selected value="text">Text</option>
-                                                                        <option value="false">Date</option>
+                                                                        <option value="date">Date</option>
                                                                     </Field>
                                                                 </div>
                                                                 <div className="col-3">
