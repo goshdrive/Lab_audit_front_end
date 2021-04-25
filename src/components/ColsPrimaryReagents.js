@@ -18,11 +18,11 @@ export const COLUMNS = [
         )
     },
     {
-        Header: 'Unit',
-        accessor: 'unit',
-        canGroupBy: false,
+        Header: 'Date Received',
+        id: 'dateReceived',
+        accessor: 'dateReceived',
+        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): ''),
         aggregate: topValue,
-        disableSortBy: true
     },
     {
         Header: 'Reagent Name',
@@ -40,18 +40,11 @@ export const COLUMNS = [
         aggregate: topValue,
     },
     {
-        Header: 'CAT Number',
-        accessor: 'catNr',
+        Header: 'Unit',
+        accessor: 'unit',
         canGroupBy: false,
-        aggregate: topValue
-    },
-    {
-        Header: 'Date Received',
-        id: 'dateReceived',
-        accessor: 'dateReceived',
-        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): ''),
-        aggregate: topValue,
-        canGroupBy: false
+        aggregate: unitCount,
+        disableSortBy: true
     },
     {
         Header: 'Expiry Date',
@@ -61,6 +54,31 @@ export const COLUMNS = [
         canGroupBy: false
     },
     {
+        Header: 'Status',
+        accessor: 'status',
+        Cell: ({value}) => {
+            switch(value) {
+                case "DISPOSED":
+                    return <><span style={{"color":"orange"}}>Disposed
+                    </span> <span style={{"backgroundColor":"orange", "height":"10px", "width":"10px", "borderRadius":"50%", "display":"inline-block"}}></span></>;
+                case "DELETED":
+                    return <><span style={{"color":"#F08080"}}>Deleted
+                    </span> <span style={{"backgroundColor":"#F08080", "height":"10px", "width":"10px", "borderRadius":"50%", "display":"inline-block"}}></span></>;
+                case "OK":
+                    return <><span style={{"color":"lightgreen"}}>Ok
+                    </span> <span style={{"backgroundColor":"lightgreen", "height":"10px", "width":"10px", "borderRadius":"50%", "display":"inline-block"}}></span></>;
+                default:
+                    return "";
+            }
+        },
+        canGroupBy: false
+    },
+    {
+        Header: 'Assay',
+        accessor: 'assayName',
+        canGroupBy: false,
+    },
+    {
         Header: 'Supplier',
         accessor: 'supplier',
         disableSortBy: true,
@@ -68,21 +86,10 @@ export const COLUMNS = [
         canGroupBy: true
     },
     {
-        Header: 'Date of First Use',
-        accessor: 'dateOfFirstUse',
-        Cell: ({value}) => (value!=null ? format(new Date(value), 'dd/MM/yyyy'): ''),
-        aggregate: topValue,
-        canGroupBy: false
-    },
-    {
-        Header: 'Status',
-        accessor: 'status',
-        canGroupBy: false
-    },
-    {
-        Header: 'Assay',
-        accessor: 'assayName',
+        Header: 'CAT Number',
+        accessor: 'catNr',
         canGroupBy: false,
+        aggregate: topValue
     },
     {
         Header: 'Updated At',
@@ -104,13 +111,9 @@ const onRowClick = (state, rowInfo, column, instance) => {
 
 function topValue(leafValues) {
     let top = leafValues[0]
-  
-    /*
-    leafValues.forEach(value => {
-      min = Math.min(min, value)
-      max = Math.max(max, value)
-    })
-    */
-  
     return top
-  }
+}
+
+function unitCount(leafValues){
+    return String(leafValues.length);
+}

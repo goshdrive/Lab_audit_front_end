@@ -32,7 +32,7 @@ export const PrimaryReagents = (props) => {
                         desc: true
                     }
                 ],
-                groupBy: ['lotNr'],
+                groupBy: ['dateReceived'],
                 hiddenColumns: ['updatedAt']
             },
             autoResetExpanded: false,

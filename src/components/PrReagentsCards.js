@@ -98,6 +98,16 @@ class PrReagentsCards extends Component {
                     </div>
                     <div className="row reagent-card-value">
                         <div className="col">
+                            <b>Date of First Use</b>
+                        </div>
+                        <div className="col">
+                            {this.props.reagentValues.dateOfFirstUse!=null ? 
+                                format(new Date(this.props.reagentValues.dateOfFirstUse), 'dd/MM/yyyy') : 
+                                ''}
+                        </div>
+                    </div>
+                    <div className="row reagent-card-value">
+                        <div className="col">
                             <b>Expiry Date</b>
                         </div>
                         <div className="col">
