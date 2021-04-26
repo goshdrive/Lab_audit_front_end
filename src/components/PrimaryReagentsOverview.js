@@ -51,7 +51,8 @@ export const PrimaryReagents = (props) => {
                         id: 'selection',
                         groupByBoundary: true,
                         Header: ({ getToggleAllRowsSelectedProps }) => (
-                            <Checkbox {...getToggleAllRowsSelectedProps()} />
+                            //<Checkbox {...getToggleAllRowsSelectedProps()} />
+                            null
                         ),
                         Cell: ({ row }) => (
                             row.subRows.length ? (null) : <Checkbox {...row.getToggleRowSelectedProps()}/>                            
@@ -241,7 +242,6 @@ export const PrimaryReagents = (props) => {
                             {headerGroup.headers.map(column => (
                                 <th {...column.getHeaderProps(column.getSortByToggleProps())} {...column.getHeaderProps()}>
                                 {/*column.canGroupBy ? (
-                                    // If the column can be grouped, let's add a toggle
                                     <span {...column.getGroupByToggleProps()}>
                                     {column.isGrouped ? <span><AiOutlineUngroup/> </span> : <span><AiOutlineGroup/> </span>}
                                     </span>                                                                
