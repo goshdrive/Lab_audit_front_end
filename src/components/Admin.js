@@ -40,9 +40,16 @@ class Admin extends Component {
     handleChange = (e) => {
         var usersCopy = this.state.users.slice();
         
-        this.setState({
-            usersRenderList: usersCopy.filter(user => user.username.includes(e.target.value))
-        })
+        if (this.state.deactivated) {
+            this.setState({
+                usersRenderList: usersCopy.filter(user => user.username.includes(e.target.value) && user.status!="ACTIVE")
+            })
+        }
+        else {
+            this.setState({
+                usersRenderList: usersCopy.filter(user => user.username.includes(e.target.value) && user.status=="ACTIVE")
+            })
+        }
     }
 
     changeUserRole = (user, e) => {
