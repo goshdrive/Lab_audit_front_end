@@ -66,6 +66,7 @@ export const loginUser = (creds) => (dispatch) => {
             // If login was successful, set the token in local storage
             localStorage.setItem('token', response.token);
             localStorage.setItem('userData', JSON.stringify(response.user));
+            localStorage.setItem("showDeletedUsers", false);
             // Dispatch the success action
             dispatch(requestLogin(response.user));
             dispatch(receiveLogin(response));
@@ -105,6 +106,7 @@ export const logoutUser = () => (dispatch) => {
     dispatch(requestLogout())
     localStorage.removeItem('token');
     localStorage.removeItem('creds');
+    localStorage.removeItem("showDeletedUsers");
     dispatch(receiveLogout())
 }
 
