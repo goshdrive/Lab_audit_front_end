@@ -3,6 +3,7 @@ import AddUser from './AddUser'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt, faPlus, faSearch, faTrash } from '@fortawesome/free-solid-svg-icons'
 import ResetPassword from './ResetPassword';
+import Switch from "react-switch";
 
 class Admin extends Component {
     constructor(props) {
@@ -10,10 +11,29 @@ class Admin extends Component {
 
         this.state = {
             users: this.props.users,
-            usersRenderList: this.props.users,
+            usersRenderList: localStorage.getItem("showDeletedUsers") == "true" ? (this.props.users.filter(user => user.status != "ACTIVE")) : 
+                        (this.props.users.filter(user => user.status == "ACTIVE")),
             isAddUserModalOpen: false,
             isPasswordModalOpen: false,  
-            selectedUser: null
+            selectedUser: null,
+            deactivated: localStorage.getItem("showDeletedUsers") == "false" ? false : true
+        }
+    }
+
+    showDeleted = () => {
+        if (this.state.deactivated) {
+            localStorage.setItem("showDeletedUsers", false);
+            this.setState({
+                usersRenderList: this.props.users.filter(user => user.status == "ACTIVE"),
+                deactivated: false
+            })
+        }
+        else {
+            localStorage.setItem("showDeletedUsers", true);
+            this.setState({
+                usersRenderList: this.props.users.filter(user => user.status != "ACTIVE"),
+                deactivated: true
+            })
         }
     }
 
@@ -109,7 +129,8 @@ class Admin extends Component {
                                 <div className="container-fluid">
                                     <div className="row">
                                         <span style={{"color":"#432F87", "fontSize":"20px"}}>User Management</span>
-                                        <span><FontAwesomeIcon style={{"marginLeft":"30px"}} icon={faSearch} size='sm'/><input style={{"border":"1px solid lightgrey", "borderRadius":"4px", "marginLeft":"5px"}} type="text" onChange={(e => this.handleChange(e))}/></span>
+                                        <span><FontAwesomeIcon style={{"marginLeft":"30px"}} icon={faSearch} size='sm'/><input style={{"border":"1px solid lightgrey", "borderRadius":"4px", "marginLeft":"5px", "marginRight":"10px"}} type="text" onChange={(e => this.handleChange(e))}/></span>
+                                        <span><Switch checkedIcon={null} uncheckedIcon={null} offColor="#66CDAA" onColor="#888" onChange={this.showDeleted} checked={this.state.deactivated} /></span>
                                         <span className="ml-auto"><a style={{"color":"#432F87"}} type="button" onClick={this.handleAddUserModalShow}><FontAwesomeIcon icon={faPlus} size='sm'/> <span className="d-none d-sm-inline">Add New User</span></a></span>
                                     </div>
                                     <div className="row">
